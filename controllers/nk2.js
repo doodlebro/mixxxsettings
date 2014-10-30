@@ -4,6 +4,8 @@ function NK2() {}
 //############################################################################
 NK2.ShiftStop = 0;
 NK2.tempTimer = 0;
+NK2.slipToggle = 0;
+NK2.slipHoldTimer = 0;
 NK2.XforLoop = 8;
 
 
@@ -209,6 +211,18 @@ NK2.LEDonFX24 = function() {
 	else  midi.sendShortMsg(NK2.midiChannel, 0x46, 0x00);
 }
 
+NK2.LEDonSlip1 = function() {
+	var tempState = engine.getValue("[Channel1]", "slip_enabled");
+	if ( tempState ) midi.sendShortMsg(NK2.midiChannel, 0x20, 0x7F);
+	else  midi.sendShortMsg(NK2.midiChannel, 0x20, 0x00);
+}
+
+NK2.LEDonSlip2 = function() {
+	var tempState = engine.getValue("[Channel2]", "slip_enabled");
+	if ( tempState ) midi.sendShortMsg(NK2.midiChannel, 0x21, 0x7F);
+	else  midi.sendShortMsg(NK2.midiChannel, 0x21, 0x00);
+}
+
 
 
 
@@ -217,27 +231,30 @@ NK2.LEDonFX24 = function() {
 NK2.Play = function (channel, control, value, status, group) {
 	if( NK2.ShiftStop == 0 ) {
 		if( value == 0x7F) { //ensure only happens when button is pressed down
-				var currentlyPlaying = engine.getValue(group,"play");
-			    if (currentlyPlaying == 1) {    // If currently playing
-			        engine.setValue(group,"play",0);    // Stop
-			    }
+			var currentlyPlaying = engine.getValue(group,"play");
+			if (currentlyPlaying == 1) {    // If currently playing
+				engine.setValue(group,"play",0);    // Stop
+			}
 			    
-			    else {    // If not currently playing,
-			        engine.setValue(group,"play",1);    // Start
-			    }
+			else {    // If not currently playing,
+			    engine.setValue(group,"play",1);    // Start
+			}
 		}
 	}
 	
-	else { //shift function is a brake
-		if( value == 0x7F) {
-			if( control == 0x2C ) {
-				engine.brake(1, true, 1.5);
-				NK2.ShiftStopper();
-			}
+	else { //shift function is a brake when track is playing
+		var currentlyPlaying = engine.getValue(group,"play");
+		if (currentlyPlaying == 1) {    // If currently playing
+			if( value == 0x7F) {
+				if( control == 0x2C ) {
+					engine.brake(1, true, 1.5);
+					NK2.ShiftStopper();
+				}
 			
-			if( control == 0x29 ) {
-				engine.brake(2, true, 1.5);
-				NK2.ShiftStopper();
+				if( control == 0x29 ) {
+					engine.brake(2, true, 1.5);
+					NK2.ShiftStopper();
+				}
 			}
 		}
 		
@@ -249,61 +266,58 @@ NK2.Loop = function (channel, control, value, status, group) {
 		if( value == 0x7F ) { //if button down only
 			var temp1 = engine.getValue(group,"loop_enabled")
 			if( temp1 == 1 ) {
-				//Channel1
-				if( control == 0x20 ) {
+					//Channel1	Channel2
+				if( control == 0x20 || control == 0x21 ) {
 					engine.setValue(group,"loop_double",1);
 					engine.setValue(group,"loop_double",0);
 				}
 				
-				if( control == 0x30 ) {
+				if( control == 0x30 || control == 0x31 ) {
 					engine.setValue(group,"reloop_exit",1);
 				}
 	
-				if( control == 0x40 ) {
+				if( control == 0x40 || control == 0x41 ) {
 					engine.setValue(group,"loop_halve",1);
 					engine.setValue(group,"loop_halve",0);
-				}
-				
-				//Channel2
-				if( control == 0x21 ) {
-					engine.setValue(group,"loop_double",1);
-					engine.setValue(group,"loop_double",0);
-				}
-				
-				if( control == 0x31 ) {
-					engine.setValue(group,"reloop_exit",1);
-				}
-	
-				if( control == 0x41 ) {
-					engine.setValue(group,"loop_halve",1);
-					engine.setValue(group,"loop_halve",0);
-				}
+				}	
 			}
 			else {
-				//Channel1
-				if( control == 0x20 ) {
+					//Channel1	Channel2
+				if( control == 0x20 || control == 0x21 ) {
+					var temp2 = engine.getValue(group, "slip_enabled");
+					if( temp2 == 1 ) {
+						engine.setValue(group,"slip_enabled",0);
+					}
+					else {
+						engine.setValue(group,"slip_enabled",1);
+						engine.beginTimer("200","NK2.setSlipToggle",true);
+						
+					}
+				}
+				
+				if( control == 0x30 || control == 0x31 ) {
 					engine.setValue(group,"beatloop_16_activate",1);
 				}
 				
-				if( control == 0x30 ) {
-					engine.setValue(group,"beatloop_8_activate",1);
-				}
-				
-				if( control == 0x40 ) {
+				if( control == 0x40 || control == 0x41 ) {
 					engine.setValue(group,"beatloop_4_activate",1);
 				}
-				
-				//Channel2
-				if( control == 0x21 ) {
-					engine.setValue(group,"beatloop_16_activate",1);
-				}
-				
-				if( control == 0x31 ) {
-					engine.setValue(group,"beatloop_8_activate",1);
-				}
-				
-				if( control == 0x41 ) {
-					engine.setValue(group,"beatloop_4_activate",1);
+			}
+		}
+
+		else {
+			var temp1 = engine.getValue(group,"loop_enabled")
+			if( temp1 == 0 ) {
+					//Channel1	Channel2
+				if( control == 0x20 || control == 0x21 ) {
+					if( NK2.slipToggle == 1 ) {
+						NK2.slipToggle = 0;
+					}
+					if( NK2.slipToggle == 2 ) {
+						engine.setValue(group, "slip_enabled", 0);
+						NK2.slipToggle = 0;
+					}
+					
 				}
 			}
 		}		
@@ -374,6 +388,29 @@ NK2.FXMod = function(channel, control, value, status, group) {
 	
 }
 
+NK2.TempoButton = function (channel, control, value, status, group) {
+	if( NK2.ShiftStop == 0 ) {
+		if( value == 0x7F ) { //if button down only
+			
+		}
+	}
+	else {
+		if( value == 0x7F ) { //if button down only
+			//channel 1
+			if( control == 0x3A || control == 0x3D ) {
+				engine.setValue(group,"beats_translate_earlier",1)
+				engine.setValue(group,"beats_translate_earlier",0)
+
+			}
+			if( control == 0x3B || control == 0x3E ) {
+				engine.setValue(group,"beats_translate_later",1)
+				engine.setValue(group,"beats_translate_later",0)
+			}
+		}
+	}
+}
+	
+
 NK2.Shift = function (channel, control, value, status, group) {
 	if( value == 0x7F ) {
 		if(NK2.ShiftStop == 0) {
@@ -388,7 +425,19 @@ NK2.Shift = function (channel, control, value, status, group) {
 }
 
 NK2.LightShift = function (channel, control, value, status, group) {
+	NK2.LightLED(0x20);
 	NK2.LightShiftLED();
+	engine.beginTimer("55","NK2.DimLED(0x20)",true);
+	engine.beginTimer("55","NK2.LightLED(0x30)",true);
+	engine.beginTimer("111","NK2.DimLED(0x30)",true);
+	engine.beginTimer("111","NK2.LightLED(0x40)",true);
+	engine.beginTimer("166","NK2.DimLED(0x40)",true);
+	engine.beginTimer("166","NK2.LightLED(0x41)",true);
+	engine.beginTimer("222","NK2.DimLED(0x41)",true);
+	engine.beginTimer("222","NK2.LightLED(0x31)",true);
+	engine.beginTimer("278","NK2.DimLED(0x31)",true);
+	engine.beginTimer("278","NK2.LightLED(0x21)",true);
+	engine.beginTimer("333","NK2.DimLED(0x21)",true);
 	engine.beginTimer(50,"NK2.DimShiftLED",true);
 	
 }
@@ -409,10 +458,36 @@ NK2.DimShiftLED = function () {
 	midi.sendShortMsg(NK2.midiChannel, 0x2A, 0x00);
 }
 
-NK2.ShiftStopper = function() {
+NK2.ShiftStopper = function () {
 	engine.stopTimer(NK2.tempTimer);
 	NK2.ShiftStop = 0;
+	NK2.DimShiftLED;
+	engine.beginTimer("334","NK2.linkPostShift",true);
+}
+
+NK2.setSlipToggle = function () {
+	NK2.slipToggle = 2;
+}
+
+NK2.linkPostShift = function () {
+	engine.trigger("[Channel1]", "slip_enabled");
+	engine.trigger("[Channel2]", "slip_enabled");
+	engine.trigger("[Channel1]", "loop_enabled");
+	engine.trigger("[Channel2]", "loop_enabled");
+}
+
+NK2.beatGapper = function(channel, control, value, status, group, functionality) {
+	var tempBPM = engine.getValue(group, "bpm");
+	var tempBPS = tempBPM / 60;
+	var b1 = 1 / tempBPS;
+	var b2 = b1 / 2;
+	var b3 = b1 / 3;
+	var b4 = b1 / 4;
+	var b6 = b1 / 6;
+	var b8 = b1 / 8;
+
 	
+
 }
 
 NK2.setup = function(obj) {
@@ -442,7 +517,13 @@ NK2.setup = function(obj) {
 	
 	engine.connectControl("[Channel2]", "loop_enabled", "NK2.LEDonLoop2");//
 	engine.trigger("[Channel2]", "loop_enabled");
+
+	//Slip
+	engine.connectControl("[Channel1]", "slip_enabled", "NK2.LEDonSlip1");//
+	engine.trigger("[Channel1]", "slip_enabled");
 	
+	engine.connectControl("[Channel2]", "slip_enabled", "NK2.LEDonSlip2");//
+	engine.trigger("[Channel2]", "slip_enabled");
 	
 	//Filter kill LEDS
 	engine.connectControl("[Channel1]", "filterHighKill", "NK2.LEDonHigh1");//
@@ -504,6 +585,8 @@ NK2.setup = function(obj) {
 	engine.trigger("[EffectRack1_EffectUnit1_Effect4]", "enabled");
 	
 }
+
+
 
 
 
