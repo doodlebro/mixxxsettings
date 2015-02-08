@@ -36,6 +36,12 @@ NK2.beatloopLengths=new Array(0.03125,0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 
 NK2.init = function init() { // called when the device is opened & set up
 	NK2.setup();
 	
+	//set samplers to always headphone cue
+	engine.setValue("[Sampler1]", "pfl", 1)
+	engine.setValue("[Sampler2]", "pfl", 1)
+	engine.setValue("[Sampler3]", "pfl", 1)
+	engine.setValue("[Sampler4]", "pfl", 1)
+	engine.setValue("[Sampler5]", "pfl", 1)
 	
 	}
 
@@ -336,9 +342,15 @@ NK2.FXMod = function(channel, control, value, status, group) {
 		if( value == 0x7F ) { //if button down only
 			//Channel1
 			if( control == 0x33 ) {
-				var temp1 = engine.getValue(group,"enabled");
-				if( temp1 == 1 ) engine.setValue(group,"enabled",0);
-				else engine.setValue(group,"enabled",1);
+				var temp1 = engine.getValue(group,"parameter1_link_type");
+				if( temp1 == 2 ) {
+					engine.setValue(group,"parameter1_link_type",0);
+					engine.setValue(group,"parameter3_link_type",0);
+				}
+				else {
+					engine.setValue(group,"parameter1_link_type",2);
+					engine.setValue(group,"parameter3_link_type",3);
+				}
 			}
 			
 			if( control == 0x34 ) {
@@ -361,9 +373,15 @@ NK2.FXMod = function(channel, control, value, status, group) {
 			
 			//Channel2
 			if( control == 0x35 ) {
-				var temp1 = engine.getValue(group,"enabled");
-				if( temp1 == 1 ) engine.setValue(group,"enabled",0);
-				else engine.setValue(group,"enabled",1);
+				var temp1 = engine.getValue(group,"parameter1_link_type");
+				if( temp1 == 2 ) {
+					engine.setValue(group,"parameter1_link_type",0);
+					engine.setValue(group,"parameter3_link_type",0);
+				}
+				else {
+					engine.setValue(group,"parameter1_link_type",2);
+					engine.setValue(group,"parameter3_link_type",3);
+				}
 			}
 			
 			if( control == 0x36 ) {
@@ -568,21 +586,21 @@ NK2.setup = function(obj) {
 	engine.connectControl("[EffectRack1_EffectUnit1_Effect3]", "enabled", "NK2.LEDonFX13");//
 	engine.trigger("[EffectRack1_EffectUnit1_Effect3]", "enabled");
 	
-	engine.connectControl("[EffectRack1_EffectUnit1_Effect4]", "enabled", "NK2.LEDonFX14");//
-	engine.trigger("[EffectRack1_EffectUnit1_Effect4]", "enabled");
+	//engine.connectControl("[EffectRack1_EffectUnit1_Effect4]", "enabled", "NK2.LEDonFX14");//
+	//engine.trigger("[EffectRack1_EffectUnit1_Effect4]", "enabled");
 	
 	//Channel 2
 	engine.connectControl("[EffectRack1_EffectUnit2_Effect1]", "enabled", "NK2.LEDonFX21");//
-	engine.trigger("[EffectRack1_EffectUnit1_Effect1]", "enabled");
+	engine.trigger("[EffectRack1_EffectUnit2_Effect1]", "enabled");
 	
 	engine.connectControl("[EffectRack1_EffectUnit2_Effect2]", "enabled", "NK2.LEDonFX22");//
-	engine.trigger("[EffectRack1_EffectUnit1_Effect2]", "enabled");
+	engine.trigger("[EffectRack1_EffectUnit2_Effect2]", "enabled");
 	
 	engine.connectControl("[EffectRack1_EffectUnit2_Effect3]", "enabled", "NK2.LEDonFX23");//
-	engine.trigger("[EffectRack1_EffectUnit1_Effect3]", "enabled");
+	engine.trigger("[EffectRack1_EffectUnit2_Effect3]", "enabled");
 	
-	engine.connectControl("[EffectRack1_EffectUnit2_Effect4]", "enabled", "NK2.LEDonFX24");//
-	engine.trigger("[EffectRack1_EffectUnit1_Effect4]", "enabled");
+	//engine.connectControl("[EffectRack1_EffectUnit2_Effect4]", "enabled", "NK2.LEDonFX24");//
+	//engine.trigger("[EffectRack1_EffectUnit2_Effect4]", "enabled");
 	
 }
 
