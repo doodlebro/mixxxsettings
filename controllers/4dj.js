@@ -6,10 +6,12 @@ S4DJ.shiftStop = 0;
 S4DJ.loopEdit = [false, false];
 S4DJ.beatgridEdit = [false, false];
 S4DJ.touchModifier = 20;
-S4DJ.tempTimer = 0;
+S4DJ.timer = ["null", "null"];
 S4DJ.slipToggle = 0;
 S4DJ.slipHoldTimer = 0;
 S4DJ.scratching = [false, false];
+S4DJ.quantize = [true, true];
+S4DJ.effectList = [{"one":"flanger","two":"moog"},{"one":"echo","two":"bitcrush"}]
 
 
 //############################################################################
@@ -76,6 +78,8 @@ S4DJ.init = function init() { // called when the device is opened & set up
 	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 0);
 	
 	//second effect filter
 	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
@@ -84,12 +88,16 @@ S4DJ.init = function init() { // called when the device is opened & set up
 	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 0);
 	
 	//RIGHT EFFECTS
 	//first effect echo
 	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 0);
 
 	
 	//second effect bitcrusher
@@ -98,6 +106,8 @@ S4DJ.init = function init() { // called when the device is opened & set up
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 0);
 	
 	
 	//enable keylock
@@ -125,9 +135,9 @@ S4DJ.LEDonPlay1 = function() {
 }
 
 S4DJ.LEDonPlay2 = function() {
-	var tempState = engine.getValue("[Channel2]","play_indicator");
-	if ( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x01);
-	else  midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x00);
+	var tempState = engine.getValue("[Channel2]","play_indicator")
+	if ( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x01)
+	else  midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x00)
 }
 
 S4DJ.groupToDeck = function(group) {
@@ -141,11 +151,10 @@ S4DJ.groupToDeck = function(group) {
 
 // Buttons
 S4DJ.loop = function(channel, control, value, status, group) {
-    var deck = S4DJ.groupToDeck(group);
-    var loopEnabled = engine.getValue(group,"loop_enabled");
+    var deck = S4DJ.groupToDeck(group)
+    var loopEnabled = engine.getValue(group,"loop_enabled")
     /**
      *		loopEdit enabled
-     * 
      */
     if( S4DJ.loopEdit[deck-1] ) {
 	if( loopEnabled ) {
@@ -155,10 +164,13 @@ S4DJ.loop = function(channel, control, value, status, group) {
 
 	    } 
 	    else if( control == 0x14 || control == 0x13 ) {
-
+		engine.setValue(group, "loop_halve", 1);
+		engine.setValue(group, "loop_halve", 0);
 	    }
+	    
 	    else if( control == 0x16 || control == 0x15 ) {
-
+		engine.setValue(group, "loop_double", 1);
+		engine.setValue(group, "loop_double", 0);
 	    }
 	}
 	
@@ -180,8 +192,7 @@ S4DJ.loop = function(channel, control, value, status, group) {
 	}
     }
     /**
-     * 			loopEdit Disabled
-     * 
+     * loopEdit Disabled
      */
     
     else {
@@ -295,16 +306,19 @@ S4DJ.toggleScratchMode = function(channel, control, value, status, group) {
 
 S4DJ.wheelTouch = function (channel, control, value, status, group) {
     var deck = S4DJ.groupToDeck(group);
-    if (status == 0x91 && S4DJ.scratching[deck-1]) {    // If button down
+    /*
+     * Handle starting scratch motion
+     */
+    if (status == 0x91 && S4DJ.scratching[deck-1]) {
         var alpha = 1.0/8;
         var beta = alpha/32;
         engine.scratchEnable(deck, 280, 33+1/3, alpha, beta);
     }
-    
+    /* Handle when not scratching, sets modifier lower when finger is on platter */
     else if(status == 0x91 && !S4DJ.scratching[deck-1]) {
 	S4DJ.touchModifier = 1;
     }
-    
+    /* Handle letting go of the wheel, reset modifier and disable scratching */
     else if (status == 0x81) {    // If button up
         engine.scratchDisable(deck);
 	S4DJ.touchModifier = 20;
@@ -332,14 +346,21 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
 	return;
     }
   
-
+    /**
+     *  Handle scratching the proper way
+     * 
+     */
     if ( engine.isScratching(deck) && !S4DJ.loopEdit[deck-1] ) {
 	engine.scratchTick(deck, adjustedJog);
     }
-
+    
+    /**
+     * If not scratch and not loop edit, jogging
+     * 
+     */
     else {
         var gammaInputRange = 5;    // Max jog speed
-        var maxOutFraction = 0.5;    // Where on the curve it should peak; 0.5 is half-way
+        var maxOutFraction = 0.99;    // Where on the curve it should peak; 0.5 is half-way
         var sensitivity = 0.9;        // Adjustment gamma
         var gammaOutputRange = 3;    // Max rate change
         if (engine.getValue(group,"play")) {
@@ -357,6 +378,71 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
     
 }	
 
+S4DJ.loopRoll = function(channel, control, value, status, group) {
+  print(value)
+  if( value == 0x7F ) { //if button down only
+      S4DJ.touchTimer = engine.beginTimer
+	  //Channel1	Channel2
+      if( control == 0x03 || control == 0x04 ) {
+	  engine.setValue(group,"beatlooproll_1_activate",1);
+      }
+      if( control == 0x05 || control == 0x06 ) {
+	  engine.setValue(group,"beatlooproll_0.25_activate",1);
+      }
+      if( control == 0x07 || control == 0x08 ) {
+	  engine.setValue(group,"beatlooproll_0.125_activate",1);
+      }
+  }
+
+  else { //TODO: Logic for holding the looproll button down versus pressing it
+	  //Channel1	Channel2
+      if( control == 0x03 || control == 0x04 ) {
+	  engine.setValue(group,"beatlooproll_1_activate",0);
+      }
+      if( control == 0x05 || control == 0x06 ) {
+	  engine.setValue(group,"beatlooproll_0.25_activate",0);
+      }
+      if( control == 0x07 || control == 0x08 ) {
+	  engine.setValue(group,"beatlooproll_0.125_activate",0);
+      }
+  }
+}
+
+S4DJ.record = function (channel, control, value, status, group) {
+  recordStatus = engine.getValue(group, 'status')
+  if( recordStatus ) {
+    S4DJ.dimLED(0x44)
+    engine.setValue(group, 'status', 0)
+  }
+  else {
+    S4DJ.lightLED(0x44)
+    engine.setValue(group, 'status', 1)
+  }
+  
+}
+
+S4DJ.handleQuantize = function (value, group, control) {
+  var deck = S4DJ.groupToDeck(group)
+  var quantized = engine.getValue(group, 'quantize')
+  if( quantized ) {//init
+    if( deck == 1 ) {
+      S4DJ.timer[0] = engine.beginTimer(250,"S4DJ.flash("+ value +", 125)")
+      S4DJ.quantize[0] = true
+    }
+    else {
+      S4DJ.timer[1] = engine.beginTimer(250,"S4DJ.flash(0x02, 125)")
+      S4DJ.quantize[1] = true
+    }
+  }
+  else {
+    engine.stopTimer(S4DJ.timer[deck-1])
+    S4DJ.quantize[deck-1] = false
+  }
+
+}
+
+
+/*
 S4DJ.shift = function (channel, control, value, status, group) {
 	if( value == 0x7F ) {
 		if(S4DJ.shiftStop == 0) {
@@ -386,12 +472,17 @@ S4DJ.lightShift = function (channel, control, value, status, group) {
 	engine.beginTimer("333","S4DJ.dimLED(0x41)",true);
 	
 }
-/*
+
 S4DJ.toggleControl = function( group, control ) {
     engine.setValue(group, control, 1);
     engine.setValue(group, control, 0);
 }
 */
+
+S4DJ.flash = function (value, length) {
+  S4DJ.lightLED(value)
+  engine.beginTimer(125,"S4DJ.dimLED(" + value + ")",true)
+}
 
 S4DJ.lightLED = function (control) {
     midi.sendShortMsg(S4DJ.midiChannel, control, 0x01);
@@ -437,14 +528,17 @@ S4DJ.setup = function(obj) {
 	    S4DJ.dimLED(i);
 	}
 	
-
-	
 	//Play LEDS
-	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1");//
-	engine.trigger("[Channel1]", "play_indicator");
+	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
+	engine.trigger("[Channel1]", "play_indicator")
+	engine.connectControl("[Channel2]", "play_indicator", "S4DJ.LEDonPlay2")
+	engine.trigger("[Channel2]", "play_indicator")
 	
-	engine.connectControl("[Channel2]", "play_indicator", "S4DJ.LEDonPlay2");//
-	engine.trigger("[Channel2]", "play_indicator");
+	//quantize LED
+	engine.connectControl("[Channel1]", "quantize", "S4DJ.handleQuantize")
+	engine.trigger("[Channel1]", "quantize")
+	engine.connectControl("[Channel2]", "quantize", "S4DJ.handleQuantize")
+	engine.trigger("[Channel2]", "quantize")
 	
 	
 }

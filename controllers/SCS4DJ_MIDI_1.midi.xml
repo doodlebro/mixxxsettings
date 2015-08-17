@@ -7,9 +7,9 @@
         </scriptfiles>
         <controls>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <group>[Channel1]</group>
+                <key>beatjump_1_forward</key>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x81</status>
                 <midino>0x41</midino>
                 <options>
@@ -35,9 +35,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel2]</group>
+                <key>quantize</key>
+                <description>MIDI Learned from 12 messages.</description>
                 <status>0x91</status>
                 <midino>0x02</midino>
                 <options>
@@ -55,8 +55,8 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_4_activate</key>
+                <group>[Channel2]</group>
+                <key>beatjump_1_forward</key>
                 <description>MIDI Learned from 8 messages.</description>
                 <status>0x91</status>
                 <midino>0x43</midino>
@@ -74,9 +74,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[Channel1]</group>
+                <key>beatjump_1_backward</key>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x81</status>
                 <midino>0x40</midino>
                 <options>
@@ -94,9 +94,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 12 messages.</description>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <description>MIDI Learned from 10 messages.</description>
                 <status>0x91</status>
                 <midino>0x01</midino>
                 <options>
@@ -114,9 +114,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler8]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <group>[Channel2]</group>
+                <key>beatjump_1_backward</key>
+                <description>MIDI Learned from 6 messages.</description>
                 <status>0x91</status>
                 <midino>0x42</midino>
                 <options>
@@ -162,9 +162,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <group>[Channel1]</group>
+                <key>beatjump_1_forward</key>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x91</status>
                 <midino>0x41</midino>
                 <options>
@@ -210,9 +210,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[Channel1]</group>
+                <key>beatjump_1_backward</key>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x91</status>
                 <midino>0x40</midino>
                 <options>
@@ -614,13 +614,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x08</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -672,13 +671,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x07</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -721,13 +719,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 10 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x06</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -741,13 +738,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x91</status>
                 <midino>0x08</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -770,13 +766,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x05</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -800,13 +795,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler6]</group>
-                <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x91</status>
                 <midino>0x07</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -830,13 +824,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x04</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -860,13 +853,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_5_activate</key>
-                <description>MIDI Learned from 10 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x91</status>
                 <midino>0x06</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -890,13 +882,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 14 messages.</description>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x81</status>
                 <midino>0x03</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -910,13 +901,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_4_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x91</status>
                 <midino>0x05</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -930,9 +920,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_1_activate</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[Channel2]</group>
+                <key>quantize</key>
+                <description>MIDI Learned from 12 messages.</description>
                 <status>0x81</status>
                 <midino>0x02</midino>
                 <options>
@@ -960,8 +950,8 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_4_activate</key>
+                <group>[Channel2]</group>
+                <key>beatjump_1_forward</key>
                 <description>MIDI Learned from 8 messages.</description>
                 <status>0x81</status>
                 <midino>0x43</midino>
@@ -970,13 +960,12 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler4]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[Channel2]</group>
+                <key>S4DJ.loopRoll</key>
                 <status>0x91</status>
                 <midino>0x04</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -990,9 +979,9 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 12 messages.</description>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <description>MIDI Learned from 10 messages.</description>
                 <status>0x81</status>
                 <midino>0x01</midino>
                 <options>
@@ -1020,13 +1009,22 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler8]</group>
-                <key>hotcue_2_activate</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <group>[Channel2]</group>
+                <key>beatjump_1_backward</key>
+                <description>MIDI Learned from 6 messages.</description>
                 <status>0x81</status>
                 <midino>0x42</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>S4DJ.loopRoll</key>
+                <status>0x91</status>
+                <midino>0x03</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -1036,16 +1034,6 @@
                 <midino>0x2C</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Sampler5]</group>
-                <key>hotcue_3_activate</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x91</status>
-                <midino>0x03</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -1059,8 +1047,8 @@
                 </options>
             </control>
             <control>
-                <group></group>
-                <key>S4DJ.shift</key>
+                <group>[Recording]</group>
+                <key>S4DJ.record</key>
                 <status>0x91</status>
                 <midino>0x44</midino>
                 <options>
@@ -1097,7 +1085,7 @@
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0x91</status>
-                <midino>0x32</midino>
+                <midino>0x33</midino>
                 <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
@@ -1105,7 +1093,7 @@
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0x91</status>
-                <midino>0x33</midino>
+                <midino>0x32</midino>
                 <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
@@ -1147,9 +1135,9 @@
                 <key>VuMeterR</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x00</on>
+                <on>0x03</on>
                 <off>0xFF</off>
-                <maximum>0.4</maximum>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1166,18 +1154,18 @@
                 <key>VuMeterR</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x03</on>
+                <on>0x00</on>
                 <off>0xFF</off>
-                <minimum>0.8</minimum>
+                <maximum>0.4</maximum>
             </output>
             <output>
                 <group>[Master]</group>
                 <key>VuMeterL</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x00</on>
+                <on>0x03</on>
                 <off>0xFF</off>
-                <maximum>0.4</maximum>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1194,9 +1182,9 @@
                 <key>VuMeterL</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x03</on>
+                <on>0x00</on>
                 <off>0xFF</off>
-                <minimum>0.8</minimum>
+                <maximum>0.4</maximum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1269,49 +1257,9 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x10</on>
+                <on>0x70</on>
                 <off>0xFF</off>
-                <maximum>0.1</maximum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x20</on>
-                <off>0xFF</off>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x30</on>
-                <off>0xFF</off>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x40</on>
-                <off>0xFF</off>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x50</on>
-                <off>0xFF</off>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
+                <minimum>0.92</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -1328,9 +1276,49 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x70</on>
+                <on>0x50</on>
                 <off>0xFF</off>
-                <minimum>0.92</minimum>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x40</on>
+                <off>0xFF</off>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x30</on>
+                <off>0xFF</off>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x20</on>
+                <off>0xFF</off>
+                <maximum>0.3</maximum>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x10</on>
+                <off>0xFF</off>
+                <maximum>0.1</maximum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1394,49 +1382,9 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x10</on>
+                <on>0x70</on>
                 <off>0xFF</off>
-                <maximum>0.1</maximum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x20</on>
-                <off>0xFF</off>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x30</on>
-                <off>0xFF</off>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x40</on>
-                <off>0xFF</off>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x50</on>
-                <off>0xFF</off>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
+                <minimum>0.92</minimum>
             </output>
             <output>
                 <group>[Channel2]</group>
@@ -1453,9 +1401,49 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x70</on>
+                <on>0x50</on>
                 <off>0xFF</off>
-                <minimum>0.92</minimum>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x40</on>
+                <off>0xFF</off>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x30</on>
+                <off>0xFF</off>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x20</on>
+                <off>0xFF</off>
+                <maximum>0.3</maximum>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x10</on>
+                <off>0xFF</off>
+                <maximum>0.1</maximum>
             </output>
         </outputs>
     </controller>
