@@ -7,7 +7,7 @@
         </scriptfiles>
         <controls>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>NK2.fxChange</key>
                 <description>MIDI Learned from 14 messages.</description>
                 <status>0xB0</status>
@@ -57,7 +57,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler2]</group>
+                <group>[Sampler5]</group>
                 <key>hotcue_2_activate</key>
                 <description>MIDI Learned from 4 messages.</description>
                 <status>0xB0</status>
@@ -97,7 +97,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler3]</group>
+                <group>[Sampler6]</group>
                 <key>hotcue_1_activate</key>
                 <description>MIDI Learned from 8 messages.</description>
                 <status>0xB0</status>
@@ -126,7 +126,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler2]</group>
+                <group>[Sampler5]</group>
                 <key>hotcue_1_activate</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0xB0</status>
@@ -156,7 +156,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler3]</group>
+                <group>[Sampler6]</group>
                 <key>hotcue_2_activate</key>
                 <description>MIDI Learned from 12 messages.</description>
                 <status>0xB0</status>
@@ -176,7 +176,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>NK2.fxChange</key>
                 <description>MIDI Learned from 18 messages.</description>
                 <status>0xB0</status>
@@ -196,7 +196,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler3]</group>
+                <group>[Sampler6]</group>
                 <key>hotcue_4_activate</key>
                 <description>MIDI Learned from 14 messages.</description>
                 <status>0xB0</status>
@@ -226,13 +226,13 @@
                 </options>
             </control>
             <control>
-                <group>[Master]</group>
-                <key>gain</key>
-                <description>MIDI Learned from 1514 messages.</description>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 794 messages.</description>
                 <status>0xB0</status>
                 <midino>0x03</midino>
                 <options>
-                    <soft-takeover/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -256,7 +256,17 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>parameter4</key>
+                <description>MIDI Learned from 927 messages.</description>
+                <status>0xB0</status>
+                <midino>0x01</midino>
+                <options>
+                    <soft-takeover/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>NK2.fxChange</key>
                 <description>MIDI Learned from 16 messages.</description>
                 <status>0xB0</status>
@@ -266,13 +276,23 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler1]</group>
+                <group>[Sampler8]</group>
                 <key>hotcue_4_activate</key>
                 <description>MIDI Learned from 6 messages.</description>
                 <status>0xB0</status>
                 <midino>0x3E</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 542 messages.</description>
+                <status>0xB0</status>
+                <midino>0x00</midino>
+                <options>
+                    <soft-takeover/>
                 </options>
             </control>
             <control>
@@ -286,7 +306,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler1]</group>
+                <group>[Sampler8]</group>
                 <key>hotcue_3_activate</key>
                 <description>MIDI Learned from 4 messages.</description>
                 <status>0xB0</status>
@@ -316,7 +336,7 @@
                 </options>
             </control>
             <control>
-                <group>[Sampler1]</group>
+                <group>[Sampler8]</group>
                 <key>hotcue_2_activate</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0xB0</status>

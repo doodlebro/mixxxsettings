@@ -359,6 +359,7 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
      * 
      */
     else {
+      if( control == 0x0E ) {
         var gammaInputRange = 5;    // Max jog speed
         var maxOutFraction = 0.99;    // Where on the curve it should peak; 0.5 is half-way
         var sensitivity = 0.9;        // Adjustment gamma
@@ -373,7 +374,19 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
         } else {
             adjustedJog = S4DJ.touchModifier * gammaOutputRange * adjustedJog / (gammaInputRange * maxOutFraction);
         }
+        
         engine.setValue(group, "jog", adjustedJog);
+      }
+      else {
+	if( value == 0x41 ) {
+	  engine.setValue(group, "waveform_zoom_up", 1)
+	  engine.setValue(group, "waveform_zoom_up", 0)
+	}
+	else {
+	  engine.setValue(group, "waveform_zoom_down", 1)
+	  engine.setValue(group, "waveform_zoom_down", 0)
+	}
+      }
     }
     
 }	

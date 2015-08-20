@@ -337,6 +337,16 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Headphone]_enable</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x81</status>
+                <midino>0x0F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>rate</key>
                 <description>MIDI Learned from 873 messages.</description>
@@ -367,12 +377,12 @@
             </control>
             <control>
                 <group>[Master]</group>
-                <key>headMix</key>
-                <description>MIDI Learned from 378 messages.</description>
+                <key>gain</key>
+                <description>MIDI Learned from 133 messages.</description>
                 <status>0xB1</status>
                 <midino>0x42</midino>
                 <options>
-                    <normal/>
+                    <soft-takeover/>
                 </options>
             </control>
             <control>
@@ -466,6 +476,26 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Headphone]_enable</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x91</status>
+                <midino>0x0F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Headphone]_enable</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x81</status>
+                <midino>0x0C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>play</key>
                 <description>MIDI Learned from 12 messages.</description>
@@ -552,6 +582,16 @@
                 <midino>0x22</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Headphone]_enable</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x91</status>
+                <midino>0x0C</midino>
+                <options>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -1085,7 +1125,7 @@
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0x91</status>
-                <midino>0x33</midino>
+                <midino>0x32</midino>
                 <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
@@ -1093,7 +1133,7 @@
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0x91</status>
-                <midino>0x32</midino>
+                <midino>0x33</midino>
                 <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
@@ -1135,9 +1175,9 @@
                 <key>VuMeterR</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x03</on>
+                <on>0x00</on>
                 <off>0xFF</off>
-                <minimum>0.8</minimum>
+                <maximum>0.4</maximum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1154,18 +1194,18 @@
                 <key>VuMeterR</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x00</on>
+                <on>0x03</on>
                 <off>0xFF</off>
-                <maximum>0.4</maximum>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[Master]</group>
                 <key>VuMeterL</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x03</on>
+                <on>0x00</on>
                 <off>0xFF</off>
-                <minimum>0.8</minimum>
+                <maximum>0.4</maximum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1182,9 +1222,9 @@
                 <key>VuMeterL</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x00</on>
+                <on>0x03</on>
                 <off>0xFF</off>
-                <maximum>0.4</maximum>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1257,49 +1297,9 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x70</on>
+                <on>0x10</on>
                 <off>0xFF</off>
-                <minimum>0.92</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x60</on>
-                <off>0xFF</off>
-                <maximum>0.92</maximum>
-                <minimum>0.85</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x50</on>
-                <off>0xFF</off>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x40</on>
-                <off>0xFF</off>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x30</on>
-                <off>0xFF</off>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
+                <maximum>0.1</maximum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -1316,9 +1316,49 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x10</on>
+                <on>0x30</on>
                 <off>0xFF</off>
-                <maximum>0.1</maximum>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x40</on>
+                <off>0xFF</off>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x50</on>
+                <off>0xFF</off>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x60</on>
+                <off>0xFF</off>
+                <maximum>0.92</maximum>
+                <minimum>0.85</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x70</on>
+                <off>0xFF</off>
+                <minimum>0.92</minimum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1382,49 +1422,9 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x70</on>
+                <on>0x10</on>
                 <off>0xFF</off>
-                <minimum>0.92</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x60</on>
-                <off>0xFF</off>
-                <maximum>0.92</maximum>
-                <minimum>0.85</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x50</on>
-                <off>0xFF</off>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x40</on>
-                <off>0xFF</off>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x30</on>
-                <off>0xFF</off>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
+                <maximum>0.1</maximum>
             </output>
             <output>
                 <group>[Channel2]</group>
@@ -1441,9 +1441,49 @@
                 <key>VuMeter</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x10</on>
+                <on>0x30</on>
                 <off>0xFF</off>
-                <maximum>0.1</maximum>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x40</on>
+                <off>0xFF</off>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x50</on>
+                <off>0xFF</off>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x60</on>
+                <off>0xFF</off>
+                <maximum>0.92</maximum>
+                <minimum>0.85</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>VuMeter</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x70</on>
+                <off>0xFF</off>
+                <minimum>0.92</minimum>
             </output>
         </outputs>
     </controller>

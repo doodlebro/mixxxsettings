@@ -18,6 +18,8 @@ NK2.FX2 = [['echo', 'bitcrusher'], ['echo', 'autopan'], ['reverb', 'autopan']]
 
 NK2.fx1LED = [0x20, 0x21, 0x30, 0x31, 0x40, 0x41]
 
+NK2.fx2LED = [0x22, 0x32, 0x42]
+
 NK2.effectBank = [['flanger', 'moog'], ['echo', 'bitcrusher']]
 
 
@@ -70,6 +72,13 @@ NK2.dimFX1 = function() {
   }
 }
 
+NK2.dimFX2 = function() {
+  for(index=0; index < 6; index++) {
+     NK2.dimLED(NK2.fx2LED[index])
+  }
+}
+
+
 NK2.fxReInit = function() {
   engine.setValue("[EffectRack1]", "clear", 1);
   engine.setValue("[EffectRack1]", "clear", 0);
@@ -114,7 +123,7 @@ NK2.fxReInit = function() {
 
 NK2.fxChange = function (channel, control, value, status, group) {
   if( value == 0x7F ) {
-    if( group = '[EffectRack1_EffectUnit1_Effect2]' ) { //only changing effect 2 on this rack
+    if( group == '[EffectRack1_EffectUnit1_Effect2]' ) { //only changing effect 2 on this rack
       NK2.dimFX1()
       var from = NK2.effectBank[0][1]
       if( control == NK2.Sbutton[1] ) {//default
@@ -150,13 +159,13 @@ NK2.fxChange = function (channel, control, value, status, group) {
       var effect2Jump = NK2.FXMatrix[from][to]
       
       for(index=0; index < effect2Jump; index++) {
-	
 	engine.setValue(group, "next_effect", 1);
       }
       engine.setValue(group, "next_effect", 0);
     }
     
     else { //possible to change both effects on this rack
+      NK2.dimFX2()
       var from1 = NK2.effectBank[1][0]
       var from2 = NK2.effectBank[1][1]
       if( control == NK2.Sbutton[3] ) {//default
@@ -168,13 +177,13 @@ NK2.fxChange = function (channel, control, value, status, group) {
       else if( control == NK2.Mbutton[3] ) {//reg filter
 	var to1 = NK2.FX2[1][0]
 	var to2 = NK2.FX2[1][1]
-	NK2.effectBank[1] = NK2.FX2[0]
+	NK2.effectBank[1] = NK2.FX2[1]
 	NK2.lightLED(NK2.Mbutton[3])
       }
       else if( control == NK2.Rbutton[3] ) {//reg filter
 	var to1 = NK2.FX2[2][0]
 	var to2 = NK2.FX2[2][1]
-	NK2.effectBank[1] = NK2.FX2[0]
+	NK2.effectBank[1] = NK2.FX2[2]
 	NK2.lightLED(NK2.Rbutton[3])
       }
       var effect3Jump = NK2.FXMatrix[from1][to1]
@@ -183,13 +192,12 @@ NK2.fxChange = function (channel, control, value, status, group) {
       for(index=0; index < effect3Jump; index++) {
 	engine.setValue(group, "next_effect", 1);
       }
-      
       engine.setValue(group, "next_effect", 0);
       
       for(index=0; index < effect4Jump; index++) {
-	engine.setValue("[EffectRack1_EffectUnit1_Effect4]", "next_effect", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "next_effect", 1);
       }
-      engine.setValue("[EffectRack1_EffectUnit1_Effect4]", "next_effect", 0);
+      engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "next_effect", 0);
       
     }
   }
