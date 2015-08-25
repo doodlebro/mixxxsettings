@@ -3,6 +3,7 @@ function NK2() {}
 //Vars to use for various things
 //############################################################################
 NK2.tempTimer = 0;
+NK2.leftVXTimer = 'null'
 NK2.XforLoop = 8;
 NK2.FXMatrix = {'flanger':{'flanger':0, 'echo':1, 'autopan':2, 'reverb':3, 'phaser':4, 'filter':9, 'moog':10, 'bitcrusher':11},
 		'echo':{'flanger':11, 'echo':0, 'autopan':1, 'reverb':2, 'phaser':3, 'filter':8, 'moog':9, 'bitcrusher':10},
@@ -49,6 +50,7 @@ NK2.leftButton={"trdown":0x3A,"trup":0x3B,"cycle":0x2E,"mset":0x3C,"mdown":0x3D,
 //############################################################################
 
 NK2.init = function init() { // called when the device is opened & set up
+	//NK2.setup()
 	NK2.fxReInit()
 	
 	}
@@ -76,6 +78,17 @@ NK2.dimFX2 = function() {
   for(index=0; index < 6; index++) {
      NK2.dimLED(NK2.fx2LED[index])
   }
+}
+
+NK2.doLeftVX = function() {
+  NK2.lightLED(NK2.Rbutton[4])
+  engine.beginTimer(120,"NK2.dimLED(" + NK2.Rbutton[4] + ")",true)
+  engine.beginTimer(120,"NK2.lightLED(" + NK2.Mbutton[4] + ")",true)
+  engine.beginTimer(240,"NK2.dimLED(" + NK2.Mbutton[4] + ")",true)
+  engine.beginTimer(240,"NK2.lightLED(" + NK2.Sbutton[4] + ")",true)
+  engine.beginTimer(360,"NK2.dimLED(" + NK2.Sbutton[4] + ")",true)
+
+
 }
 
 
@@ -204,6 +217,7 @@ NK2.fxChange = function (channel, control, value, status, group) {
 }
 
 NK2.setup = function(obj) {
+  NK2.leftVXTimer = engine.beginTimer(500,"NK2.doLeftVX()")
   
 
 
