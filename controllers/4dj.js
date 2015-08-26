@@ -6,6 +6,9 @@ S4DJ.shiftStop = 0;
 S4DJ.loopEdit = [false, false];
 S4DJ.beatgridEdit = [false, false];
 S4DJ.touchModifier = 20;
+S4DJ.loopRollHeld = [false, false];
+S4DJ.loopRollHoldTimer = ["null", "null"]
+S4DJ.stopIt = [false, false]
 S4DJ.timer = ["null", "null"];
 S4DJ.slipToggle = 0;
 S4DJ.slipHoldTimer = 0;
@@ -42,9 +45,9 @@ S4DJ.Transport=[{"selknob":0xFF,"back":0xFF,"enter":0xFF},
 		];
 S4DJ.LEDS=[{"rec":0xFF},
 
-	   {"keylock":0x30,"autopitch":0x36,"level":0x32,"autodj":0x34,"1":0x01,"3":0x03,"5":0x05,"7":0x07},
+	   {"keylock":0x30,"autopitch":0x36,"level":0x32,"autodj":0x34, 1:0x01,"3":0x03,"5":0x05,"7":0x07},
 	    
-	   {"keylock":0x31,"autopitch":0x37,"level":0x33,"autodj":0x35,"2":0x01,"4":0x03,"6":0x05,"8":0x07}
+	   {"keylock":0x31,"autopitch":0x37,"level":0x33,"autodj":0x35, 2:0x02,"4":0x03,"6":0x05,"8":0x07}
 	   ];
 
 //############################################################################
@@ -130,8 +133,9 @@ S4DJ.shutdown = function shutdown() {
 	
 S4DJ.LEDonPlay1 = function() {
 	var tempState = engine.getValue("[Channel1]","play_indicator");
-	if ( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x01);
-	else  midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x00);
+	if( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x01);
+	else midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x00);
+	
 }
 
 S4DJ.LEDonPlay2 = function() {
@@ -244,11 +248,6 @@ S4DJ.reLoop = function(channel, control, value, status, group) {
     }
 }
 
-S4DJ.flangeChanger = function(channel, control, value, status, group) {
-    
-    
-}
-
 S4DJ.beatgridManipulate = function(channel, control, value, status, group) {
     
     var deck = S4DJ.groupToDeck(group);
@@ -359,65 +358,75 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
      * 
      */
     else {
-      if( control == 0x0E ) {
-        var gammaInputRange = 5;    // Max jog speed
-        var maxOutFraction = 0.99;    // Where on the curve it should peak; 0.5 is half-way
-        var sensitivity = 0.9;        // Adjustment gamma
-        var gammaOutputRange = 3;    // Max rate change
-        if (engine.getValue(group,"play")) {
-	    if( control == 0x0D || control == 0x0E ) {
-		adjustedJog = (posNeg * gammaOutputRange * Math.pow(Math.abs(adjustedJog) / (gammaInputRange * maxOutFraction), sensitivity)) / gammaOutputRange * maxOutFraction;
-	    }
-	    else {
-		adjustedJog = 0.5 * adjustedJog;
-	    }
-        } else {
-            adjustedJog = S4DJ.touchModifier * gammaOutputRange * adjustedJog / (gammaInputRange * maxOutFraction);
-        }
-        
-        engine.setValue(group, "jog", adjustedJog);
+      var gammaInputRange = 5;    // Max jog speed
+      var maxOutFraction = 0.99;    // Where on the curve it should peak; 0.5 is half-way
+      var sensitivity = 0.9;        // Adjustment gamma
+      var gammaOutputRange = 3;    // Max rate change
+      if (engine.getValue(group,"play")) {
+	  if( control == 0x0D || control == 0x0E ) {
+	      adjustedJog = (posNeg * gammaOutputRange * Math.pow(Math.abs(adjustedJog) / (gammaInputRange * maxOutFraction), sensitivity)) / gammaOutputRange * maxOutFraction;
+	  }
+	  else {
+	      adjustedJog = 0.5 * adjustedJog;
+	  }
+      } else {
+	  adjustedJog = S4DJ.touchModifier * gammaOutputRange * adjustedJog / (gammaInputRange * maxOutFraction);
       }
-      else {
-	if( value == 0x41 ) {
-	  engine.setValue(group, "waveform_zoom_up", 1)
-	  engine.setValue(group, "waveform_zoom_up", 0)
-	}
-	else {
-	  engine.setValue(group, "waveform_zoom_down", 1)
-	  engine.setValue(group, "waveform_zoom_down", 0)
-	}
-      }
+      
+      engine.setValue(group, "jog", adjustedJog);
     }
     
-}	
+}
+
+S4DJ.loopRollHold = function(deck) {
+  if( !S4DJ.stopIt[deck-1] ) {
+    S4DJ.loopRollHeld[deck-1] = true;
+  }
+  
+  S4DJ.stopIt[deck-1] = false
+}
 
 S4DJ.loopRoll = function(channel, control, value, status, group) {
-  print(value)
+  var deck = S4DJ.groupToDeck(group)
   if( value == 0x7F ) { //if button down only
-      S4DJ.touchTimer = engine.beginTimer
-	  //Channel1	Channel2
-      if( control == 0x03 || control == 0x04 ) {
-	  engine.setValue(group,"beatlooproll_1_activate",1);
-      }
-      if( control == 0x05 || control == 0x06 ) {
-	  engine.setValue(group,"beatlooproll_0.25_activate",1);
-      }
-      if( control == 0x07 || control == 0x08 ) {
-	  engine.setValue(group,"beatlooproll_0.125_activate",1);
-      }
+    engine.stopTimer(S4DJ.loopRollHoldTimer[deck-1])
+    S4DJ.loopRollHoldTimer[deck-1] = engine.beginTimer(300, "S4DJ.loopRollHold(" + deck + ")", true)
+	//Channel1	Channel2
+    if( control == 0x01 || control == 0x02 ) {
+	engine.setValue(group,"beatlooproll_1_activate",1);
+    }
+    else if( control == 0x03 || control == 0x04 ) {
+	engine.setValue(group,"beatlooproll_0.5_activate",1);
+    }
+    else if( control == 0x05 || control == 0x06 ) {
+	engine.setValue(group,"beatlooproll_0.25_activate",1);
+    }
+    else if( control == 0x07 || control == 0x08 ) {
+	engine.setValue(group,"beatlooproll_0.125_activate",1);
+    }
   }
 
-  else { //TODO: Logic for holding the looproll button down versus pressing it
-	  //Channel1	Channel2
-      if( control == 0x03 || control == 0x04 ) {
-	  engine.setValue(group,"beatlooproll_1_activate",0);
+  else { 	  //Channel1	Channel2
+    S4DJ.stopIt[deck-1] = true
+    if( control == 0x01 || control == 0x02 ) {
+      if( S4DJ.loopRollHeld[deck-1] ){
+	engine.setValue(group,"beatlooproll_1_activate",0);
       }
-      if( control == 0x05 || control == 0x06 ) {
-	  engine.setValue(group,"beatlooproll_0.25_activate",0);
+      else {
+	engine.setValue(group,"beatlooproll_1_activate",0);
+	S4DJ.q(group)
       }
-      if( control == 0x07 || control == 0x08 ) {
-	  engine.setValue(group,"beatlooproll_0.125_activate",0);
-      }
+    }
+    else if( control == 0x03 || control == 0x04 ) {
+      engine.setValue(group,"beatlooproll_0.5_activate",0);
+    }
+    else if( control == 0x05 || control == 0x06 ) {
+	engine.setValue(group,"beatlooproll_0.25_activate",0);
+    }
+    else if( control == 0x07 || control == 0x08 ) {
+	engine.setValue(group,"beatlooproll_0.125_activate",0);
+    }
+    S4DJ.loopRollHeld[deck-1] = false
   }
 }
 
@@ -434,18 +443,22 @@ S4DJ.record = function (channel, control, value, status, group) {
   
 }
 
+S4DJ.q = function(group) {
+  var quantized = engine.getValue(group, 'quantize')
+  if( quantized ) {
+    engine.setValue("[Channel1]","quantize",0)
+  }
+  else {
+    engine.setValue("[Channel1]","quantize",1)
+  }
+}
+
 S4DJ.handleQuantize = function (value, group, control) {
   var deck = S4DJ.groupToDeck(group)
   var quantized = engine.getValue(group, 'quantize')
   if( quantized ) {//init
-    if( deck == 1 ) {
-      S4DJ.timer[0] = engine.beginTimer(250,"S4DJ.flash("+ value +", 125)")
-      S4DJ.quantize[0] = true
-    }
-    else {
-      S4DJ.timer[1] = engine.beginTimer(250,"S4DJ.flash(0x02, 125)")
-      S4DJ.quantize[1] = true
-    }
+    S4DJ.timer[deck-1] = engine.beginTimer(250,"S4DJ.flash("+ value +", 125)")
+    S4DJ.quantize[deck-1] = true
   }
   else {
     engine.stopTimer(S4DJ.timer[deck-1])
@@ -505,6 +518,18 @@ S4DJ.lightLEDblink = function (control) {
     midi.sendShortMsg(S4DJ.midiChannel, control, 0x16);
 }
 
+S4DJ.lightLEDLower = function (control) {
+    midi.sendShortMsg(S4DJ.midiChannel, control, 0x26);
+}
+
+S4DJ.lightLEDRampedFast = function (control) {
+    midi.sendShortMsg(S4DJ.midiChannel, control, 0x46);
+}
+
+S4DJ.lightLEDRampedSlow = function (control) {
+    midi.sendShortMsg(S4DJ.midiChannel, control, 0x66);
+}
+
 S4DJ.dimLED = function(control) {
 	midi.sendShortMsg(S4DJ.midiChannel, control, 0x00);
 }
@@ -515,6 +540,10 @@ S4DJ.lightShiftLED = function () {
 
 S4DJ.dimShiftLED = function () {
 	midi.sendShortMsg(S4DJ.midiChannel, 0x44, 0x00);
+}
+
+S4DJ.sendNoteOffN = function() {
+  midi.sendShortMsg(S4DJ.midiChannel, 0x60, 0x00);
 }
 
 S4DJ.shiftStopper = function () {
@@ -532,6 +561,17 @@ S4DJ.linkPostShift = function () {
 
 }
 
+S4DJ.testTimer = function(timerID) {
+  var tempTimer = engine.beginTimer(400, "S4DJ.linkPostShift()", true)
+  var tempTimer2 = engine.beginTimer(400, "S4DJ.linkPostShift()", true)
+  print("TempTimerID: ")
+  print(tempTimer)
+  print("TempTimer2ID: ")
+  print(tempTimer2)
+  print("Difference: ")
+  print(tempTimer2 - tempTimer)
+}
+
 
 
 S4DJ.setup = function(obj) {
@@ -540,6 +580,8 @@ S4DJ.setup = function(obj) {
 	for( var i = 0x00; i <= 0x7F; i++ ) {
 	    S4DJ.dimLED(i);
 	}
+	
+	S4DJ.sendNoteOffN()
 	
 	//Play LEDS
 	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
@@ -552,6 +594,10 @@ S4DJ.setup = function(obj) {
 	engine.trigger("[Channel1]", "quantize")
 	engine.connectControl("[Channel2]", "quantize", "S4DJ.handleQuantize")
 	engine.trigger("[Channel2]", "quantize")
+	var timer = 0
+	
+	var timeID = engine.beginTimer(500,"S4DJ.testTimer(" + timer + ")", true)
+	print(timeID)
 	
 	
 }
