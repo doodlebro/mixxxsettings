@@ -409,13 +409,10 @@ S4DJ.loopRoll = function(channel, control, value, status, group) {
   else { 	  //Channel1	Channel2
     S4DJ.stopIt[deck-1] = true
     if( control == 0x01 || control == 0x02 ) {
-      if( S4DJ.loopRollHeld[deck-1] ){
-	engine.setValue(group,"beatlooproll_1_activate",0);
+      if( !S4DJ.loopRollHeld[deck-1] ){
+	S4DJ.quantizeToggle(group)
       }
-      else {
-	engine.setValue(group,"beatlooproll_1_activate",0);
-	S4DJ.q(group)
-      }
+      engine.setValue(group,"beatlooproll_1_activate",0);
     }
     else if( control == 0x03 || control == 0x04 ) {
       engine.setValue(group,"beatlooproll_0.5_activate",0);
@@ -443,7 +440,7 @@ S4DJ.record = function (channel, control, value, status, group) {
   
 }
 
-S4DJ.q = function(group) {
+S4DJ.quantizeToggle = function(group) {
   var quantized = engine.getValue(group, 'quantize')
   if( quantized ) {
     engine.setValue("[Channel1]","quantize",0)
@@ -469,36 +466,6 @@ S4DJ.handleQuantize = function (value, group, control) {
 
 
 /*
-S4DJ.shift = function (channel, control, value, status, group) {
-	if( value == 0x7F ) {
-		if(S4DJ.shiftStop == 0) {
-			S4DJ.tempTimer = engine.beginTimer(333,"S4DJ.lightShift");
-			S4DJ.shiftStop = 1;
-		}
-		else {
-			S4DJ.shiftStopper();
-		}
-	}
-	
-}
-
-S4DJ.lightShift = function (channel, control, value, status, group) {
-	S4DJ.lightLED(0x40);
-	S4DJ.lightShiftLED();
-	engine.beginTimer("55","S4DJ.dimLED(0x40)",true);
-	engine.beginTimer("55","S4DJ.lightLED(0x41)",true);
-	engine.beginTimer("111","S4DJ.dimLED(0x41)",true);
-	engine.beginTimer("111","S4DJ.lightLED(0x42)",true);
-	engine.beginTimer("166","S4DJ.dimLED(0x42)",true);
-	engine.beginTimer("166","S4DJ.lightLED(0x43)",true);
-	engine.beginTimer("222","S4DJ.dimLED(0x43)",true);
-	engine.beginTimer("222","S4DJ.lightLED(0x42)",true);
-	engine.beginTimer("278","S4DJ.dimLED(0x42)",true);
-	engine.beginTimer("278","S4DJ.lightLED(0x41)",true);
-	engine.beginTimer("333","S4DJ.dimLED(0x41)",true);
-	
-}
-
 S4DJ.toggleControl = function( group, control ) {
     engine.setValue(group, control, 1);
     engine.setValue(group, control, 0);
@@ -506,8 +473,8 @@ S4DJ.toggleControl = function( group, control ) {
 */
 
 S4DJ.flash = function (value, length) {
-  S4DJ.lightLED(value)
-  engine.beginTimer(125,"S4DJ.dimLED(" + value + ")",true)
+    S4DJ.lightLED(value)
+    engine.beginTimer(125,"S4DJ.dimLED(" + value + ")",true)
 }
 
 S4DJ.lightLED = function (control) {
@@ -531,57 +498,31 @@ S4DJ.lightLEDRampedSlow = function (control) {
 }
 
 S4DJ.dimLED = function(control) {
-	midi.sendShortMsg(S4DJ.midiChannel, control, 0x00);
+    midi.sendShortMsg(S4DJ.midiChannel, control, 0x00);
 }
 
 S4DJ.lightShiftLED = function () {
-	midi.sendShortMsg(S4DJ.midiChannel, 0x44, 0x06);
+    midi.sendShortMsg(S4DJ.midiChannel, 0x44, 0x06);
 }
 
 S4DJ.dimShiftLED = function () {
-	midi.sendShortMsg(S4DJ.midiChannel, 0x44, 0x00);
+    midi.sendShortMsg(S4DJ.midiChannel, 0x44, 0x00);
 }
 
 S4DJ.sendNoteOffN = function() {
-  midi.sendShortMsg(S4DJ.midiChannel, 0x60, 0x00);
-}
-
-S4DJ.shiftStopper = function () {
-	engine.stopTimer(S4DJ.tempTimer);
-	S4DJ.shiftStop = 0;
-	S4DJ.dimShiftLED();
-	engine.beginTimer("334","S4DJ.linkPostShift",true);
+    midi.sendShortMsg(S4DJ.midiChannel, 0x60, 0x00);
 }
 
 S4DJ.setSlipToggle = function () {
-	S4DJ.slipToggle = 2;
+    S4DJ.slipToggle = 2;
 }
-
-S4DJ.linkPostShift = function () {
-
-}
-
-S4DJ.testTimer = function(timerID) {
-  var tempTimer = engine.beginTimer(400, "S4DJ.linkPostShift()", true)
-  var tempTimer2 = engine.beginTimer(400, "S4DJ.linkPostShift()", true)
-  print("TempTimerID: ")
-  print(tempTimer)
-  print("TempTimer2ID: ")
-  print(tempTimer2)
-  print("Difference: ")
-  print(tempTimer2 - tempTimer)
-}
-
-
 
 S4DJ.setup = function(obj) {
-    
-	
 	for( var i = 0x00; i <= 0x7F; i++ ) {
 	    S4DJ.dimLED(i);
 	}
 	
-	S4DJ.sendNoteOffN()
+	//S4DJ.sendNoteOffN()
 	
 	//Play LEDS
 	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
@@ -593,13 +534,7 @@ S4DJ.setup = function(obj) {
 	engine.connectControl("[Channel1]", "quantize", "S4DJ.handleQuantize")
 	engine.trigger("[Channel1]", "quantize")
 	engine.connectControl("[Channel2]", "quantize", "S4DJ.handleQuantize")
-	engine.trigger("[Channel2]", "quantize")
-	var timer = 0
-	
-	var timeID = engine.beginTimer(500,"S4DJ.testTimer(" + timer + ")", true)
-	print(timeID)
-	
-	
+	engine.trigger("[Channel2]", "quantize")	
 }
 
 
