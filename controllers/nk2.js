@@ -21,6 +21,10 @@ NK2.fx1LED = [0x20, 0x21, 0x30, 0x31, 0x40, 0x41]
 
 NK2.fx2LED = [0x22, 0x32, 0x42]
 
+NK2.S3LED = [0x23, 0x24, 0x25, 0x26, 0x27]
+
+NK2.S4LED = [0x33, 0x34, 0x35, 0x36, 0x37]
+
 NK2.effectBank = [['flanger', 'moog'], ['echo', 'bitcrusher']]
 
 
@@ -50,8 +54,7 @@ NK2.leftButton={"trdown":0x3A,"trup":0x3B,"cycle":0x2E,"mset":0x3C,"mdown":0x3D,
 //############################################################################
 
 NK2.init = function init() { // called when the device is opened & set up
-	//NK2.setup()
-	NK2.fxReInit()
+	NK2.setup()
 	
 	}
 
@@ -61,11 +64,27 @@ NK2.shutdown = function shutdown() {
 	}
 
 NK2.lightLED = function (control) {
-	midi.sendShortMsg(NK2.midiChannel, control, 0x7F);
+  midi.sendShortMsg(NK2.midiChannel, control, 0x7F);
+}
+
+NK2.choiceTriggerLED = function(value, group, control) {
+  if( group == "[Sampler3]" ) {
+    var newControl = NK2.S3LED[control[7] - 1]
+  }
+  else {
+    var newControl = NK2.S4LED[control[7] - 1]
+  }
+  if( value ) {
+    var temp = 127
+  }
+  else {
+    var temp = 0
+  }
+  midi.sendShortMsg(NK2.midiChannel, newControl, temp);
 }
 
 NK2.dimLED = function(control) {
-	midi.sendShortMsg(NK2.midiChannel, control, 0x00);
+  midi.sendShortMsg(NK2.midiChannel, control, 0x00);
 }
 
 NK2.dimFX1 = function() {
@@ -78,17 +97,6 @@ NK2.dimFX2 = function() {
   for(index=0; index < 6; index++) {
      NK2.dimLED(NK2.fx2LED[index])
   }
-}
-
-NK2.doLeftVX = function() {
-  NK2.lightLED(NK2.Rbutton[4])
-  engine.beginTimer(120,"NK2.dimLED(" + NK2.Rbutton[4] + ")",true)
-  engine.beginTimer(120,"NK2.lightLED(" + NK2.Mbutton[4] + ")",true)
-  engine.beginTimer(240,"NK2.dimLED(" + NK2.Mbutton[4] + ")",true)
-  engine.beginTimer(240,"NK2.lightLED(" + NK2.Sbutton[4] + ")",true)
-  engine.beginTimer(360,"NK2.dimLED(" + NK2.Sbutton[4] + ")",true)
-
-
 }
 
 
@@ -105,7 +113,7 @@ NK2.fxReInit = function() {
   engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 0);
   
-  //second effect filter
+  //second effect moog filter
   engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
@@ -123,7 +131,6 @@ NK2.fxReInit = function() {
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 0);
 
-  
   //second effect bitcrusher
   engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
@@ -132,6 +139,35 @@ NK2.fxReInit = function() {
   engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 0);
+  
+  NK2.lightLED(0x20)
+  NK2.lightLED(0x22)
+}
+
+NK2.resetSamplerPlay = function() {
+  engine.setValue("[Sampler1]", "start_stop", 1)
+  engine.setValue("[Sampler1]", "start_stop", 0)
+  
+  engine.setValue("[Sampler2]", "start_stop", 1)
+  engine.setValue("[Sampler2]", "start_stop", 0)
+  
+  engine.setValue("[Sampler3]", "start_stop", 1)
+  engine.setValue("[Sampler3]", "start_stop", 0)
+  
+  engine.setValue("[Sampler4]", "start_stop", 1)
+  engine.setValue("[Sampler4]", "start_stop", 0)
+  
+  engine.setValue("[Sampler5]", "start_stop", 1)
+  engine.setValue("[Sampler5]", "start_stop", 0)
+  
+  engine.setValue("[Sampler6]", "start_stop", 1)
+  engine.setValue("[Sampler6]", "start_stop", 0)
+  
+  engine.setValue("[Sampler7]", "start_stop", 1)
+  engine.setValue("[Sampler7]", "start_stop", 0)
+  
+  engine.setValue("[Sampler8]", "start_stop", 1)
+  engine.setValue("[Sampler8]", "start_stop", 0)
 }
 
 NK2.fxChange = function (channel, control, value, status, group) {
@@ -217,9 +253,35 @@ NK2.fxChange = function (channel, control, value, status, group) {
 }
 
 NK2.setup = function(obj) {
-  NK2.leftVXTimer = engine.beginTimer(500,"NK2.doLeftVX()")
+  for( var i = 0x00; i <= 0x7F; i++ ) {
+	    NK2.dimLED(i);
+  }
   
-
+  NK2.fxReInit()
+  
+  engine.connectControl("[Sampler3]", "hotcue_1_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler3]", "hotcue_2_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler3]", "hotcue_3_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler3]", "hotcue_4_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler3]", "hotcue_5_enabled", "NK2.choiceTriggerLED")
+  
+  engine.trigger("[Sampler3]", "hotcue_1_enabled")
+  engine.trigger("[Sampler3]", "hotcue_2_enabled")
+  engine.trigger("[Sampler3]", "hotcue_3_enabled")
+  engine.trigger("[Sampler3]", "hotcue_4_enabled")
+  engine.trigger("[Sampler3]", "hotcue_5_enabled")
+  
+  engine.connectControl("[Sampler4]", "hotcue_1_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler4]", "hotcue_2_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler4]", "hotcue_3_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler4]", "hotcue_4_enabled", "NK2.choiceTriggerLED")
+  engine.connectControl("[Sampler4]", "hotcue_5_enabled", "NK2.choiceTriggerLED")
+  
+  engine.trigger("[Sampler4]", "hotcue_1_enabled")
+  engine.trigger("[Sampler4]", "hotcue_2_enabled")
+  engine.trigger("[Sampler4]", "hotcue_3_enabled")
+  engine.trigger("[Sampler4]", "hotcue_4_enabled")
+  engine.trigger("[Sampler4]", "hotcue_5_enabled")
 
 }
 

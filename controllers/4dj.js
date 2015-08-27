@@ -63,14 +63,18 @@ S4DJ.init = function init() { // called when the device is opened & set up
 	
 	//midi.sendShortMsg(0xB1, 0x31, 0x70);
 	
-	/*
+	
 	//set samplers to always headphone cue
 	engine.setValue("[Sampler1]", "pfl", 1);
 	engine.setValue("[Sampler2]", "pfl", 1);
 	engine.setValue("[Sampler3]", "pfl", 1);
 	engine.setValue("[Sampler4]", "pfl", 1);
 	engine.setValue("[Sampler5]", "pfl", 1);
-	*/
+	engine.setValue("[Sampler6]", "pfl", 1);
+	engine.setValue("[Sampler7]", "pfl", 1);
+	engine.setValue("[Sampler8]", "pfl", 1);
+	
+	/*
 	
 	engine.setValue("[EffectRack1]", "clear", 1);
 	engine.setValue("[EffectRack1]", "clear", 0);
@@ -111,7 +115,38 @@ S4DJ.init = function init() { // called when the device is opened & set up
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
 	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 0);
-	
+	*/
+	//toggle all ind effects on and off to fix LED bug
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 0);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
+	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
+	//toggle
+	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel1]_enable", 1);
+	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel2]_enable", 1);
+	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel1]_enable", 1);
+	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel2]_enable", 1);
+	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel1]_enable", 0);
+	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel2]_enable", 0);
+	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel1]_enable", 0);
+	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel2]_enable", 0);
+
 	
 	//enable keylock
 	engine.setValue("[Channel1]", "keylock", 1);
@@ -522,7 +557,7 @@ S4DJ.setup = function(obj) {
 	    S4DJ.dimLED(i);
 	}
 	
-	//S4DJ.sendNoteOffN()
+	S4DJ.sendNoteOffN()
 	
 	//Play LEDS
 	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
