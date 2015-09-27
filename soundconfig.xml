@@ -1,5 +1,5 @@
 <!DOCTYPE SoundManagerConfig>
-<SoundManagerConfig latency="4" deck_count="4" api="ALSA" samplerate="44100" sync_buffers="0">
+<SoundManagerConfig latency="5" deck_count="4" api="ALSA" samplerate="44100" sync_buffers="0">
  <SoundDevice name="0, HDA Intel PCH: CS4206 Analog (hw:0,0)">
   <output channel="0" type="Master" index="0" channel_count="2"/>
  </SoundDevice>
