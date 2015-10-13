@@ -478,22 +478,23 @@ S4DJ.record = function (channel, control, value, status, group) {
 S4DJ.quantizeToggle = function(group) {
   var quantized = engine.getValue(group, 'quantize')
   if( quantized ) {
-    engine.setValue("[Channel1]","quantize",0)
+    engine.setValue(group,"quantize",0)
   }
   else {
-    engine.setValue("[Channel1]","quantize",1)
+    engine.setValue(group,"quantize",1)
   }
 }
 
 S4DJ.handleQuantize = function (value, group, control) {
   var deck = S4DJ.groupToDeck(group)
   var quantized = engine.getValue(group, 'quantize')
+  engine.stopTimer(S4DJ.timer[deck-1])
   if( quantized ) {//init
+    if( deck == 2 ) value += 1
     S4DJ.timer[deck-1] = engine.beginTimer(250,"S4DJ.flash("+ value +", 125)")
     S4DJ.quantize[deck-1] = true
   }
   else {
-    engine.stopTimer(S4DJ.timer[deck-1])
     S4DJ.quantize[deck-1] = false
   }
 

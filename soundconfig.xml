@@ -1,9 +1,9 @@
 <!DOCTYPE SoundManagerConfig>
-<SoundManagerConfig latency="5" deck_count="4" api="ALSA" samplerate="44100" sync_buffers="0">
- <SoundDevice name="1, HDA Intel HDMI: 1 (hw:0,7)">
+<SoundManagerConfig latency="4" deck_count="4" api="ALSA" samplerate="44100" sync_buffers="2">
+ <SoundDevice name="5, USB Audio CODEC: - (hw:3,0)">
   <output channel="0" type="Master" index="0" channel_count="2"/>
  </SoundDevice>
- <SoundDevice name="3, HDA Intel PCH: CS4208 Analog (hw:2,0)">
+ <SoundDevice name="3, HDA Intel PCH: CS4208 Analog (hw:1,0)">
   <output channel="0" type="Headphones" index="0" channel_count="2"/>
  </SoundDevice>
 </SoundManagerConfig>
