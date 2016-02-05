@@ -424,6 +424,7 @@ S4DJ.loopRollHold = function(deck) {
 S4DJ.loopRoll = function(channel, control, value, status, group) {
   var deck = S4DJ.groupToDeck(group)
   if( value == 0x7F ) { //if button down only
+    S4DJ.quantizeToggle(group)
     engine.stopTimer(S4DJ.loopRollHoldTimer[deck-1])
     S4DJ.loopRollHoldTimer[deck-1] = engine.beginTimer(300, "S4DJ.loopRollHold(" + deck + ")", true)
 	//Channel1	Channel2
@@ -444,7 +445,7 @@ S4DJ.loopRoll = function(channel, control, value, status, group) {
   else { 	  //Channel1	Channel2
     S4DJ.stopIt[deck-1] = true
     if( control == 0x01 || control == 0x02 ) {
-      if( !S4DJ.loopRollHeld[deck-1] ){
+      if( S4DJ.loopRollHeld[deck-1] ){
 	S4DJ.quantizeToggle(group)
       }
       engine.setValue(group,"beatlooproll_1_activate",0);
@@ -459,6 +460,7 @@ S4DJ.loopRoll = function(channel, control, value, status, group) {
 	engine.setValue(group,"beatlooproll_0.125_activate",0);
     }
     S4DJ.loopRollHeld[deck-1] = false
+    engine.beginTimer(50, 'S4DJ.quantizeToggle("' + group + '")', 1)
   }
 }
 
@@ -475,6 +477,35 @@ S4DJ.record = function (channel, control, value, status, group) {
   
 }
 
+S4DJ.resetFX = function (group) {
+  S4DJ.fxOff()
+  engine.beginTimer(500, "S4DJ.fxOn()", true)
+}
+
+S4DJ.fxOff = function () {
+  unitOneEffectOne = "[EffectRack1_EffectUnit1_Effect1]"
+  unitOneEffectTwo = "[EffectRack1_EffectUnit1_Effect2]"
+  unitTwoEffectOne = "[EffectRack1_EffectUnit2_Effect1]"
+  unitTwoEffectTwo = "[EffectRack1_EffectUnit2_Effect2]"
+
+  engine.setValue(unitOneEffectOne, 'enabled', 0)
+  engine.setValue(unitOneEffectTwo, 'enabled', 0)
+  engine.setValue(unitTwoEffectOne, 'enabled', 0)
+  engine.setValue(unitTwoEffectTwo, 'enabled', 0)
+}
+
+S4DJ.fxOn = function () {
+  unitOneEffectOne = "[EffectRack1_EffectUnit1_Effect1]"
+  unitOneEffectTwo = "[EffectRack1_EffectUnit1_Effect2]"
+  unitTwoEffectOne = "[EffectRack1_EffectUnit2_Effect1]"
+  unitTwoEffectTwo = "[EffectRack1_EffectUnit2_Effect2]"
+
+  engine.setValue(unitOneEffectOne, 'enabled', 1)
+  engine.setValue(unitOneEffectTwo, 'enabled', 1)
+  engine.setValue(unitTwoEffectOne, 'enabled', 1)
+  engine.setValue(unitTwoEffectTwo, 'enabled', 1)
+}
+
 S4DJ.quantizeToggle = function(group) {
   var quantized = engine.getValue(group, 'quantize')
   if( quantized ) {
@@ -488,15 +519,19 @@ S4DJ.quantizeToggle = function(group) {
 S4DJ.handleQuantize = function (value, group, control) {
   var deck = S4DJ.groupToDeck(group)
   var quantized = engine.getValue(group, 'quantize')
+
   engine.stopTimer(S4DJ.timer[deck-1])
   if( quantized ) {//init
-    if( deck == 2 ) value += 1
+    if( deck == 2 ) {
+	value += 1
+    }
     S4DJ.timer[deck-1] = engine.beginTimer(250,"S4DJ.flash("+ value +", 125)")
     S4DJ.quantize[deck-1] = true
   }
   else {
     S4DJ.quantize[deck-1] = false
   }
+
 
 }
 
@@ -554,23 +589,30 @@ S4DJ.setSlipToggle = function () {
 }
 
 S4DJ.setup = function(obj) {
+	/*
 	for( var i = 0x00; i <= 0x7F; i++ ) {
 	    S4DJ.dimLED(i);
-	}
+	}*/
 	
 	S4DJ.sendNoteOffN()
+
+	midi.sendShortMsg(S4DJ.midiChannel, 0x32, 0x32);
 	
+
 	//Play LEDS
 	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
 	engine.trigger("[Channel1]", "play_indicator")
 	engine.connectControl("[Channel2]", "play_indicator", "S4DJ.LEDonPlay2")
-	engine.trigger("[Channel2]", "play_indicator")
-	
+	engine.trigger("[Channel2]", "play_indicat7For")
+
+/*
 	//quantize LED
 	engine.connectControl("[Channel1]", "quantize", "S4DJ.handleQuantize")
 	engine.trigger("[Channel1]", "quantize")
 	engine.connectControl("[Channel2]", "quantize", "S4DJ.handleQuantize")
-	engine.trigger("[Channel2]", "quantize")	
+	engine.trigger("[Channel2]", "quantize")
+*/
+
 }
 
 
