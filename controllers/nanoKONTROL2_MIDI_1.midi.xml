@@ -515,6 +515,35 @@
                 </options>
             </control>
         </controls>
-        <outputs/>
+        <outputs>
+            <output>
+                <group>[Sampler4]</group>
+                <key>track_samples</key>
+                <status>0x90</status>
+                <midino>0x47</midino>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Sampler3]</group>
+                <key>track_samples</key>
+                <status>0x90</status>
+                <midino>0x46</midino>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Sampler2]</group>
+                <key>track_samples</key>
+                <status>0x90</status>
+                <midino>0x45</midino>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Sampler1]</group>
+                <key>track_samples</key>
+                <status>0x90</status>
+                <midino>0x44</midino>
+                <minimum>0.5</minimum>
+            </output>
+        </outputs>
     </controller>
 </MixxxControllerPreset>
