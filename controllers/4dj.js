@@ -424,7 +424,7 @@ S4DJ.loopRollHold = function(deck) {
 S4DJ.loopRoll = function(channel, control, value, status, group) {
   var deck = S4DJ.groupToDeck(group)
   if( value == 0x7F ) { //if button down only
-    S4DJ.quantizeToggle(group)
+    //S4DJ.quantizeToggle(group)
     engine.stopTimer(S4DJ.loopRollHoldTimer[deck-1])
     S4DJ.loopRollHoldTimer[deck-1] = engine.beginTimer(300, "S4DJ.loopRollHold(" + deck + ")", true)
 	//Channel1	Channel2
@@ -446,7 +446,7 @@ S4DJ.loopRoll = function(channel, control, value, status, group) {
     S4DJ.stopIt[deck-1] = true
     if( control == 0x01 || control == 0x02 ) {
       if( S4DJ.loopRollHeld[deck-1] ){
-	S4DJ.quantizeToggle(group)
+	//S4DJ.quantizeToggle(group)
       }
       engine.setValue(group,"beatlooproll_1_activate",0);
     }
@@ -460,7 +460,7 @@ S4DJ.loopRoll = function(channel, control, value, status, group) {
 	engine.setValue(group,"beatlooproll_0.125_activate",0);
     }
     S4DJ.loopRollHeld[deck-1] = false
-    engine.beginTimer(50, 'S4DJ.quantizeToggle("' + group + '")', 1)
+    //engine.beginTimer(50, 'S4DJ.quantizeToggle("' + group + '")', 1)
   }
 }
 

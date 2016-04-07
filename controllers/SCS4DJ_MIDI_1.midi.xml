@@ -1124,14 +1124,14 @@
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0xB1</status>
-                <midino>0x31</midino>
+                <midino>0x30</midino>
                 <minimum>0.5</minimum>
             </output>
             <output>
                 <group>[Master]</group>
                 <key>PeakIndicator</key>
                 <status>0xB1</status>
-                <midino>0x30</midino>
+                <midino>0x31</midino>
                 <minimum>0.5</minimum>
             </output>
             <output>
@@ -1172,44 +1172,8 @@
                 <key>VuMeterR</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x10</on>
-                <maximum>0.1</maximum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x20</on>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x30</on>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x40</on>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x50</on>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
+                <on>0x70</on>
+                <minimum>0.92</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1225,14 +1189,42 @@
                 <key>VuMeterR</key>
                 <status>0xB1</status>
                 <midino>0x31</midino>
-                <on>0x70</on>
-                <minimum>0.92</minimum>
+                <on>0x50</on>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
             </output>
             <output>
                 <group>[Master]</group>
-                <key>VuMeterL</key>
+                <key>VuMeterR</key>
                 <status>0xB1</status>
-                <midino>0x30</midino>
+                <midino>0x31</midino>
+                <on>0x40</on>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterR</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x30</on>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterR</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <on>0x20</on>
+                <maximum>0.3</maximum>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterR</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
                 <on>0x10</on>
                 <maximum>0.1</maximum>
             </output>
@@ -1241,36 +1233,8 @@
                 <key>VuMeterL</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x20</on>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x30</on>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x40</on>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x50</on>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
+                <on>0x70</on>
+                <minimum>0.92</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -1286,8 +1250,44 @@
                 <key>VuMeterL</key>
                 <status>0xB1</status>
                 <midino>0x30</midino>
-                <on>0x70</on>
-                <minimum>0.92</minimum>
+                <on>0x50</on>
+                <maximum>0.85</maximum>
+                <minimum>0.75</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterL</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x40</on>
+                <maximum>0.75</maximum>
+                <minimum>0.6</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterL</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x30</on>
+                <maximum>0.6</maximum>
+                <minimum>0.3</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterL</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x20</on>
+                <maximum>0.3</maximum>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>VuMeterL</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <on>0x10</on>
+                <maximum>0.1</maximum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1360,8 +1360,8 @@
                 <key>VuMeter</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x00</on>
-                <maximum>0.4</maximum>
+                <on>0x03</on>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -1377,8 +1377,8 @@
                 <key>VuMeter</key>
                 <status>0x91</status>
                 <midino>0x32</midino>
-                <on>0x03</on>
-                <minimum>0.8</minimum>
+                <on>0x00</on>
+                <maximum>0.4</maximum>
             </output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -1443,8 +1443,8 @@
                 <key>VuMeter</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x00</on>
-                <maximum>0.4</maximum>
+                <on>0x03</on>
+                <minimum>0.8</minimum>
             </output>
             <output>
                 <group>[Channel2]</group>
@@ -1460,8 +1460,8 @@
                 <key>VuMeter</key>
                 <status>0x91</status>
                 <midino>0x33</midino>
-                <on>0x03</on>
-                <minimum>0.8</minimum>
+                <on>0x00</on>
+                <maximum>0.4</maximum>
             </output>
         </outputs>
     </controller>
