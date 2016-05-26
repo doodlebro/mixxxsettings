@@ -17,7 +17,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>NK2.fxChange</key>
                 <description>MIDI Learned from 4 messages.</description>
                 <status>0xB0</status>
@@ -84,16 +84,6 @@
                 <midino>0x35</midino>
                 <options>
                     <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>NK2.fxChange</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0xB0</status>
-                <midino>0x40</midino>
-                <options>
-                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -246,9 +236,8 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <group>[EffectRack1_EffectUnit4]</group>
                 <key>NK2.fxChange</key>
-                <description>MIDI Learned from 14 messages.</description>
                 <status>0xB0</status>
                 <midino>0x22</midino>
                 <options>
@@ -315,9 +304,8 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <group>[EffectRack1_EffectUnit4]</group>
                 <key>NK2.fxChange</key>
-                <description>MIDI Learned from 16 messages.</description>
                 <status>0xB0</status>
                 <midino>0x32</midino>
                 <options>
@@ -345,9 +333,8 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>NK2.fxChange</key>
-                <description>MIDI Learned from 8 messages.</description>
                 <status>0xB0</status>
                 <midino>0x21</midino>
                 <options>
@@ -395,16 +382,6 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>NK2.fxChange</key>
-                <description>MIDI Learned from 18 messages.</description>
-                <status>0xB0</status>
-                <midino>0x42</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
                 <group>[Sampler3]</group>
                 <key>hotcue_4_activate</key>
                 <description>MIDI Learned from 8 messages.</description>
@@ -415,9 +392,8 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>NK2.fxChange</key>
-                <description>MIDI Learned from 10 messages.</description>
                 <status>0xB0</status>
                 <midino>0x31</midino>
                 <options>
@@ -445,7 +421,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>NK2.fxChange</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0xB0</status>
@@ -492,16 +468,6 @@
                 <midino>0x36</midino>
                 <options>
                     <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>NK2.fxChange</key>
-                <description>MIDI Learned from 12 messages.</description>
-                <status>0xB0</status>
-                <midino>0x41</midino>
-                <options>
-                    <script-binding/>
                 </options>
             </control>
         </controls>

@@ -14,8 +14,9 @@ NK2.FXMatrix = {'flanger':{'flanger':0, 'echo':1, 'autopan':2, 'reverb':3, 'phas
 		'moog':{'flanger':2, 'echo':3, 'autopan':4, 'reverb':5, 'phaser':6, 'filter':11, 'moog':0, 'bitcrusher':1},
 		'bitcrusher':{'flanger':1, 'echo':2, 'autopan':3, 'reverb':4, 'phaser':5, 'filter':10, 'moog':11, 'bitcrusher':0}
 	      }
-NK2.FX1 = ['moog', 'filter', 'autopan', 'phaser', 'echo', 'reverb']
-NK2.FX2 = [['echo', 'bitcrusher'], ['echo', 'autopan'], ['reverb', 'autopan']]
+NK2.FX1 = [true, false]
+NK2.FX2 = [true, false]
+NK2.FX3 = [true, false]
 
 NK2.fx1LED = [0x20, 0x21, 0x30, 0x31, 0x40, 0x41]
 
@@ -106,41 +107,33 @@ NK2.fxReInit = function() {
   
   //LEFT EFFECTS
   //First effect flanger
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 0);
+  engine.setValue("[EffectRack1_EffectUnit1]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit1]", "next_chain", 0);
   
-  //second effect moog filter
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 0);
+  //second effect filters
+  engine.setValue("[EffectRack1_EffectUnit2]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit2]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit2]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit2]", "next_chain", 0);
   
   //RIGHT EFFECTS
   //first effect autopan
-  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 0);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit3]", "next_chain", 0);
 
   //second effect bitcrusher
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 0);
+  engine.setValue("[EffectRack1_EffectUnit4]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit4]", "next_chain", 1);
+  engine.setValue("[EffectRack1_EffectUnit4]", "next_chain", 0);
   
-  NK2.lightLED(0x20)
-  NK2.lightLED(0x22)
+  NK2.lightLED(0x20);
+  NK2.lightLED(0x21);
+  NK2.lightLED(0x22);
 }
 
 NK2.resetSamplerPlay = function() {
@@ -171,83 +164,73 @@ NK2.resetSamplerPlay = function() {
 
 NK2.fxChange = function (channel, control, value, status, group) {
   if( value == 0x7F ) {
-    if( group == '[EffectRack1_EffectUnit1_Effect2]' ) { //only changing effect 2 on this rack
-      NK2.dimFX1()
-      var from = NK2.effectBank[0][1]
-      if( control == NK2.Sbutton[1] ) {//default
-	var to = NK2.FX1[0]
-	NK2.effectBank[0][1] = NK2.FX1[0]
-	NK2.lightLED(NK2.Sbutton[1])
+    if( group == '[EffectRack1_EffectUnit2]' ) {
+      if( control == NK2.Sbutton[1] && NK2.FX1[1] ) {//default -- filter
+	engine.setValue('[EffectRack1_EffectUnit2_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit2_Effect1]', "prev_effect", 0);
+	NK2.dimLED(NK2.Mbutton[1]);
+	NK2.lightLED(NK2.Sbutton[1]);
+	NK2.FX1[0] = true;
+	NK2.FX1[1] = false;
       }
-      else if( control == NK2.Mbutton[1] ) {//reg filter
-	var to = NK2.FX1[1]
-	NK2.effectBank[0][1] = NK2.FX1[1]
-	NK2.lightLED(NK2.Mbutton[1])
+      else if( control == NK2.Mbutton[1] && NK2.FX1[0] ) {//moog filter
+	engine.setValue('[EffectRack1_EffectUnit2_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit2_Effect1]', "next_effect", 0);
+	NK2.dimLED(NK2.Sbutton[1]);
+	NK2.lightLED(NK2.Mbutton[1]);
+	NK2.FX1[0] = false;
+	NK2.FX1[1] = true;
       }
-      else if( control == NK2.Rbutton[1] ) {//reg filter
-	var to = NK2.FX1[2]
-	NK2.effectBank[0][1] = NK2.FX1[2]
-	NK2.lightLED(NK2.Rbutton[1])
+    }
+
+    else if( group == '[EffectRack1_EffectUnit3]' ) {
+      if( control == NK2.Sbutton[2] && NK2.FX2[1] ) {//default -- autopan
+	engine.setValue('[EffectRack1_EffectUnit3_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit3_Effect1]', "next_effect", 0);
+	NK2.dimLED(NK2.Mbutton[2]);
+	NK2.lightLED(NK2.Sbutton[2]);
+	NK2.FX2[0] = true;
+	NK2.FX2[1] = false;
       }
-      else if( control == NK2.Sbutton[2] ) {//default
-	var to = NK2.FX1[3]
-	NK2.effectBank[0][1] = NK2.FX1[3]
-	NK2.lightLED(NK2.Sbutton[2])
+      else if( control == NK2.Mbutton[2] && NK2.FX2[0] ) {// echo
+	engine.setValue('[EffectRack1_EffectUnit3_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit3_Effect1]', "prev_effect", 0);
+	NK2.dimLED(NK2.Sbutton[2]);
+	NK2.lightLED(NK2.Mbutton[2]);
+	NK2.FX2[0] = false;
+	NK2.FX2[1] = true;
       }
-      else if( control == NK2.Mbutton[2] ) {//reg filter
-	var to = NK2.FX1[4]
-	NK2.effectBank[0][1] = NK2.FX1[4]
-	NK2.lightLED(NK2.Mbutton[2])
+    }
+
+     else if( group == '[EffectRack1_EffectUnit4]' ) {
+      if( control == NK2.Sbutton[3] && NK2.FX3[1] ) {//default -- bitcrusher
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "prev_effect", 0);
+	NK2.dimLED(NK2.Mbutton[3]);
+	NK2.lightLED(NK2.Sbutton[3]);
+	NK2.FX3[0] = true;
+	NK2.FX3[1] = false;
       }
-      else if( control == NK2.Rbutton[2] ) {//reg filter
-	var to = NK2.FX1[5]
-	NK2.effectBank[0][1] = NK2.FX1[5]
-	NK2.lightLED(NK2.Rbutton[2])
+      else if( control == NK2.Mbutton[3] && NK2.FX3[0] ) {// phaser
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 1);
+	engine.setValue('[EffectRack1_EffectUnit4_Effect1]', "next_effect", 0);
+	NK2.dimLED(NK2.Sbutton[3]);
+	NK2.lightLED(NK2.Mbutton[3])
+	NK2.FX3[0] = false;
+	NK2.FX3[1] = true;
       }
-      var effect2Jump = NK2.FXMatrix[from][to]
-      
-      for(index=0; index < effect2Jump; index++) {
-	engine.setValue(group, "next_effect", 1);
-      }
-      engine.setValue(group, "next_effect", 0);
     }
     
-    else { //possible to change both effects on this rack
-      NK2.dimFX2()
-      var from1 = NK2.effectBank[1][0]
-      var from2 = NK2.effectBank[1][1]
-      if( control == NK2.Sbutton[3] ) {//default
-	var to1 = NK2.FX2[0][0]
-	var to2 = NK2.FX2[0][1]
-	NK2.effectBank[1] = NK2.FX2[0]
-	NK2.lightLED(NK2.Sbutton[3])
-      }
-      else if( control == NK2.Mbutton[3] ) {//reg filter
-	var to1 = NK2.FX2[1][0]
-	var to2 = NK2.FX2[1][1]
-	NK2.effectBank[1] = NK2.FX2[1]
-	NK2.lightLED(NK2.Mbutton[3])
-      }
-      else if( control == NK2.Rbutton[3] ) {//reg filter
-	var to1 = NK2.FX2[2][0]
-	var to2 = NK2.FX2[2][1]
-	NK2.effectBank[1] = NK2.FX2[2]
-	NK2.lightLED(NK2.Rbutton[3])
-      }
-      var effect3Jump = NK2.FXMatrix[from1][to1]
-      var effect4Jump = NK2.FXMatrix[from2][to2]
+    
       
-      for(index=0; index < effect3Jump; index++) {
-	engine.setValue(group, "next_effect", 1);
-      }
-      engine.setValue(group, "next_effect", 0);
-      
-      for(index=0; index < effect4Jump; index++) {
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "next_effect", 1);
-      }
-      engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "next_effect", 0);
-      
-    }
   }
 }
 
