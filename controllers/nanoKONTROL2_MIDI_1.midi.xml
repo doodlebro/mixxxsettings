@@ -57,13 +57,13 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>parameter3</key>
-                <description>MIDI Learned from 794 messages.</description>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>parameter2</key>
+                <description>MIDI Learned from 940 messages.</description>
                 <status>0xB0</status>
                 <midino>0x03</midino>
                 <options>
-                    <normal/>
+                    <invert/>
                 </options>
             </control>
             <control>
@@ -136,9 +136,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>parameter1</key>
-                <description>MIDI Learned from 2148 messages.</description>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 700 messages.</description>
                 <status>0xB0</status>
                 <midino>0x02</midino>
                 <options>
@@ -213,16 +213,6 @@
                 <midino>0x44</midino>
                 <options>
                     <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>parameter4</key>
-                <description>MIDI Learned from 927 messages.</description>
-                <status>0xB0</status>
-                <midino>0x01</midino>
-                <options>
-                    <soft-takeover/>
                 </options>
             </control>
             <control>
@@ -305,13 +295,13 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>parameter3</key>
-                <description>MIDI Learned from 542 messages.</description>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>parameter2</key>
+                <description>MIDI Learned from 3276 messages.</description>
                 <status>0xB0</status>
                 <midino>0x00</midino>
                 <options>
-                    <soft-takeover/>
+                    <normal/>
                 </options>
             </control>
             <control>

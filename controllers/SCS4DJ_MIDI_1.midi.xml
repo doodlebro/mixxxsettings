@@ -104,9 +104,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>mix</key>
-                <description>MIDI Learned from 1932 messages.</description>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>super1</key>
+                <description>MIDI Learned from 648 messages.</description>
                 <status>0xB1</status>
                 <midino>0x06</midino>
                 <options>
@@ -152,9 +152,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 1793 messages.</description>
+                <description>MIDI Learned from 764 messages.</description>
                 <status>0xB1</status>
                 <midino>0x05</midino>
                 <options>
@@ -192,7 +192,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x81</status>
                 <midino>0x28</midino>
                 <options>
@@ -200,9 +200,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>super1</key>
-                <description>MIDI Learned from 741 messages.</description>
+                <description>MIDI Learned from 800 messages.</description>
                 <status>0xB1</status>
                 <midino>0x04</midino>
                 <options>
@@ -241,7 +241,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x81</status>
                 <midino>0x27</midino>
                 <options>
@@ -250,8 +250,8 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>mix</key>
-                <description>MIDI Learned from 1530 messages.</description>
+                <key>super1</key>
+                <description>MIDI Learned from 957 messages.</description>
                 <status>0xB1</status>
                 <midino>0x03</midino>
                 <options>
@@ -288,9 +288,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel2]_enable</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x81</status>
                 <midino>0x10</midino>
                 <options>
@@ -310,7 +310,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x91</status>
                 <midino>0x28</midino>
                 <options>
@@ -337,9 +337,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Headphone]_enable</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>MIDI Learned from 80 messages.</description>
                 <status>0x81</status>
                 <midino>0x0F</midino>
                 <options>
@@ -359,7 +359,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>sync_enabled</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x91</status>
                 <midino>0x27</midino>
                 <options>
@@ -396,7 +396,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel1]_enable</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0x81</status>
@@ -426,9 +426,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel2]_enable</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x91</status>
                 <midino>0x10</midino>
                 <options>
@@ -446,9 +446,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>enabled</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>MIDI Learned from 18 messages.</description>
                 <status>0x81</status>
                 <midino>0x0D</midino>
                 <options>
@@ -476,9 +476,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Headphone]_enable</key>
-                <description>MIDI Learned from 8 messages.</description>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>MIDI Learned from 80 messages.</description>
                 <status>0x91</status>
                 <midino>0x0F</midino>
                 <options>
@@ -487,8 +487,8 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Headphone]_enable</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <key>group_[Channel2]_enable</key>
+                <description>MIDI Learned from 12 messages.</description>
                 <status>0x81</status>
                 <midino>0x0C</midino>
                 <options>
@@ -506,7 +506,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel1]_enable</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0x91</status>
@@ -516,9 +516,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel2]_enable</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <description>MIDI Learned from 16 messages.</description>
                 <status>0x81</status>
                 <midino>0x0B</midino>
                 <options>
@@ -536,9 +536,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>enabled</key>
-                <description>MIDI Learned from 2 messages.</description>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>MIDI Learned from 18 messages.</description>
                 <status>0x91</status>
                 <midino>0x0D</midino>
                 <options>
@@ -556,9 +556,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>enabled</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>MIDI Learned from 10 messages.</description>
                 <status>0x81</status>
                 <midino>0x0A</midino>
                 <options>
@@ -586,8 +586,8 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Headphone]_enable</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <key>group_[Channel2]_enable</key>
+                <description>MIDI Learned from 12 messages.</description>
                 <status>0x91</status>
                 <midino>0x0C</midino>
                 <options>
@@ -605,9 +605,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel1]_enable</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <description>MIDI Learned from 14 messages.</description>
                 <status>0x81</status>
                 <midino>0x09</midino>
                 <options>
@@ -634,9 +634,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel2]_enable</key>
-                <description>MIDI Learned from 6 messages.</description>
+                <description>MIDI Learned from 16 messages.</description>
                 <status>0x91</status>
                 <midino>0x0B</midino>
                 <options>
@@ -682,9 +682,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>enabled</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>MIDI Learned from 10 messages.</description>
                 <status>0x91</status>
                 <midino>0x0A</midino>
                 <options>
@@ -703,18 +703,18 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>S4DJ.jogWheel</key>
-                <status>0xB1</status>
-                <midino>0x0F</midino>
+                <key>S4DJ.loopRoll</key>
+                <status>0x81</status>
+                <midino>0x07</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>S4DJ.loopRoll</key>
-                <status>0x81</status>
-                <midino>0x07</midino>
+                <key>S4DJ.jogWheel</key>
+                <status>0xB1</status>
+                <midino>0x0F</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -730,9 +730,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel1]_enable</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <description>MIDI Learned from 14 messages.</description>
                 <status>0x91</status>
                 <midino>0x09</midino>
                 <options>
@@ -798,18 +798,18 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>S4DJ.jogWheel</key>
-                <status>0xB1</status>
-                <midino>0x0D</midino>
+                <key>S4DJ.loopRoll</key>
+                <status>0x81</status>
+                <midino>0x05</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>S4DJ.loopRoll</key>
-                <status>0x81</status>
-                <midino>0x05</midino>
+                <key>S4DJ.jogWheel</key>
+                <status>0xB1</status>
+                <midino>0x0D</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -1096,11 +1096,94 @@
         </controls>
         <outputs>
             <output>
-                <group>[EffectRack1_EffectUnit1_Effect1]</group>
-                <key>enabled</key>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
                 <status>0x91</status>
-                <midino>0x0C</midino>
-                <on>0x26</on>
+                <midino>0x36</midino>
+                <on>0x01</on>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>loop_enabled</key>
+                <status>0x91</status>
+                <midino>0x11</midino>
+                <on>0x01</on>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x91</status>
+                <midino>0x0B</midino>
+                <on>0x01</on>
+                <off>0x16</off>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>pfl</key>
+                <status>0x91</status>
+                <midino>0x1E</midino>
+                <on>0x01</on>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>keylock</key>
+                <status>0x91</status>
+                <midino>0x30</midino>
+                <on>0x01</on>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x91</status>
+                <midino>0x09</midino>
+                <on>0x01</on>
+                <off>0x16</off>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x91</status>
+                <midino>0x10</midino>
+                <on>0x01</on>
+                <off>0x16</off>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x91</status>
+                <midino>0x0E</midino>
+                <on>0x01</on>
+                <off>0x16</off>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>PeakIndicator</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Master]</group>
+                <key>PeakIndicator</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>PeakIndicator</key>
+                <status>0x91</status>
+                <midino>0x32</midino>
+                <on>0x01</on>
+                <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
             <output>
@@ -1112,26 +1195,28 @@
                 <minimum>0.5</minimum>
             </output>
             <output>
-                <group>[Channel2]</group>
-                <key>PeakIndicator</key>
+                <group>[Channel1]</group>
+                <key>beat_active</key>
                 <status>0x91</status>
-                <midino>0x33</midino>
+                <midino>0x34</midino>
                 <on>0x01</on>
-                <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
             <output>
-                <group>[Master]</group>
-                <key>PeakIndicator</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
+                <group>[Channel1]</group>
+                <key>loop_enabled</key>
+                <status>0x91</status>
+                <midino>0x12</midino>
+                <on>0x01</on>
                 <minimum>0.5</minimum>
             </output>
             <output>
-                <group>[Master]</group>
-                <key>PeakIndicator</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x91</status>
+                <midino>0x0F</midino>
+                <on>0x01</on>
+                <off>0x16</off>
                 <minimum>0.5</minimum>
             </output>
             <output>
@@ -1143,10 +1228,27 @@
                 <minimum>0.5</minimum>
             </output>
             <output>
-                <group>[Channel1]</group>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x91</status>
+                <midino>0x0D</midino>
+                <on>0x01</on>
+                <off>0x16</off>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
                 <key>sync_enabled</key>
                 <status>0x91</status>
-                <midino>0x36</midino>
+                <midino>0x37</midino>
+                <on>0x01</on>
+                <minimum>0.5</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>keylock</key>
+                <status>0x91</status>
+                <midino>0x31</midino>
                 <on>0x01</on>
                 <minimum>0.5</minimum>
             </output>
@@ -1154,7 +1256,7 @@
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel2]_enable</key>
                 <status>0x91</status>
-                <midino>0x10</midino>
+                <midino>0x0C</midino>
                 <on>0x01</on>
                 <off>0x16</off>
                 <minimum>0.5</minimum>
@@ -1168,175 +1270,21 @@
                 <minimum>0.5</minimum>
             </output>
             <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x70</on>
-                <minimum>0.92</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x60</on>
-                <maximum>0.92</maximum>
-                <minimum>0.85</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x50</on>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x40</on>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x30</on>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x20</on>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterR</key>
-                <status>0xB1</status>
-                <midino>0x31</midino>
-                <on>0x10</on>
-                <maximum>0.1</maximum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x70</on>
-                <minimum>0.92</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x60</on>
-                <maximum>0.92</maximum>
-                <minimum>0.85</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x50</on>
-                <maximum>0.85</maximum>
-                <minimum>0.75</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x40</on>
-                <maximum>0.75</maximum>
-                <minimum>0.6</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x30</on>
-                <maximum>0.6</maximum>
-                <minimum>0.3</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x20</on>
-                <maximum>0.3</maximum>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Master]</group>
-                <key>VuMeterL</key>
-                <status>0xB1</status>
-                <midino>0x30</midino>
-                <on>0x10</on>
-                <maximum>0.1</maximum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x91</status>
-                <midino>0x0B</midino>
-                <on>0x01</on>
-                <off>0x16</off>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>beat_active</key>
-                <status>0x91</status>
-                <midino>0x34</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>keylock</key>
-                <status>0x91</status>
-                <midino>0x31</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>
                 <status>0x91</status>
-                <midino>0x0E</midino>
+                <midino>0x0A</midino>
                 <on>0x01</on>
                 <off>0x16</off>
                 <minimum>0.5</minimum>
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>loop_enabled</key>
+                <key>PeakIndicator</key>
                 <status>0x91</status>
-                <midino>0x11</midino>
+                <midino>0x33</midino>
                 <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>enabled</key>
-                <status>0x91</status>
-                <midino>0x0D</midino>
-                <on>0x26</on>
+                <off>0x03</off>
                 <minimum>0.5</minimum>
             </output>
             <output>
@@ -1346,122 +1294,6 @@
                 <midino>0x35</midino>
                 <on>0x01</on>
                 <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>keylock</key>
-                <status>0x91</status>
-                <midino>0x30</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x32</midino>
-                <on>0x03</on>
-                <minimum>0.8</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x32</midino>
-                <on>0x02</on>
-                <maximum>0.8</maximum>
-                <minimum>0.4</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x32</midino>
-                <on>0x00</on>
-                <maximum>0.4</maximum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x91</status>
-                <midino>0x09</midino>
-                <on>0x01</on>
-                <off>0x16</off>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>loop_enabled</key>
-                <status>0x91</status>
-                <midino>0x12</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>enabled</key>
-                <status>0x91</status>
-                <midino>0x0A</midino>
-                <on>0x26</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>PeakIndicator</key>
-                <status>0x91</status>
-                <midino>0x32</midino>
-                <on>0x01</on>
-                <off>0x03</off>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>enabled</key>
-                <status>0x91</status>
-                <midino>0x0F</midino>
-                <on>0x26</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>pfl</key>
-                <status>0x91</status>
-                <midino>0x1E</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>sync_enabled</key>
-                <status>0x91</status>
-                <midino>0x37</midino>
-                <on>0x01</on>
-                <minimum>0.5</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x33</midino>
-                <on>0x03</on>
-                <minimum>0.8</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x33</midino>
-                <on>0x02</on>
-                <maximum>0.8</maximum>
-                <minimum>0.4</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>VuMeter</key>
-                <status>0x91</status>
-                <midino>0x33</midino>
-                <on>0x00</on>
-                <maximum>0.4</maximum>
             </output>
         </outputs>
     </controller>

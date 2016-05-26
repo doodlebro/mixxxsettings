@@ -114,31 +114,30 @@ NK2.fxReInit = function() {
   engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 0);
   
   //second effect moog filter
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 0);
-  
-  //RIGHT EFFECTS
-  //first effect echo
+  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
   engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 0);
+  
+  //RIGHT EFFECTS
+  //first effect autopan
+  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit3_Effect1]", "prev_effect", 0);
 
   //second effect bitcrusher
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-  engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 0);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 1);
+  engine.setValue("[EffectRack1_EffectUnit4_Effect1]", "prev_effect", 0);
   
   NK2.lightLED(0x20)
   NK2.lightLED(0x22)
