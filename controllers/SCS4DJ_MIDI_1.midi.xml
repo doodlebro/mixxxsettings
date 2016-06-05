@@ -418,11 +418,11 @@
             <control>
                 <group>[Master]</group>
                 <key>crossfader</key>
-                <description>MIDI Learned from 183 messages.</description>
+                <description>MIDI Learned from 191 messages.</description>
                 <status>0xB1</status>
                 <midino>0x41</midino>
                 <options>
-                    <soft-takeover/>
+                    <normal/>
                 </options>
             </control>
             <control>

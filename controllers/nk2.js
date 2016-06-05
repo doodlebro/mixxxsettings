@@ -102,8 +102,8 @@ NK2.dimFX2 = function() {
 
 
 NK2.fxReInit = function() {
-  engine.setValue("[EffectRack1]", "clear", 1);
-  engine.setValue("[EffectRack1]", "clear", 0);
+  //engine.setValue("[EffectRack1]", "clear", 1);
+  //engine.setValue("[EffectRack1]", "clear", 0);
   
   //LEFT EFFECTS
   //First effect flanger
@@ -238,8 +238,8 @@ NK2.setup = function(obj) {
   for( var i = 0x00; i <= 0x7F; i++ ) {
 	    NK2.dimLED(i);
   }
-  
-  NK2.fxReInit()
+
+  NK2.fxReInit();
   
   engine.connectControl("[Sampler3]", "hotcue_1_enabled", "NK2.choiceTriggerLED")
   engine.connectControl("[Sampler3]", "hotcue_2_enabled", "NK2.choiceTriggerLED")
