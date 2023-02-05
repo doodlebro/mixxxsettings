@@ -647,8 +647,8 @@
                 <status>0x90</status>
                 <midino>0x12</midino>
                 <on>0x19</on>
-                <maximum>0.7</maximum>
-                <minimum>0.5</minimum>
+                <maximum>0.59</maximum>
+                <minimum>0.4</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -657,8 +657,8 @@
                 <midino>0x12</midino>
                 <on>0x33</on>
                 <off>0x19</off>
-                <maximum>0.8</maximum>
-                <minimum>0.7</minimum>
+                <maximum>0.74</maximum>
+                <minimum>0.6</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -667,8 +667,8 @@
                 <midino>0x12</midino>
                 <on>0x4D</on>
                 <off>0x33</off>
-                <maximum>0.9</maximum>
-                <minimum>0.8</minimum>
+                <maximum>0.84</maximum>
+                <minimum>0.75</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -677,7 +677,8 @@
                 <midino>0x12</midino>
                 <on>0x67</on>
                 <off>0x4D</off>
-                <minimum>0.9</minimum>
+                <maximum>0.99</maximum>
+                <minimum>0.85</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -685,8 +686,8 @@
                 <status>0x91</status>
                 <midino>0x12</midino>
                 <on>0x19</on>
-                <maximum>0.7</maximum>
-                <minimum>0.5</minimum>
+                <maximum>0.59</maximum>
+                <minimum>0.4</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -695,8 +696,8 @@
                 <midino>0x12</midino>
                 <on>0x33</on>
                 <off>0x19</off>
-                <maximum>0.8</maximum>
-                <minimum>0.7</minimum>
+                <maximum>0.74</maximum>
+                <minimum>0.6</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -705,8 +706,8 @@
                 <midino>0x12</midino>
                 <on>0x4D</on>
                 <off>0x33</off>
-                <maximum>0.9</maximum>
-                <minimum>0.8</minimum>
+                <maximum>0.84</maximum>
+                <minimum>0.75</minimum>
             </output>
             <output>
                 <group>[Master]</group>
@@ -715,7 +716,8 @@
                 <midino>0x12</midino>
                 <on>0x67</on>
                 <off>0x4D</off>
-                <minimum>0.9</minimum>
+                <maximum>0.99</maximum>
+                <minimum>0.85</minimum>
             </output>
             <output>
                 <group>[QuickEffectRack1_[Channel1]_Effect1]</group>

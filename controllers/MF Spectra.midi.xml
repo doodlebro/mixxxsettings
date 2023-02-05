@@ -122,6 +122,79 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x82</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x82</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x92</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x92</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x82</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x82</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x92</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x92</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>hotcue_1_activate</key>
                 <description>MIDI Learned from 2 messages.</description>
@@ -430,24 +503,17 @@
             <output>
                 <group>[Channel1]</group>
                 <key>hotcue_1_enabled</key>
-                <status>0x93</status>
-                <midino>0x44</midino>
-                <on>0x2D</on>
-                <off>0x16</off>
-                <minimum>0.01</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>hotcue_1_enabled</key>
                 <status>0x92</status>
                 <midino>0x34</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_2_enabled</key>
-                <status>0x92</status>
-                <midino>0x35</midino>
+                <key>hotcue_1_enabled</key>
+                <status>0x93</status>
+                <midino>0x44</midino>
+                <on>0x2D</on>
+                <off>0x16</off>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -461,9 +527,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_3_enabled</key>
+                <key>hotcue_2_enabled</key>
                 <status>0x92</status>
-                <midino>0x38</midino>
+                <midino>0x35</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -477,9 +543,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_4_enabled</key>
+                <key>hotcue_3_enabled</key>
                 <status>0x92</status>
-                <midino>0x39</midino>
+                <midino>0x38</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -493,9 +559,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_5_enabled</key>
+                <key>hotcue_4_enabled</key>
                 <status>0x92</status>
-                <midino>0x3C</midino>
+                <midino>0x39</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -509,9 +575,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_6_enabled</key>
+                <key>hotcue_5_enabled</key>
                 <status>0x92</status>
-                <midino>0x3D</midino>
+                <midino>0x3C</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -525,9 +591,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_7_enabled</key>
+                <key>hotcue_6_enabled</key>
                 <status>0x92</status>
-                <midino>0x40</midino>
+                <midino>0x3D</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -541,9 +607,9 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_8_enabled</key>
+                <key>hotcue_7_enabled</key>
                 <status>0x92</status>
-                <midino>0x41</midino>
+                <midino>0x40</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -556,10 +622,10 @@
                 <minimum>0.01</minimum>
             </output>
             <output>
-                <group>[Channel2]</group>
-                <key>hotcue_1_enabled</key>
+                <group>[Channel1]</group>
+                <key>hotcue_8_enabled</key>
                 <status>0x92</status>
-                <midino>0x36</midino>
+                <midino>0x41</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -573,9 +639,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_2_enabled</key>
+                <key>hotcue_1_enabled</key>
                 <status>0x92</status>
-                <midino>0x37</midino>
+                <midino>0x36</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -589,9 +655,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_3_enabled</key>
+                <key>hotcue_2_enabled</key>
                 <status>0x92</status>
-                <midino>0x3A</midino>
+                <midino>0x37</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -605,9 +671,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_4_enabled</key>
+                <key>hotcue_3_enabled</key>
                 <status>0x92</status>
-                <midino>0x3B</midino>
+                <midino>0x3A</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -621,9 +687,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_5_enabled</key>
+                <key>hotcue_4_enabled</key>
                 <status>0x92</status>
-                <midino>0x3E</midino>
+                <midino>0x3B</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -637,9 +703,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_6_enabled</key>
+                <key>hotcue_5_enabled</key>
                 <status>0x92</status>
-                <midino>0x3F</midino>
+                <midino>0x3E</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -653,9 +719,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_7_enabled</key>
+                <key>hotcue_6_enabled</key>
                 <status>0x92</status>
-                <midino>0x42</midino>
+                <midino>0x3F</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -669,9 +735,9 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>hotcue_8_enabled</key>
+                <key>hotcue_7_enabled</key>
                 <status>0x92</status>
-                <midino>0x43</midino>
+                <midino>0x42</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -681,6 +747,27 @@
                 <midino>0x53</midino>
                 <on>0x2D</on>
                 <off>0x16</off>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_8_enabled</key>
+                <status>0x92</status>
+                <midino>0x43</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x92</status>
+                <midino>0x31</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x92</status>
+                <midino>0x32</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>

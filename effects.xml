@@ -8,21 +8,21 @@
     <Name>BitCrusher</Name>
     <Description></Description>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0</SuperParameterValue>
+    <SuperParameterValue>0.133858</SuperParameterValue>
     <Effects>
      <Effect>
-      <MetaParameterValue>0</MetaParameterValue>
+      <MetaParameterValue>0.97619</MetaParameterValue>
       <Id>org.mixxx.effects.bitcrusher</Id>
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>1</Value>
+        <Value>0.0238095</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>1</LinkInversion>
         <Id>bit_depth</Id>
        </Parameter>
        <Parameter>
-        <Value>1</Value>
+        <Value>0.0238095</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>1</LinkInversion>
         <Id>downsample</Id>
@@ -30,7 +30,7 @@
       </Parameters>
      </Effect>
      <Effect>
-      <MetaParameterValue>0.140625</MetaParameterValue>
+      <MetaParameterValue>0.5</MetaParameterValue>
       <Id>org.mixxx.effects.flanger</Id>
       <Version>1.0</Version>
       <Parameters>
@@ -41,25 +41,25 @@
         <Id>speed</Id>
        </Parameter>
        <Parameter>
-        <Value>0.140625</Value>
+        <Value>0.863976</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>width</Id>
        </Parameter>
        <Parameter>
-        <Value>0.71875</Value>
+        <Value>0.851646</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>manual</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>0.25</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>regen</Id>
        </Parameter>
        <Parameter>
-        <Value>0.140625</Value>
+        <Value>0.5</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>mix</Id>
@@ -71,7 +71,7 @@
       </Parameters>
      </Effect>
      <Effect>
-      <MetaParameterValue>0.666667</MetaParameterValue>
+      <MetaParameterValue>0.547619</MetaParameterValue>
       <Id>org.mixxx.effects.reverb</Id>
       <Version>1.0</Version>
       <Parameters>
@@ -94,7 +94,7 @@
         <Id>damping</Id>
        </Parameter>
        <Parameter>
-        <Value>0.666667</Value>
+        <Value>0.547619</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>send_amount</Id>
@@ -123,25 +123,25 @@
         <Id>depth</Id>
        </Parameter>
        <Parameter>
-        <Value>0.626984</Value>
+        <Value>0.512256</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>rate</Id>
        </Parameter>
        <Parameter>
-        <Value>0.359375</Value>
+        <Value>0.5</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>width</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>0.850573</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>waveform</Id>
        </Parameter>
        <Parameter>
-        <Value>0.496063</Value>
+        <Value>0</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>phase</Id>
@@ -197,32 +197,46 @@
      </Effect>
      <Effect>
       <MetaParameterValue>0.888889</MetaParameterValue>
-      <Id>org.mixxx.effects.reverb</Id>
+      <Id>org.mixxx.effects.phaser</Id>
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0.888889</Value>
+        <Value>0.25</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>decay</Id>
+        <Id>lfo_period</Id>
        </Parameter>
        <Parameter>
-        <Value>0.4375</Value>
+        <Value>0.5</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>bandwidth</Id>
+        <Id>feedback</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>damping</Id>
+        <Id>range</Id>
+       </Parameter>
+       <Parameter>
+        <Value>0.5</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Id>stages</Id>
        </Parameter>
        <Parameter>
         <Value>0.888889</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>send_amount</Id>
+        <Id>depth</Id>
+       </Parameter>
+       <Parameter>
+        <Value>0</Value>
+        <Id>triplet</Id>
+       </Parameter>
+       <Parameter>
+        <Value>0</Value>
+        <Id>stereo</Id>
        </Parameter>
       </Parameters>
      </Effect>
@@ -236,45 +250,7 @@
     <MixMode>DRY/WET</MixMode>
     <SuperParameterValue>0.414063</SuperParameterValue>
     <Effects>
-     <Effect>
-      <MetaParameterValue>0</MetaParameterValue>
-      <Id>org.mixxx.effects.echo</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.25</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>delay_time</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.707946</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>feedback_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>pingpong_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>send_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>1</Value>
-        <Id>quantize</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <Id>triplet</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
+     <Effect/>
      <Effect/>
      <Effect/>
      <Effect/>
@@ -287,37 +263,7 @@
     <MixMode>DRY/WET</MixMode>
     <SuperParameterValue>0.857143</SuperParameterValue>
     <Effects>
-     <Effect>
-      <MetaParameterValue>0</MetaParameterValue>
-      <Id>org.mixxx.effects.reverb</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.5</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>decay</Id>
-       </Parameter>
-       <Parameter>
-        <Value>1</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>bandwidth</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>damping</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>send_amount</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
+     <Effect/>
      <Effect/>
      <Effect/>
      <Effect/>
