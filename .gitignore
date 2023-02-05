@@ -1,0 +1,5 @@
+analysis/
+broadcast_profiles/
+mixxxdb.sqlite
+mixxx.log*
+soundconfig.xml
