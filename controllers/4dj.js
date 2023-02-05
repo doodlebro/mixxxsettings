@@ -3,9 +3,10 @@ function S4DJ() {}
 //Vars to use for various things
 //############################################################################
 S4DJ.shiftStop = 0;
+S4DJ.touchShift = [false, false];
 S4DJ.loopEdit = [false, false];
 S4DJ.beatgridEdit = [false, false];
-S4DJ.touchModifier = 20;
+S4DJ.touchModifier = 16;
 S4DJ.loopRollHeld = [false, false];
 S4DJ.loopRollHoldTimer = ["null", "null"]
 S4DJ.stopIt = [false, false]
@@ -21,7 +22,7 @@ S4DJ.effectList = [{"one":"flanger","two":"moog"},{"one":"echo","two":"bitcrush"
 //defaults
 //############################################################################
 
-S4DJ.midiChannel=0x91;
+S4DJ.midiChannel=0x97;
 
 //############################################################################
 //references
@@ -54,104 +55,13 @@ S4DJ.LEDS=[{"rec":0xFF},
 //INIT & SHUTDOWN
 //############################################################################
 
-S4DJ.init = function init() { // called when the device is opened & set up
-	S4DJ.setup();
-	
-	//light fx lights properly at start
-	engine.setValue("[Samplers]", "show_samplers", 1);
-	engine.setValue("[EffectRack1]", "show", 1);
-	
-	//midi.sendShortMsg(0xB1, 0x31, 0x70);
-	
-	
-	//set samplers to always headphone cue
-	engine.setValue("[Sampler1]", "pfl", 1);
-	engine.setValue("[Sampler2]", "pfl", 1);
-	engine.setValue("[Sampler3]", "pfl", 1);
-	engine.setValue("[Sampler4]", "pfl", 1);
-	engine.setValue("[Sampler5]", "pfl", 1);
-	engine.setValue("[Sampler6]", "pfl", 1);
-	engine.setValue("[Sampler7]", "pfl", 1);
-	engine.setValue("[Sampler8]", "pfl", 1);
-	
-	/*
-	
-	engine.setValue("[EffectRack1]", "clear", 1);
-	engine.setValue("[EffectRack1]", "clear", 0);
-	
-	//LEFT EFFECTS
-	//First effect flanger
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "prev_effect", 0);
-	
-	//second effect filter
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "prev_effect", 0);
-	
-	//RIGHT EFFECTS
-	//first effect echo
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "prev_effect", 0);
-
-	
-	//second effect bitcrusher
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "prev_effect", 0);
-	*/
-	//toggle all ind effects on and off to fix LED bug
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 0);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit1_Effect2]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect1]", "enabled", 1);
-	engine.setValue("[EffectRack1_EffectUnit2_Effect2]", "enabled", 1);
-	//toggle
-	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel1]_enable", 1);
-	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel2]_enable", 1);
-	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel1]_enable", 1);
-	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel2]_enable", 1);
-	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel1]_enable", 0);
-	engine.setValue("[EffectRack1_EffectUnit1]", "group_[Channel2]_enable", 0);
-	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel1]_enable", 0);
-	engine.setValue("[EffectRack1_EffectUnit2]", "group_[Channel2]_enable", 0);
-
-	
+S4DJ.init = function init() { // called when the device is opened & set up	
 	//enable keylock
 	engine.setValue("[Channel1]", "keylock", 1);
 	engine.setValue("[Channel2]", "keylock", 1);
-	
+
+    S4DJ.dimLED(S4DJ.Transport[1]["play"])
+    S4DJ.dimLED(S4DJ.Transport[2]["play"])
 	
 	}
 
@@ -166,18 +76,7 @@ S4DJ.shutdown = function shutdown() {
 //Play, Sync, Cue
 
 	
-S4DJ.LEDonPlay1 = function() {
-	var tempState = engine.getValue("[Channel1]","play_indicator");
-	if( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x01);
-	else midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[1]["play"], 0x00);
-	
-}
 
-S4DJ.LEDonPlay2 = function() {
-	var tempState = engine.getValue("[Channel2]","play_indicator")
-	if ( tempState ) midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x01)
-	else  midi.sendShortMsg(S4DJ.midiChannel, S4DJ.Transport[2]["play"], 0x00)
-}
 
 S4DJ.groupToDeck = function(group) {
     var matches = group.match(/^\[Channel(\d+)\]$/);
@@ -271,7 +170,7 @@ S4DJ.loop = function(channel, control, value, status, group) {
 
 S4DJ.reLoop = function(channel, control, value, status, group) {
     var deck = S4DJ.groupToDeck(group);
-    if( status == 0x91 ) {
+    if( status == 0x97 ) {
 	if( S4DJ.loopEdit[deck-1] == false ) {
 	    S4DJ.loopEdit[deck-1] = true;
 	    S4DJ.lightLED(S4DJ.Loop[deck-1]["reloop"]);
@@ -294,7 +193,7 @@ S4DJ.beatgridManipulate = function(channel, control, value, status, group) {
 	posNeg = 1;
     }
     
-    if( status == 0x91 ) {
+    if( status == 0x97 ) {
 	if( S4DJ.beatgridEdit[deck-1] == true && S4DJ.beatgridEdit[deck+posNeg-1] == true ) {
 	    
 	}
@@ -325,7 +224,7 @@ S4DJ.beatgridManipulate = function(channel, control, value, status, group) {
 S4DJ.toggleScratchMode = function(channel, control, value, status, group) {
     
     var deck = S4DJ.groupToDeck(group);
-    if( status == 0x91 ) {
+    if( status == 0x97 ) {
 	if( S4DJ.scratching[deck-1] ) {
 	    S4DJ.scratching[deck-1] = false;
 	    S4DJ.dimLED(S4DJ.Transport[deck]["scratch"]);
@@ -338,25 +237,48 @@ S4DJ.toggleScratchMode = function(channel, control, value, status, group) {
     
 }
 
+S4DJ.slipOn = function(group) {
+    engine.setValue(group, 'slip_enabled', 1)
+}
+
+S4DJ.slipOff = function(group) {
+    engine.setValue(group, 'slip_enabled', 0)
+}
+
 S4DJ.wheelTouch = function (channel, control, value, status, group) {
     var deck = S4DJ.groupToDeck(group);
     /*
      * Handle starting scratch motion
      */
-    if (status == 0x91 && S4DJ.scratching[deck-1]) {
+    if (status == 0x97 && S4DJ.scratching[deck-1]) {
         var alpha = 1.0/8;
         var beta = alpha/32;
         engine.scratchEnable(deck, 280, 33+1/3, alpha, beta);
     }
     /* Handle when not scratching, sets modifier lower when finger is on platter */
-    else if(status == 0x91 && !S4DJ.scratching[deck-1]) {
+    else if(status == 0x97 && !S4DJ.scratching[deck-1]) {
 	S4DJ.touchModifier = 1;
     }
     /* Handle letting go of the wheel, reset modifier and disable scratching */
-    else if (status == 0x81) {    // If button up
+    else if (status == 0x87) {    // If button up
         engine.scratchDisable(deck);
-	S4DJ.touchModifier = 20;
+	    S4DJ.touchModifier = 16;
     }
+}
+
+S4DJ.shift = function(channel, control, value, status, group) {
+    var deck = S4DJ.groupToDeck(group);
+
+    if( status == 0x97 ) {
+        if( !S4DJ.touchShift[deck-1] ) {
+            S4DJ.touchShift[deck-1] = true;
+            S4DJ.lightLED(S4DJ.Transport[deck]["touch"]);
+        }
+        else {
+            S4DJ.touchShift[deck-1] = false;
+            S4DJ.dimLED(S4DJ.Transport[deck]["touch"]);
+        }
+        }
 }
  
 // The wheel that controls the scratching and jogging
@@ -378,6 +300,19 @@ S4DJ.jogWheel = function (channel, control, value, status, group) {
 	    engine.setValue(group, "loop_move_0.03125_backward", 1);
 	}
 	return;
+    }
+    /**
+     * If loopEdit disabled but shift enabled, jogwheel adjusts BPM grid width
+     * 
+     */
+    else if( !S4DJ.loopEdit[deck-1] && S4DJ.touchShift[deck-1] ) {
+        if( adjustedJog > 0 ) {
+            engine.setValue(group, "beats_adjust_slower", 1);
+        }
+        else {
+            engine.setValue(group, "beats_adjust_faster", 1);
+        }
+        return;
     }
   
     /**
@@ -479,35 +414,6 @@ S4DJ.record = function (channel, control, value, status, group) {
   
 }
 
-S4DJ.resetFX = function (group) {
-  S4DJ.fxOff()
-  engine.beginTimer(500, "S4DJ.fxOn()", true)
-}
-
-S4DJ.fxOff = function () {
-  unitOneEffectOne = "[EffectRack1_EffectUnit1_Effect1]"
-  unitOneEffectTwo = "[EffectRack1_EffectUnit1_Effect2]"
-  unitTwoEffectOne = "[EffectRack1_EffectUnit2_Effect1]"
-  unitTwoEffectTwo = "[EffectRack1_EffectUnit2_Effect2]"
-
-  engine.setValue(unitOneEffectOne, 'enabled', 0)
-  engine.setValue(unitOneEffectTwo, 'enabled', 0)
-  engine.setValue(unitTwoEffectOne, 'enabled', 0)
-  engine.setValue(unitTwoEffectTwo, 'enabled', 0)
-}
-
-S4DJ.fxOn = function () {
-  unitOneEffectOne = "[EffectRack1_EffectUnit1_Effect1]"
-  unitOneEffectTwo = "[EffectRack1_EffectUnit1_Effect2]"
-  unitTwoEffectOne = "[EffectRack1_EffectUnit2_Effect1]"
-  unitTwoEffectTwo = "[EffectRack1_EffectUnit2_Effect2]"
-
-  engine.setValue(unitOneEffectOne, 'enabled', 1)
-  engine.setValue(unitOneEffectTwo, 'enabled', 1)
-  engine.setValue(unitTwoEffectOne, 'enabled', 1)
-  engine.setValue(unitTwoEffectTwo, 'enabled', 1)
-}
-
 S4DJ.quantizeToggle = function(group) {
   var quantized = engine.getValue(group, 'quantize')
   if( quantized ) {
@@ -534,6 +440,51 @@ S4DJ.handleQuantize = function (value, group, control) {
     S4DJ.quantize[deck-1] = false
   }
 
+
+}
+
+S4DJ.beatJump = function(group, beats, dir) {
+    engine.setValue(group, 'beatjump_' + beats + '_' + dir, 1)
+}
+
+S4DJ.slipJump = function(channel, control, value, status, group) {
+    if( value == 0x7F ) { //if button down only
+        //Channel1	Channel2
+        if( control == 0x0A || control == 0x09 ) {
+            S4DJ.slipOn(group)
+            S4DJ.beatJump(group, '0.5', 'backward')
+        }
+        else if( control == 0x0C || control == 0x0B ) {
+            S4DJ.slipOn(group)
+            S4DJ.beatJump(group, '1', 'backward')
+        }
+        else if( control == 0x0E || control == 0x0D ) {
+            S4DJ.slipOn(group)
+            S4DJ.beatJump(group, '2', 'backward')
+        }
+        else if( control == 0x10 || control == 0x0F ) {
+            S4DJ.slipOn(group)
+            S4DJ.beatJump(group, '4', 'backward')
+        }
+    
+
+      }
+    
+      else {
+        //Channel1	Channel2
+        if( control == 0x0A || control == 0x09 ) {
+            S4DJ.slipOff(group)
+        }
+        else if( control == 0x0C || control == 0x0B ) {
+            S4DJ.slipOff(group)
+        }
+        else if( control == 0x0E || control == 0x0D ) {
+            S4DJ.slipOff(group)
+        }
+        else if( control == 0x10 || control == 0x0F ) {
+            S4DJ.slipOff(group)
+        }
+      }
 
 }
 
@@ -588,33 +539,6 @@ S4DJ.sendNoteOffN = function() {
 
 S4DJ.setSlipToggle = function () {
     S4DJ.slipToggle = 2;
-}
-
-S4DJ.setup = function(obj) {
-	/*
-	for( var i = 0x00; i <= 0x7F; i++ ) {
-	    S4DJ.dimLED(i);
-	}*/
-	
-	S4DJ.sendNoteOffN()
-
-	midi.sendShortMsg(S4DJ.midiChannel, 0x32, 0x32);
-	
-
-	//Play LEDS
-	engine.connectControl("[Channel1]", "play_indicator", "S4DJ.LEDonPlay1")
-	engine.trigger("[Channel1]", "play_indicator")
-	engine.connectControl("[Channel2]", "play_indicator", "S4DJ.LEDonPlay2")
-	engine.trigger("[Channel2]", "play_indicat7For")
-
-/*
-	//quantize LED
-	engine.connectControl("[Channel1]", "quantize", "S4DJ.handleQuantize")
-	engine.trigger("[Channel1]", "quantize")
-	engine.connectControl("[Channel2]", "quantize", "S4DJ.handleQuantize")
-	engine.trigger("[Channel2]", "quantize")
-*/
-
 }
 
 
