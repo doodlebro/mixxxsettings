@@ -59,13 +59,13 @@
         <Id>regen</Id>
        </Parameter>
        <Parameter>
-        <Value>0.706349</Value>
+        <Value>0.531746</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>mix</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <Id>triplet</Id>
        </Parameter>
       </Parameters>
@@ -94,7 +94,7 @@
         <Id>damping</Id>
        </Parameter>
        <Parameter>
-        <Value>0.706349</Value>
+        <Value>0.531746</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>send_amount</Id>
@@ -117,7 +117,7 @@
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0.375</Value>
+        <Value>0.382813</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>depth</Id>
@@ -151,7 +151,7 @@
         <Id>quantize</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <Id>triplet</Id>
        </Parameter>
       </Parameters>
@@ -180,7 +180,7 @@
         <Id>pingpong_amount</Id>
        </Parameter>
        <Parameter>
-        <Value>0.375</Value>
+        <Value>0.382813</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>send_amount</Id>
@@ -190,7 +190,7 @@
         <Id>quantize</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <Id>triplet</Id>
        </Parameter>
       </Parameters>
@@ -219,7 +219,7 @@
         <Id>range</Id>
        </Parameter>
        <Parameter>
-        <Value>0.375</Value>
+        <Value>0.382813</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>stages</Id>
@@ -231,7 +231,7 @@
         <Id>depth</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <Id>triplet</Id>
        </Parameter>
        <Parameter>
