@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset schemaVersion="1" mixxxVersion="">
+<MixxxControllerPreset mixxxVersion="" schemaVersion="1">
     <info>
         <name>MF Twister</name>
         <author>Fibronacci Sequence</author>
     </info>
     <controller id="MFT">
         <scriptfiles>
-            <file functionprefix="MFT" filename="mft.js"/>
+            <file filename="mft.js" functionprefix="MFT"/>
         </scriptfiles>
         <controls>
             <control>
@@ -85,6 +85,16 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>parameter1</key>
+                <description>MIDI Learned from 377 messages.</description>
+                <status>0xB4</status>
+                <midino>0x05</midino>
+                <options>
+                    <invert/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>meta</key>
                 <description>MIDI Learned from 104 messages.</description>
@@ -109,6 +119,16 @@
                 <key>meta</key>
                 <description>MIDI Learned from 85 messages.</description>
                 <status>0xB0</status>
+                <midino>0x09</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 445 messages.</description>
+                <status>0xB4</status>
                 <midino>0x09</midino>
                 <options>
                     <normal/>
@@ -149,6 +169,16 @@
                 <key>meta</key>
                 <description>MIDI Learned from 159 messages.</description>
                 <status>0xB0</status>
+                <midino>0x0D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 307 messages.</description>
+                <status>0xB4</status>
                 <midino>0x0D</midino>
                 <options>
                     <normal/>
@@ -330,18 +360,8 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect1]</group>
-                <key>parameter1</key>
-                <description>MIDI Learned from 24 messages.</description>
-                <status>0xB0</status>
-                <midino>0x45</midino>
-                <options>
-                    <invert/>
-                </options>
-            </control>
-            <control>
                 <group>[EffectRack1_EffectUnit1_Effect2]</group>
-                <key>parameter1</key>
+                <key>parameter4</key>
                 <status>0xB0</status>
                 <midino>0x49</midino>
                 <options>
@@ -359,7 +379,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1_Effect3]</group>
-                <key>parameter2</key>
+                <key>parameter1</key>
                 <status>0xB0</status>
                 <midino>0x4D</midino>
                 <options>

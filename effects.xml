@@ -11,18 +11,18 @@
     <SuperParameterValue>0.133858</SuperParameterValue>
     <Effects>
      <Effect>
-      <MetaParameterValue>0.97619</MetaParameterValue>
+      <MetaParameterValue>0</MetaParameterValue>
       <Id>org.mixxx.effects.bitcrusher</Id>
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0.0238095</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>1</LinkInversion>
+        <Value>1</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
         <Id>bit_depth</Id>
        </Parameter>
        <Parameter>
-        <Value>0.0238095</Value>
+        <Value>1</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>1</LinkInversion>
         <Id>downsample</Id>
@@ -35,32 +35,32 @@
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0</Value>
+        <Value>0.299598</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>speed</Id>
        </Parameter>
        <Parameter>
-        <Value>0.863976</Value>
-        <LinkType>NONE</LinkType>
+        <Value>0</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>width</Id>
        </Parameter>
        <Parameter>
-        <Value>0.851646</Value>
+        <Value>0.492188</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>manual</Id>
        </Parameter>
        <Parameter>
-        <Value>0.25</Value>
+        <Value>0</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>regen</Id>
        </Parameter>
        <Parameter>
-        <Value>0.5</Value>
-        <LinkType>LINKED</LinkType>
+        <Value>0.706349</Value>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>mix</Id>
        </Parameter>
@@ -71,31 +71,31 @@
       </Parameters>
      </Effect>
      <Effect>
-      <MetaParameterValue>0.547619</MetaParameterValue>
+      <MetaParameterValue>0</MetaParameterValue>
       <Id>org.mixxx.effects.reverb</Id>
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0.666667</Value>
+        <Value>0</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>decay</Id>
        </Parameter>
        <Parameter>
         <Value>0</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
+        <LinkInversion>1</LinkInversion>
         <Id>bandwidth</Id>
        </Parameter>
        <Parameter>
-        <Value>0.936508</Value>
+        <Value>0.25</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>damping</Id>
        </Parameter>
        <Parameter>
-        <Value>0.547619</Value>
-        <LinkType>LINKED</LinkType>
+        <Value>0.706349</Value>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>send_amount</Id>
        </Parameter>
@@ -117,8 +117,8 @@
       <Version>1.0</Version>
       <Parameters>
        <Parameter>
-        <Value>0.626984</Value>
-        <LinkType>LINKED</LinkType>
+        <Value>0.375</Value>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>depth</Id>
        </Parameter>
@@ -180,8 +180,8 @@
         <Id>pingpong_amount</Id>
        </Parameter>
        <Parameter>
-        <Value>0.476563</Value>
-        <LinkType>LINKED</LinkType>
+        <Value>0.375</Value>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>send_amount</Id>
        </Parameter>
@@ -219,14 +219,14 @@
         <Id>range</Id>
        </Parameter>
        <Parameter>
-        <Value>0.5</Value>
+        <Value>0.375</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>stages</Id>
        </Parameter>
        <Parameter>
         <Value>0.888889</Value>
-        <LinkType>LINKED</LinkType>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Id>depth</Id>
        </Parameter>
@@ -235,7 +235,7 @@
         <Id>triplet</Id>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
+        <Value>1</Value>
         <Id>stereo</Id>
        </Parameter>
       </Parameters>
@@ -248,7 +248,7 @@
     <Name>Echo</Name>
     <Description></Description>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0.414063</SuperParameterValue>
+    <SuperParameterValue>0.429811</SuperParameterValue>
     <Effects>
      <Effect/>
      <Effect/>
