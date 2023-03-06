@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="" schemaVersion="1">
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="">
     <info>
         <name>mixtour</name>
     </info>
     <controller id="MIXTOUR">
         <scriptfiles>
-            <file filename="mixtour.js" functionprefix="MT"/>
+            <file functionprefix="MT" filename="mixtour.js"/>
         </scriptfiles>
         <controls>
             <control>
@@ -39,16 +39,6 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x90</status>
-                <midino>0x01</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>
                 <description>MIDI Learned from 2 messages.</description>
@@ -60,8 +50,17 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
+                <key>group_[Channel1]_enable</key>
                 <description>MIDI Learned from 2 messages.</description>
+                <status>0x90</status>
+                <midino>0x01</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
                 <status>0x91</status>
                 <midino>0x01</midino>
                 <options>
@@ -69,8 +68,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel2]_enable</key>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x91</status>
                 <midino>0x01</midino>
                 <options>
@@ -608,6 +608,13 @@
                 <key>group_[Channel2]_enable</key>
                 <status>0x91</status>
                 <midino>0x01</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x90</status>
+                <midino>0x08</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>

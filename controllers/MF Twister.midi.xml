@@ -1,14 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="" schemaVersion="1">
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="">
     <info>
         <name>MF Twister</name>
         <author>Fibronacci Sequence</author>
     </info>
     <controller id="MFT">
         <scriptfiles>
-            <file filename="mft.js" functionprefix="MFT"/>
+            <file functionprefix="MT" filename="mft.js"/>
         </scriptfiles>
         <controls>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>parameter1</key>
+                <description>MIDI Learned from 513 messages.</description>
+                <status>0xB0</status>
+                <midino>0x00</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <control>
                 <group>[EffectRack1_EffectUnit1_Effect3]</group>
                 <key>parameter4</key>
@@ -39,7 +49,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2_Effect3]</group>
-                <key>parameter4</key>
+                <key>parameter5</key>
                 <status>0xB0</status>
                 <midino>0x02</midino>
                 <options>
@@ -75,6 +85,61 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>parameter1</key>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>parameter1</key>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <invert/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>parameter1</key>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <invert/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>parameter2</key>
+                <description>MIDI Learned from 443 messages.</description>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.loopRollSet</key>
+                <status>0xB0</status>
+                <midino>0x04</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatlooproll_activate</key>
+                <status>0xB1</status>
+                <midino>0x04</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit1_Effect1]</group>
                 <key>meta</key>
                 <description>MIDI Learned from 81 messages.</description>
@@ -105,10 +170,47 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
-                <key>parameter3</key>
-                <description>MIDI Learned from 97 messages.</description>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>parameter4</key>
+                <description>MIDI Learned from 392 messages.</description>
+                <status>0xB4</status>
+                <midino>0x06</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.loopRollSet</key>
                 <status>0xB0</status>
+                <midino>0x07</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatlooproll_activate</key>
+                <status>0xB1</status>
+                <midino>0x07</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.loopSet</key>
+                <status>0xB0</status>
+                <midino>0x08</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatloop_activate</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0xB1</status>
                 <midino>0x08</midino>
                 <options>
                     <normal/>
@@ -147,21 +249,48 @@
             <control>
                 <group>[EffectRack1_EffectUnit2_Effect2]</group>
                 <key>parameter3</key>
-                <description>MIDI Learned from 47 messages.</description>
+                <description>MIDI Learned from 624 messages.</description>
+                <status>0xB4</status>
+                <midino>0x0A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.loopSet</key>
                 <status>0xB0</status>
+                <midino>0x0B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatloop_activate</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0xB1</status>
                 <midino>0x0B</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
-                <key>parameter4</key>
-                <description>MIDI Learned from 231 messages.</description>
+                <group>[Channel1]</group>
+                <key>MFT.beatjumpMove</key>
                 <status>0xB0</status>
                 <midino>0x0C</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.beatjumpSet</key>
+                <status>0xB4</status>
+                <midino>0x0C</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -195,166 +324,29 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
-                <key>parameter1</key>
-                <status>0xB0</status>
-                <midino>0x0F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[EffectRack1_EffectUnit2_Effect3]</group>
-                <key>parameter2</key>
+                <key>parameter3</key>
+                <description>MIDI Learned from 444 messages.</description>
+                <status>0xB4</status>
+                <midino>0x0E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.beatjumpMove</key>
                 <status>0xB0</status>
                 <midino>0x0F</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>parameter1</key>
-                <status>0xB0</status>
+                <group>[Channel2]</group>
+                <key>MFT.beatjumpSet</key>
+                <status>0xB4</status>
                 <midino>0x0F</midino>
-                <options>
-                    <invert/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>parameter1</key>
-                <status>0xB0</status>
-                <midino>0x0F</midino>
-                <options>
-                    <invert/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.loopRollSet</key>
-                <status>0xB0</status>
-                <midino>0x10</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>beatlooproll_activate</key>
-                <status>0xB1</status>
-                <midino>0x10</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.loopRollSet</key>
-                <status>0xB0</status>
-                <midino>0x13</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>beatlooproll_activate</key>
-                <status>0xB1</status>
-                <midino>0x13</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.loopJumpSet</key>
-                <status>0xB0</status>
-                <midino>0x14</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.loopJumpSet</key>
-                <status>0xB0</status>
-                <midino>0x17</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.loopMove</key>
-                <status>0xB0</status>
-                <midino>0x18</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>reloop_toggle</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0xB1</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.loopMove</key>
-                <status>0xB0</status>
-                <midino>0x1B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>reloop_toggle</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0xB1</status>
-                <midino>0x1B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.loopSet</key>
-                <status>0xB0</status>
-                <midino>0x1C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.loopToggle</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0xB1</status>
-                <midino>0x1C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.loopSet</key>
-                <status>0xB0</status>
-                <midino>0x1F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.loopToggle</key>
-                <status>0xB1</status>
-                <midino>0x1F</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -400,9 +392,9 @@
             <output>
                 <group>[Channel1]</group>
                 <key>loop_enabled</key>
-                <status>0xB1</status>
-                <midino>0x1C</midino>
-                <on>0x50</on>
+                <status>0xB2</status>
+                <midino>0x14</midino>
+                <on>0x0B</on>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -416,17 +408,9 @@
             <output>
                 <group>[Channel1]</group>
                 <key>loop_enabled</key>
-                <status>0xB2</status>
-                <midino>0x14</midino>
-                <on>0x0B</on>
-                <minimum>0.01</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>slip_enabled</key>
-                <status>0xB2</status>
-                <midino>0x10</midino>
-                <on>0x0E</on>
+                <status>0xB1</status>
+                <midino>0x1C</midino>
+                <on>0x50</on>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -438,11 +422,19 @@
                 <minimum>0.01</minimum>
             </output>
             <output>
+                <group>[Channel1]</group>
+                <key>slip_enabled</key>
+                <status>0xB2</status>
+                <midino>0x10</midino>
+                <on>0x0E</on>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
                 <group>[Channel2]</group>
                 <key>loop_enabled</key>
-                <status>0xB1</status>
-                <midino>0x1F</midino>
-                <on>0x50</on>
+                <status>0xB2</status>
+                <midino>0x17</midino>
+                <on>0x0B</on>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -456,17 +448,9 @@
             <output>
                 <group>[Channel2]</group>
                 <key>loop_enabled</key>
-                <status>0xB2</status>
-                <midino>0x17</midino>
-                <on>0x0B</on>
-                <minimum>0.01</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>slip_enabled</key>
-                <status>0xB2</status>
-                <midino>0x13</midino>
-                <on>0x0E</on>
+                <status>0xB1</status>
+                <midino>0x1F</midino>
+                <on>0x50</on>
                 <minimum>0.01</minimum>
             </output>
             <output>
@@ -474,6 +458,14 @@
                 <key>slip_enabled</key>
                 <status>0xB2</status>
                 <midino>0x1F</midino>
+                <on>0x0E</on>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>slip_enabled</key>
+                <status>0xB2</status>
+                <midino>0x13</midino>
                 <on>0x0E</on>
                 <minimum>0.01</minimum>
             </output>

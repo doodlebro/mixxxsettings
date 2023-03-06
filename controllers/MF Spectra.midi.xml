@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="" schemaVersion="1">
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="">
     <info>
         <name>MF Spectra</name>
         <author>Fibronacci Sequence</author>
@@ -41,24 +41,6 @@
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0x92</status>
                 <midino>0x26</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>button_parameter1</key>
-                <status>0x92</status>
-                <midino>0x27</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>button_parameter1</key>
-                <status>0x92</status>
-                <midino>0x27</midino>
                 <options>
                     <normal/>
                 </options>
@@ -106,6 +88,33 @@
                 <key>button_parameter2</key>
                 <status>0x92</status>
                 <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>button_parameter2</key>
+                <status>0x92</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>button_parameter2</key>
+                <status>0x92</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>button_parameter1</key>
+                <status>0x92</status>
+                <midino>0x2C</midino>
                 <options>
                     <normal/>
                 </options>
@@ -160,7 +169,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2_Effect2]</group>
-                <key>button_parameter2</key>
+                <key>button_parameter1</key>
                 <status>0x92</status>
                 <midino>0x2F</midino>
                 <options>
@@ -169,15 +178,6 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>button_parameter2</key>
-                <status>0x92</status>
-                <midino>0x2F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect3]</group>
                 <key>button_parameter1</key>
                 <status>0x92</status>
                 <midino>0x2F</midino>
@@ -589,6 +589,13 @@
                 <minimum>0.01</minimum>
             </output>
             <output>
+                <group>[Channel1]</group>
+                <key>slip_enabled</key>
+                <status>0x92</status>
+                <midino>0x24</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
                 <group>[Channel2]</group>
                 <key>hotcue_1_enabled</key>
                 <status>0x93</status>
@@ -661,6 +668,13 @@
                 <minimum>0.01</minimum>
             </output>
             <output>
+                <group>[Channel2]</group>
+                <key>slip_enabled</key>
+                <status>0x92</status>
+                <midino>0x27</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>
                 <status>0x92</status>
@@ -720,7 +734,7 @@
                 <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>button_parameter1</key>
                 <status>0x92</status>
-                <midino>0x27</midino>
+                <midino>0x2F</midino>
                 <minimum>0.01</minimum>
             </output>
             <output>

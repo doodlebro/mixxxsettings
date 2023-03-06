@@ -3,7 +3,7 @@
  <sampler group="[Sampler1]"/>
  <sampler group="[Sampler2]"/>
  <sampler group="[Sampler3]"/>
- <sampler group="[Sampler4]" location="//10.2.2.5/music/DJ/Chop/Stems/Demucsgui/02 - Bugginâ€™ Out.flac_separated/vocals.wav"/>
+ <sampler group="[Sampler4]"/>
  <sampler group="[Sampler5]"/>
  <sampler group="[Sampler6]"/>
  <sampler group="[Sampler7]"/>

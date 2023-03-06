@@ -1,31 +1,33 @@
-function MT() {}
+function MFT() {}
 
 
 
-MT.SystemMidi = 0x04
-MT.SwitchMidi= 0x01
-MT.EncoderMidi = 0x00
+MFT.SystemMidi = 0x04
+MFT.SwitchMidi= 0x01
+MFT.EncoderMidi = 0x00
 
 
 
 // State Vars
 
-var loopEditBuffer = [8,8]
+var loopEditBuffer = [0,0]
+var bjBuffer = [0,0]
+var blBuffer = [0,0]
 
 //############################################################################
 //INIT & SHUTDOWN
 //############################################################################
 
-MT.init = function init() { // called when the device is opened & set up	
+MFT.init = function init() { // called when the device is opened & set up	
     print("Initialized MF Twister")
 }
 
-MT.shutdown = function shutdown() {
+MFT.shutdown = function shutdown() {
 
 }
 
 // Helper functions
-MT.groupToDeck = function(group) {
+MFT.groupToDeck = function(group) {
     var matches = group.match(/^\[Channel(\d+)\]$/);
     if (matches == null) {
         return -1;
@@ -34,8 +36,9 @@ MT.groupToDeck = function(group) {
     }
 }
 
-MT.loopSet = function(channel, control, value, status, group) {
-    var deck = MT.groupToDeck(group)
+// Value based set functions, hardcodes midi values along the encoder to beatloop sizes
+MFT.loopSet = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
 
     if( value >= 0x00 && value < 0x01 ) {
         engine.setValue(group,"beatloop_size",1);
@@ -72,8 +75,8 @@ MT.loopSet = function(channel, control, value, status, group) {
     }
 }
 
-MT.loopJumpSet = function(channel, control, value, status, group) {
-    var deck = MT.groupToDeck(group)
+MFT.jumpSet = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
 
     if( value >= 0x00 && value < 0x01 ) {
         engine.setValue(group,"beatjump_size",0.03125);
@@ -110,8 +113,8 @@ MT.loopJumpSet = function(channel, control, value, status, group) {
     }
 }
 
-MT.loopRollSet = function(channel, control, value, status, group) {
-    var deck = MT.groupToDeck(group)
+MFT.loopRollSet = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
 
     var loopEnabled = engine.getValue(group,"loop_enabled")
     var slipEnabled = engine.getValue(group,"slip_enabled")
@@ -153,27 +156,115 @@ MT.loopRollSet = function(channel, control, value, status, group) {
     }
 }
 
-MT.loopToggle = function(channel, control, value, status, group) {
-    var deck = MT.groupToDeck(group)
+// End value based set functions
+
+MFT.loopToggle = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
 
     if( value == 0x7F ) engine.setValue(group,"beatloop_activate",1);
 }
 
-MT.loopMove = function(channel, control, value, status, group) {
-    var deck = MT.groupToDeck(group)
+// Relative move/set functions
+MFT.loopSetRel = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
+
+    var blSize = engine.getValue(group, "beatloop_size")
+
+    if( value == 0x41 ) {
+        blBuffer[deck-1]++;
+        if( blBuffer[deck-1] >= 10 ) {
+            newSize = blSize * 2
+            engine.setValue(group,"beatloop_size",newSize);
+            blBuffer[deck-1] = 0;
+        }
+
+    }
+    else if( value == 0x3F ) {
+        blBuffer[deck-1]--;
+        if( blBuffer[deck-1] <= -10 ) {
+            newSize = blSize / 2.0
+            engine.setValue(group,"beatloop_size",newSize);
+            blBuffer[deck-1] = 0;
+        }
+    }
+}
+
+MFT.loopRollRel = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
+
+    var loopEnabled = engine.getValue(group,"loop_enabled")
+    var slipEnabled = engine.getValue(group,"slip_enabled")
+
+    var blSize = engine.getValue(group, "beatloop_size")
+
+    if( value == 0x41 ) {
+        blBuffer[deck-1]++;
+        if( blBuffer[deck-1] >= 10 ) {
+            if( !loopEnabled || slipEnabled ) {
+                newSize = blSize * 2
+                engine.setValue(group,"beatloop_size",newSize);
+            }
+            blBuffer[deck-1] = 0;
+        }
+
+    }
+    else if( value == 0x3F ) {
+        blBuffer[deck-1]--;
+        if( blBuffer[deck-1] <= -10 ) {
+            if( !loopEnabled || slipEnabled ) {
+                newSize = blSize / 2.0
+                engine.setValue(group,"beatloop_size",newSize);
+            }
+            blBuffer[deck-1] = 0;
+        }
+    }
+}
+
+MFT.beatjumpMove = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
 
     var loopEnabled = engine.getValue(group,"loop_enabled")
 
-    if( value == 0x41 && loopEditBuffer[deck-1] == 0) {
-        engine.setValue(group,"beatjump_forward",1);
-        loopEditBuffer[deck-1] = 8;
+    if( value == 0x41 ) {
+        loopEditBuffer[deck-1]++;
+        if( loopEditBuffer[deck-1] >= 16 ) {
+            engine.setValue(group,"beatjump_forward",1);
+            engine.setValue(group,"beatjump_forward",0);
+            loopEditBuffer[deck-1] = 0;
+        }
 
     }
-    else if( value == 0x3F && loopEditBuffer[deck-1] == 0) {
-        engine.setValue(group,"beatjump_backward",1);
-        loopEditBuffer[deck-1] = 8;
+    else if( value == 0x3F ) {
+        loopEditBuffer[deck-1]--;
+        if( loopEditBuffer[deck-1] <= -16 ) {
+            engine.setValue(group,"beatjump_backward",1);
+            engine.setValue(group,"beatjump_backward",0);
+            loopEditBuffer[deck-1] = 0;
+        }
     }
-    else loopEditBuffer[deck-1]--;
+}
 
+MFT.beatjumpSet = function(channel, control, value, status, group) {
+    var deck = MFT.groupToDeck(group)
+
+    var bjSize = engine.getValue(group, "beatjump_size")
+
+    if( value == 0x41 ) {
+        bjBuffer[deck-1]++;
+        if( bjBuffer[deck-1] >= 10 ) {
+            newSize = bjSize * 2
+            engine.setValue(group,"beatjump_size",newSize);
+            bjBuffer[deck-1] = 0;
+        }
+
+    }
+    else if( value == 0x3F ) {
+        bjBuffer[deck-1]--;
+        if( bjBuffer[deck-1] <= -10 ) {
+            newSize = bjSize / 2.0
+            engine.setValue(group,"beatjump_size",newSize);
+            bjBuffer[deck-1] = 0;
+        }
+    }
 }
 
