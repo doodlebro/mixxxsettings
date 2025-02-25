@@ -1,103 +1,107 @@
 <?xml version='1.0' encoding='utf-8'?>
 <MixxxEffects schemaVersion="0">
  <Rack>
-  <Group>[EffectRack1]</Group>
   <Chains>
    <EffectChain>
-    <Id>org.mixxx.effectchain.bitcrusher</Id>
-    <Name>BitCrusher</Name>
-    <Description></Description>
+    <Name>Smooth Growl</Name>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0.133858</SuperParameterValue>
+    <SuperParameterValue>0.5</SuperParameterValue>
     <Effects>
      <Effect>
-      <MetaParameterValue>0</MetaParameterValue>
+      <MetaParameterValue>0.377297</MetaParameterValue>
       <Id>org.mixxx.effects.bitcrusher</Id>
-      <Version>1.0</Version>
+      <BackendType>Built-In</BackendType>
       <Parameters>
        <Parameter>
-        <Value>1</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>1</LinkInversion>
         <Id>bit_depth</Id>
+        <Value>6.42609</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
+        <LinkInversion>1</LinkInversion>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Value>1</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>1</LinkInversion>
         <Id>downsample</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
-     <Effect>
-      <MetaParameterValue>0.078125</MetaParameterValue>
-      <Id>org.mixxx.effects.flanger</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.595238</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>speed</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.84375</Value>
-        <LinkType>LINKED_LEFT_RIGHT</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>width</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.666667</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>manual</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>regen</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.777778</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>mix</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <Id>triplet</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
-     <Effect>
-      <MetaParameterValue>0.944444</MetaParameterValue>
-      <Id>org.mixxx.effects.reverb</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.777778</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>decay</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.111111</Value>
+        <Value>0.329826</Value>
         <LinkType>LINKED_LEFT_RIGHT</LinkType>
         <LinkInversion>1</LinkInversion>
-        <Id>bandwidth</Id>
+        <Hidden>0</Hidden>
+       </Parameter>
+      </Parameters>
+     </Effect>
+     <Effect>
+      <MetaParameterValue>0.377297</MetaParameterValue>
+      <Id>org.mixxx.effects.moogladder4filter</Id>
+      <BackendType>Built-In</BackendType>
+      <Parameters>
+       <Parameter>
+        <Id>lpf</Id>
+        <Value>0.15828</Value>
+        <LinkType>LINKED_LEFT</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Value>0.801587</Value>
+        <Id>resonance</Id>
+        <Value>2.20421</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>damping</Id>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Value>0.777778</Value>
+        <Id>hpf</Id>
+        <Value>0.0003</Value>
+        <LinkType>LINKED_RIGHT</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+      </Parameters>
+     </Effect>
+     <Effect>
+      <MetaParameterValue>0.377297</MetaParameterValue>
+      <Id>org.mixxx.effects.echo</Id>
+      <BackendType>Built-In</BackendType>
+      <Parameters>
+       <Parameter>
+        <Id>delay_time</Id>
+        <Value>0.996914</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>feedback_amount</Id>
+        <Value>0.707946</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>pingpong_amount</Id>
+        <Value>0.169252</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
         <Id>send_amount</Id>
+        <Value>0.245407</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>quantize</Id>
+        <Value>1</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>triplet</Id>
+        <Value>0</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
        </Parameter>
       </Parameters>
      </Effect>
@@ -105,179 +109,80 @@
     </Effects>
    </EffectChain>
    <EffectChain>
-    <Id>org.mixxx.effectchain.autopan</Id>
-    <Name>AutoPan</Name>
-    <Description></Description>
+    <Name>Trechophaser</Name>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0</SuperParameterValue>
+    <SuperParameterValue>0.5</SuperParameterValue>
     <Effects>
      <Effect>
-      <MetaParameterValue>0.642857</MetaParameterValue>
-      <Id>org.mixxx.effects.tremolo</Id>
-      <Version>1.0</Version>
+      <MetaParameterValue>0.295538</MetaParameterValue>
+      <Id>org.mixxx.effects.glitch</Id>
+      <BackendType>Built-In</BackendType>
       <Parameters>
        <Parameter>
-        <Value>0.793651</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>depth</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.595238</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>rate</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.4375</Value>
-        <LinkType>LINKED_LEFT_RIGHT</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>width</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.289063</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>waveform</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.28125</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>phase</Id>
-       </Parameter>
-       <Parameter>
-        <Value>1</Value>
-        <Id>quantize</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <Id>triplet</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
-     <Effect>
-      <MetaParameterValue>0.563492</MetaParameterValue>
-      <Id>org.mixxx.effects.echo</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.398438</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
         <Id>delay_time</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.563492</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>feedback_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.359375</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>pingpong_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.793651</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>send_amount</Id>
-       </Parameter>
-       <Parameter>
-        <Value>1</Value>
-        <Id>quantize</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0</Value>
-        <Id>triplet</Id>
-       </Parameter>
-      </Parameters>
-     </Effect>
-     <Effect>
-      <MetaParameterValue>0.28125</MetaParameterValue>
-      <Id>org.mixxx.effects.phaser</Id>
-      <Version>1.0</Version>
-      <Parameters>
-       <Parameter>
-        <Value>0.398438</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>lfo_period</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.445313</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>feedback</Id>
-       </Parameter>
-       <Parameter>
         <Value>0.5</Value>
-        <LinkType>LINKED</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>range</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.4375</Value>
-        <LinkType>LINKED_LEFT_RIGHT</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Id>stages</Id>
-       </Parameter>
-       <Parameter>
-        <Value>0.793651</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>depth</Id>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Value>0</Value>
-        <Id>triplet</Id>
-       </Parameter>
-       <Parameter>
+        <Id>quantize</Id>
         <Value>1</Value>
-        <Id>stereo</Id>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>triplet</Id>
+        <Value>0</Value>
+        <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
        </Parameter>
       </Parameters>
      </Effect>
      <Effect/>
+     <Effect/>
+     <Effect/>
     </Effects>
    </EffectChain>
    <EffectChain>
-    <Id>org.mixxx.effectchain.echo</Id>
     <Name>Echo</Name>
-    <Description></Description>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0.622047</SuperParameterValue>
+    <SuperParameterValue>0.5</SuperParameterValue>
     <Effects>
      <Effect>
       <MetaParameterValue>0.622047</MetaParameterValue>
       <Id>org.mixxx.effects.reverb</Id>
-      <Version>1.0</Version>
+      <BackendType>Built-In</BackendType>
       <Parameters>
        <Parameter>
+        <Id>decay</Id>
         <Value>0.5</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>decay</Id>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
+        <Id>bandwidth</Id>
         <Value>1</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>bandwidth</Id>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
+        <Id>damping</Id>
         <Value>0</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>damping</Id>
+        <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
+        <Id>send_amount</Id>
         <Value>0.622047</Value>
         <LinkType>LINKED</LinkType>
         <LinkInversion>0</LinkInversion>
-        <Id>send_amount</Id>
+        <Hidden>0</Hidden>
        </Parameter>
       </Parameters>
      </Effect>
@@ -287,11 +192,9 @@
     </Effects>
    </EffectChain>
    <EffectChain>
-    <Id>org.mixxx.effectchain.reverb</Id>
     <Name>Reverb</Name>
-    <Description></Description>
     <MixMode>DRY/WET</MixMode>
-    <SuperParameterValue>0.857143</SuperParameterValue>
+    <SuperParameterValue>0.5</SuperParameterValue>
     <Effects>
      <Effect/>
      <Effect/>
@@ -301,4 +204,265 @@
    </EffectChain>
   </Chains>
  </Rack>
+ <MainEQ>
+  <EffectChain>
+   <Name></Name>
+   <MixMode>DRY/WET</MixMode>
+   <SuperParameterValue>0.5</SuperParameterValue>
+   <Effects>
+    <Effect/>
+   </Effects>
+  </EffectChain>
+ </MainEQ>
+ <ChainPresetList>
+  <ChainPresetName>Side Reverb HP</ChainPresetName>
+  <ChainPresetName>Echoverb HP</ChainPresetName>
+  <ChainPresetName>Filter Echo</ChainPresetName>
+  <ChainPresetName>Smooth Growl</ChainPresetName>
+  <ChainPresetName>Bitflanger</ChainPresetName>
+  <ChainPresetName>Trechophaser</ChainPresetName>
+ </ChainPresetList>
+ <QuickEffectPresetList>
+  <ChainPresetName>Side Reverb HP</ChainPresetName>
+  <ChainPresetName>Echoverb HP</ChainPresetName>
+  <ChainPresetName>Filter Echo</ChainPresetName>
+  <ChainPresetName>Smooth Growl</ChainPresetName>
+  <ChainPresetName>Bitflanger</ChainPresetName>
+  <ChainPresetName>Trechophaser</ChainPresetName>
+  <ChainPresetName>Autopan</ChainPresetName>
+  <ChainPresetName>Balance</ChainPresetName>
+  <ChainPresetName>Bitcrusher</ChainPresetName>
+  <ChainPresetName>Distortion</ChainPresetName>
+  <ChainPresetName>Echo</ChainPresetName>
+  <ChainPresetName>Filter</ChainPresetName>
+  <ChainPresetName>Flanger</ChainPresetName>
+  <ChainPresetName>Loudness</ChainPresetName>
+  <ChainPresetName>Moog Filter</ChainPresetName>
+  <ChainPresetName>Phaser</ChainPresetName>
+  <ChainPresetName>Pitch Shift</ChainPresetName>
+  <ChainPresetName>Reverb</ChainPresetName>
+  <ChainPresetName>Tremolo</ChainPresetName>
+ </QuickEffectPresetList>
+ <EqualizerEffects>
+  <Id group="[Channel1]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
+  <Id group="[Channel4]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
+  <Id group="[Channel2]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
+  <Id group="[Channel3]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
+ </EqualizerEffects>
+ <QuickEffectChains>
+  <ChainPresetName group="[Channel1]">Filter Echo</ChainPresetName>
+  <ChainPresetName group="[Channel4]">Smooth Growl</ChainPresetName>
+  <ChainPresetName group="[Channel2]">Smooth Growl</ChainPresetName>
+  <ChainPresetName group="[Channel3]">Smooth Growl</ChainPresetName>
+ </QuickEffectChains>
+ <QuickStemEffectPresetList>
+  <ChainPresetName group="[Channel1_Stem1]">Moog Filter</ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem2]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem4]">Filter Echo</ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem2]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem2]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem3]">Reverb</ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem3]"></ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem3]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem3]"></ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem2]">Reverb</ChainPresetName>
+ </QuickStemEffectPresetList>
+ <VisibleEffects>
+  <Effect>
+   <Id>org.mixxx.effects.tremolo</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.reverb</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.phaser</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.moogladder4filter</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.glitch</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.flanger</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.filter</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.echo</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.biquadfullkilleq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.bitcrusher</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.autopan</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+ </VisibleEffects>
+ <HiddenEffects>
+  <Effect>
+   <Id>org.mixxx.effects.balance</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.bessel4lvmixeq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.bessel8lvmixeq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.threebandbiquadeq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.compressor</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.distortion</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.graphiceq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.loudnesscontour</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.linkwitzrileyeq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.metronome</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.parametriceq</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.pitchshift</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>org.mixxx.effects.whitenoise</Id>
+   <BackendType>Built-In</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUBandpass~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUDelay~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUDistortion~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUDynamicsProcessor~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUFilter~2.1.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUGraphicEQ~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUHighShelfFilter~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUHipass~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AULowpass~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AULowShelfFilter~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUMatrixReverb~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUMultibandCompressor~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUNBandEQ~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUNetSend~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUNewPitch~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUParametricEQ~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUPeakLimiter~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUPitch~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUReverb2~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AURogerBeep~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AURoundTripAAC~2.0.3</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUSampleDelay~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+  <Effect>
+   <Id>Apple~AUSoundIsolation~1.6.0</Id>
+   <BackendType>AudioUnit</BackendType>
+  </Effect>
+ </HiddenEffects>
 </MixxxEffects>
