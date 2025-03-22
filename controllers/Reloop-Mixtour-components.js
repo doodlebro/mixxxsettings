@@ -3,6 +3,8 @@ var Mixtour = {};
 // Global state vars
 Mixtour.shifted = false;
 Mixtour.loopShifted = [false, false]
+Mixtour.fxShifted = [false, false]
+Mixtour.backShifted = false
 
 Mixtour.padColors = {
     mix: 127,
@@ -17,10 +19,14 @@ Mixtour.init = function () {
     Mixtour.leftDeck = new Mixtour.Deck([1], 0);
     Mixtour.rightDeck = new Mixtour.Deck([2], 1);
     Mixtour.global = new Mixtour.Global();
+
+    // init fxSelect buttonms
+    midi.sendShortMsg(0x90, 0x01, 1)
+    midi.sendShortMsg(0x91, 0x01, 1)
 };
 
 Mixtour.shutdown = function () {
-    // TODO - dim all LEDs
+    // TODO - dim all LEDs?
 };
 
 Mixtour.Deck = function (deckNumbers, midiChannel) {
@@ -37,21 +43,14 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
     this.cueButton = new components.CueButton({
         midi: [0x90 + midiChannel, 0x0B],
         on: Mixtour.padColors.orange,
-        shiftOffset: 63,
-        sendShifted: true,
-        shift: function() {
-            this.type = 1,
-            this.inKey = "quantize",
-            this.outKey = "quantize",
-            this.on = Mixtour.padColors.green
-        },
-        unshift: function() {
-            this.type = 0,
-            this.inKey = "cue_default",
-            this.outKey = "cue_indicator",
-            this.on = Mixtour.padColors.orange
-        }
+        type: 0
     });
+    this.quantizeButton = new components.Button({ // Should be part of cueButton, but shift interaction was strange so this works
+        midi: [0x90 + midiChannel, 0x4A],
+        on: Mixtour.padColors.green,
+        key: "quantize",
+        type: 1
+    })
     this.syncButton = new components.SyncButton({
         midi: [0x90 + midiChannel, 0x0A],
         on: Mixtour.padColors.orange,
@@ -65,7 +64,7 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
             this.input = components.SyncButton.prototype.input;
         }
     });
-    this.loopButton = new components.Button({ // TODO: convert to hold like sync and reloop_toggle when held
+    this.loopButton = new components.Button({
         midi: [0x90 + midiChannel, 0x09],
         type: 0,
         inKey: "beatloop_activate",
@@ -90,20 +89,11 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
         },
         shiftOffset: 63,
         sendShifted: true});
+
     this.pflButton = new components.Button({
         midi: [0x90 + midiChannel, 0x03],
         key: 'pfl',
-        type: 1,
-        sendShifted: true,
-        shift: function() { //TODO: move this shift function to a global dedicated button
-            this.lastgroup = this.group
-            this.group = "[PreviewDeck1]"
-            this.inKey = "LoadSelectedTrack";
-        },
-        unshift: function() {
-            this.group = this.lastgroup
-            this.inKey = "pfl";
-        }
+        type: 2
     });
 
     this.hotcueButtons = [];
@@ -119,8 +109,7 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
 
     this.volume = new components.Pot({
         midi: [0xB0 + midiChannel, 0x05],
-        inKey: 'volume',
-        relative: true
+        inKey: 'volume'
     });
 
     this.pregain = new components.Pot({
@@ -139,23 +128,48 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
         });
     }
 
-    // filter/fx - a lil janky
-    this.filterFXKnob = new components.Pot({
+    this.filterFXKnob = new components.Pot({ // Activates FX when not centered
         midi: [0xB0 + midiChannel, 0x04],
-        raw_channel: this.currentDeck,
-        group: '[QuickEffectRack1_' + this.raw_channel + ']',
-        inKey: 'super1',
+        group: '[QuickEffectRack1_' + this.currentDeck + ']',
+        input: function(channel, control, value) {
+            engine.setParameter(this.group, "super1", value / 0x7F)
+            if (value < 0x40) {
+                engine.setParameter(this.group, "enabled", 1)
+            }
+
+            else if (value == 0x40) {
+                engine.setParameter(this.group, "enabled", 0) //might want to check if load is held here
+            }
+
+            else if (value > 0x40) {
+                engine.setParameter(this.group, "enabled", 1)
+            }
+        },
 
         shift: function() {
-            this.group = '[QuickEffectRack1_' + this.raw_channel + '_Effect1]',
-            this.inKey = "parameter2"
+            this.input = function(channel, control, value) {
+                groupe = this.group.slice(0, -1) + '_Effect1]'
+                engine.setParameter(groupe, "parameter2", value / 0x7F)
+            }
         },
         unshift: function() {
-            this.group = '[QuickEffectRack1_' + this.raw_channel + ']',
-            this.inKey = "super1"
+            this.input = function(channel, control, value) {
+                engine.setParameter(this.group, "super1", value / 0x7F)
+                if (value < 0x40) {
+                    engine.setParameter(this.group, "enabled", 1)
+                }
+    
+                else if (value == 0x40) {
+                    engine.setParameter(this.group, "enabled", 0) //might want to check if load is held here
+                }
+    
+                else if (value > 0x40) {
+                    engine.setParameter(this.group, "enabled", 1)
+                }
+            }
         }
 
-    });
+    })
 
     this.filterFXLED = new components.Component({
         midi: [0x90 + midiChannel, 0x00],
@@ -170,26 +184,25 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
     // fx button - we use this to select quick FX
     this.fxButton = new components.Button({
         midi: [0x90 + midiChannel, 0x01],
-        group: '[QuickEffectRack1_' + this.currentDeck + ']',
-        inKey: "next_chain_preset",
-        outKey: "loaded_chain_preset",
-        sendShifted: true,
-        shift: function() {
-            this.inKey = "prev_chain_preset"
-        },
-        unshift: function() {
-            this.inKey = "next_chain_preset"
+        input: function(channel, control, value, status, _group) {
+            if (this.isPress(channel, control, value, status)) {
+                Mixtour.fxShifted[channel] = true
+                midi.sendShortMsg(0x90 + midiChannel, 0x01, 0)
+            }
+            else {
+                Mixtour.fxShifted[channel] = false
+                midi.sendShortMsg(0x90 + midiChannel, 0x01, 1)
+            }
         }
     })
 
     // load button - we use this as the quick effect enable button since it is fat
     this.loadButton = new components.Button({
         midi: [0x90 + midiChannel, 0x02],
-        type: 1,
+        type: 2,
         group: '[QuickEffectRack1_' + this.currentDeck + ']',
         inKey: 'enabled',
-        outKey: 'loaded_chain_preset',
-        sendShifted: true
+        outKey: 'loaded_chain_preset'
     })
 
     // transport controls using T button/knob
@@ -222,13 +235,12 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
         midi: [0x90 + midiChannel, 0x04],
     });
 
-    // C button - we use this to edit loop position
+    // C button - we use this to edit loop position when held
     this.cButton = new components.Button({
         midi: [0x90 + midiChannel, 0x05],
         input: function(channel, control, value, status, _group) {
             if (this.isPress(channel, control, value, status)) {
                 Mixtour.loopShifted[channel] = true;
-                print(Mixtour.loopShifted);
             }
             else Mixtour.loopShifted[channel] = false;
         }
@@ -279,14 +291,60 @@ Mixtour.Global = function() {
 
     this.shiftButton.trigger();
 
-    this.backButton = new components.Button({ //unused
-        midi: [0x90, 0x08]
-    })
+    this.backButton = new components.Button({ // We use this to shift into a mode to adjust the playback speed
+        midi: [0x90, 0x08],
+        input: function(channel, control, value, status, _group) {
+            if (this.isPress(channel, control, value, status)) {
+                Mixtour.backShifted = true;
+                midi.sendShortMsg(0x90, 0x08, 1);
+            }
+            else {
+                Mixtour.backShifted = false;
+                midi.sendShortMsg(0x90, 0x08, 0);
+            }
+        }
+    });
+
+    this.backButton.trigger();
 
     this.selectButton = new components.Button({
         midi: [0x90, 0x07],
-        group: "[Library]",
-        inKey: "GoToItem"
+        input: function(channel, control, value) {
+            if( Mixtour.backShifted ) {
+                // get master deck
+                deck1 = engine.getValue("[Channel1]", "sync_leader");
+                deck2 = engine.getValue("[Channel2]", "sync_leader");
+                if (deck1) {
+                    engine.setParameter("[Channel1]", "rate", 0.5);
+                }
+                if (deck2) {
+                    engine.setParameter("[Channel2]", "rate", 0.5);
+                }
+            }
+            else {
+                engine.setParameter("[Library]", "GoToItem", 1);
+                engine.setParameter("[Library]", "GoToItem", 0);
+            }
+        },
+        unshift: function() {
+            this.input = function(channel, control, value) {
+                if( Mixtour.backShifted ) {
+                    // get master deck
+                    deck1 = engine.getValue("[Channel1]", "sync_leader");
+                    deck2 = engine.getValue("[Channel2]", "sync_leader");
+                    if (deck1) {
+                        engine.setParameter("[Channel1]", "rate", 0.5);
+                    }
+                    if (deck2) {
+                        engine.setParameter("[Channel2]", "rate", 0.5);
+                    }
+                }
+                else {
+                    engine.setParameter("[Library]", "GoToItem", 1);
+                    engine.setParameter("[Library]", "GoToItem", 0);
+                }
+            }
+        }
     })
 
     this.selectKnob = new components.Encoder({
@@ -296,14 +354,42 @@ Mixtour.Global = function() {
         input: function(channel, control, value) {
             direction = (value > 0x40) ? value - 0x80 : value;
             loop_direction = (value > 0x40) ? 1: -1;
-            if( !Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
-                engine.setParameter("Library]", "MoveVertical", direction);
+            back_direction = (value > 0x40) ? "down":"up"
+            fx_direction = (value > 0x40) ? "prev":"next"
+            if( Mixtour.backShifted ) {
+                // get master deck
+                deck1 = engine.getValue("[Channel1]", "sync_leader");
+                deck2 = engine.getValue("[Channel2]", "sync_leader");
+                if (deck1) {
+                    engine.setParameter("[Channel1]", "rate_perm_" + back_direction, 1);
+                    engine.setParameter("[Channel1]", "rate_perm_" + back_direction, 0);
+                }
+                if (deck2) {
+                    engine.setParameter("[Channel2]", "rate_perm_" + back_direction, 1);
+                    engine.setParameter("[Channel2]", "rate_perm_" + back_direction, 0);
+                }
             }
-            else if( Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
-                engine.setParameter("[Channel1]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
-            }
-            else if( !Mixtour.loopShifted[0] && Mixtour.loopShifted[1] ) {
-                engine.setParameter("[Channel2]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+            else {
+                if( !Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] && !Mixtour.fxShifted[0] && !Mixtour.fxShifted[1]) {
+                    engine.setParameter("[Library]", "MoveVertical", direction);
+                }
+                else if( Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
+                    engine.setParameter("[Channel1]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+                }
+                else if( !Mixtour.loopShifted[0] && Mixtour.loopShifted[1] ) {
+                    engine.setParameter("[Channel2]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+                }
+
+                else if( Mixtour.fxShifted[0] && !Mixtour.fxShifted[1] ) {
+                    engine.setParameter("[QuickEffectRack1_[Channel1]]", fx_direction + "_chain_preset", 1);
+                }
+                else if( !Mixtour.fxShifted[0] && Mixtour.fxShifted[1] ) {
+                    engine.setParameter("[QuickEffectRack1_[Channel2]]", fx_direction + "_chain_preset", 1);
+                }
+                else if (Mixtour.fxShifted[0] && Mixtour.fxShifted[1]) {
+                    engine.setParameter("[QuickEffectRack1_[Channel1]]", fx_direction + "_chain_preset", 1);
+                    engine.setParameter("[QuickEffectRack1_[Channel2]]", fx_direction + "_chain_preset", 1);
+                }
             }
         },
         shift: function() {
@@ -326,18 +412,53 @@ Mixtour.Global = function() {
             this.input = function(channel, control, value) {
                 direction = (value > 0x40) ? value - 0x80 : value;
                 loop_direction = (value > 0x40) ? -1: 1;
-                if( !Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
-                    engine.setParameter("[Library]", "MoveVertical", direction);
+                back_direction = (value > 0x40) ? "down":"up"
+                fx_direction = (value > 0x40) ? "prev":"next"
+                if( Mixtour.backShifted ) {
+                    // get master deck
+                    deck1 = engine.getValue("[Channel1]", "sync_leader");
+                    deck2 = engine.getValue("[Channel2]", "sync_leader");
+                    if (deck1) {
+                        engine.setParameter("[Channel1]", "rate_perm_" + back_direction, 1);
+                        engine.setParameter("[Channel1]", "rate_perm_" + back_direction, 0);
+                    }
+                    if (deck2) {
+                        engine.setParameter("[Channel2]", "rate_perm_" + back_direction, 1);
+                        engine.setParameter("[Channel2]", "rate_perm_" + back_direction, 0);
+                    }
                 }
-                else if( Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
-                    engine.setParameter("[Channel1]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
-                }
-                else if( !Mixtour.loopShifted[0] && Mixtour.loopShifted[1] ) {
-                    engine.setParameter("[Channel2]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+                else {
+                    if( !Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] && !Mixtour.fxShifted[0] && !Mixtour.fxShifted[1]) {
+                        engine.setParameter("[Library]", "MoveVertical", direction);
+                    }
+                    else if( Mixtour.loopShifted[0] && !Mixtour.loopShifted[1] ) {
+                        engine.setParameter("[Channel1]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+                    }
+                    else if( !Mixtour.loopShifted[0] && Mixtour.loopShifted[1] ) {
+                        engine.setParameter("[Channel2]", "loop_move", loop_direction * engine.getParameter("[Channel1]", "beatjump_size"));
+                    }
+    
+                    else if( Mixtour.fxShifted[0] && !Mixtour.fxShifted[1] ) {
+                        engine.setParameter("[QuickEffectRack1_[Channel1]]", fx_direction + "_chain_preset", 1);
+                    }
+                    else if( !Mixtour.fxShifted[0] && Mixtour.fxShifted[1] ) {
+                        engine.setParameter("[QuickEffectRack1_[Channel2]]", fx_direction + "_chain_preset", 1);
+                    }
+                    else if (Mixtour.fxShifted[0] && Mixtour.fxShifted[1]) {
+                        engine.setParameter("[QuickEffectRack1_[Channel1]]", fx_direction + "_chain_preset", 1);
+                        engine.setParameter("[QuickEffectRack1_[Channel2]]", fx_direction + "_chain_preset", 1);
+                    }
                 }
             }
         }
     })
+
+    this.previewButton = new components.Button({
+        midi: [0x90, 0x43],
+        group: "[PreviewDeck1]",
+        inKey: "LoadSelectedTrack",
+        outKey: "track_loaded"
+    });
 
     // xfader
     this.crossfader = new components.Pot({
@@ -348,8 +469,9 @@ Mixtour.Global = function() {
     });
 
     // VU Meters
+    // MST Shift - MST
     this.vuMeterR = new components.Component({
-        midi: [0x91, 0x12],
+        midi: [0x91, 0x51],
         group: "[Main]",
         outKey: "vu_meter_right",
         output: function(value, group) {
@@ -357,15 +479,17 @@ Mixtour.Global = function() {
             // The Red LEDs should only be illuminated if the track is clipping.
             if (engine.getValue(group, "peak_indicator") === 1) {
                 value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
             } else {
-                value = Math.round(value * 0x67);
+                value = Math.round(value * 0x4D);
             }
             this.send(value);
         },
-    });
+    })
 
     this.vuMeterL = new components.Component({
-        midi: [0x90, 0x12],
+        midi: [0x90, 0x51],
         group: "[Main]",
         outKey: "vu_meter_left",
         output: function(value, group) {
@@ -373,14 +497,123 @@ Mixtour.Global = function() {
             // The Red LEDs should only be illuminated if the track is clipping.
             if (engine.getValue(group, "peak_indicator") === 1) {
                 value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
             } else {
-                value = Math.round(value * 0x67);
+                value = Math.round(value * 0x4D);
             }
             this.send(value);
         },
-    });
-};
-Mixtour.Global.prototype = Object.create(components.ComponentContainer.prototype);
+    })
+    // MST - Decks
+    this.vuMeterDeckR = new components.Component({
+        midi: [0x91, 0x12],
+        group: "[Channel2]",
+        outKey: "vu_meter",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+
+    this.vuMeterDeckL = new components.Component({
+        midi: [0x90, 0x12],
+        group: "[Channel1]",
+        outKey: "vu_meter",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+    // PFL Shift - MST
+    this.vuMeterMSTR = new components.Component({
+        midi: [0x91, 0x50],
+        group: "[Main]",
+        outKey: "vu_meter_right",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+
+    this.vuMeterMSTL = new components.Component({
+        midi: [0x90, 0x50],
+        group: "[Main]",
+        outKey: "vu_meter_left",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+    this.vuMeterAuxR = new components.Component({
+        midi: [0x91, 0x11],
+        group: "[Auxiliary1]",
+        outKey: "vu_meter_right",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+
+    this.vuMeterAuxL = new components.Component({
+        midi: [0x90, 0x11],
+        group: "[Auxiliary1]",
+        outKey: "vu_meter_left",
+        output: function(value, group) {
+            // The red LEDs light up with MIDI values greater than 0x68.
+            // The Red LEDs should only be illuminated if the track is clipping.
+            if (engine.getValue(group, "peak_indicator") === 1) {
+                value = 0x68;
+            } else if (engine.getValue(group, "vu_meter") >= 0.9) {
+                value = 0x67;
+            } else {
+                value = Math.round(value * 0x4D);
+            }
+            this.send(value);
+        },
+    })
+}
+Mixtour.Global.prototype = Object.create(components.ComponentContainer.prototype)
 
 
 // Other LED interactions (FX, )
@@ -390,11 +623,11 @@ Mixtour.shift = function() {
     Mixtour.leftDeck.shift();
     Mixtour.rightDeck.shift();
     Mixtour.global.shift();
-};
+}
 
 Mixtour.unshift = function() {
     Mixtour.shifted = false;
     Mixtour.leftDeck.unshift();
     Mixtour.rightDeck.unshift();
     Mixtour.global.unshift();
-};
+}
