@@ -7,8 +7,8 @@
 //  
 // Layer 2 - FX development on FX1
 // Use side buttons as shift
-// parameter1-4 for effects 1-3 are accessible
-// buttons cycle super knob interaction for each parameter
+// parameters 1-4 for effects 1-3 are accessible
+// TODO: buttons cycle super knob interaction for each parameter
 // TODO: Left top side shift + parameter1 knob = enable/disable effect
 
 var MFT = {};
