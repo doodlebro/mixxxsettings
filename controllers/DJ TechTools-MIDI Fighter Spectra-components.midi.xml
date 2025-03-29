@@ -12,154 +12,145 @@
         </scriptfiles>
         <controls>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[0].input</key>
-                <status>0xB0</status>
-                <midino>0x00</midino>
+                <group>[Master]</group>
+                <key>MFS.global.leftSlip.input</key>
+                <status>0xBB</status>
+                <midino>0x54</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[0].input</key>
-                <status>0xB1</status>
-                <midino>0x00</midino>
+                <group>[Master]</group>
+                <key>MFS.global.beatLoopRollEighth.input</key>
+                <status>0xBB</status>
+                <midino>0x55</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[0].input</key>
-                <status>0xB0</status>
-                <midino>0x01</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpHalfBeatBack.input</key>
+                <status>0xBB</status>
+                <midino>0x56</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[0].input</key>
-                <status>0xB0</status>
-                <midino>0x02</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpTwoBeatBack.input</key>
+                <status>0xBB</status>
+                <midino>0x57</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxSelect[0].input</key>
-                <status>0xB4</status>
-                <midino>0x02</midino>
+                <group>[Master]</group>
+                <key>MFS.global.loopDouble.input</key>
+                <status>0xBB</status>
+                <midino>0x58</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[1].input</key>
-                <status>0xB0</status>
-                <midino>0x04</midino>
+                <group>[Master]</group>
+                <key>MFS.global.beatLoopRollQuarter.input</key>
+                <status>0xBB</status>
+                <midino>0x59</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[1].input</key>
-                <status>0xB1</status>
-                <midino>0x04</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpHalfBeatForward.input</key>
+                <status>0xBB</status>
+                <midino>0x5A</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[1].input</key>
-                <status>0xB0</status>
-                <midino>0x05</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpTwoBeatForward.input</key>
+                <status>0xBB</status>
+                <midino>0x5B</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[1].input</key>
-                <status>0xB0</status>
-                <midino>0x06</midino>
+                <group>[Master]</group>
+                <key>MFS.global.loopHalve.input</key>
+                <status>0xBB</status>
+                <midino>0x5C</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[2].input</key>
-                <status>0xB0</status>
-                <midino>0x08</midino>
+                <group>[Master]</group>
+                <key>MFS.global.beatLoopRollHalf.input</key>
+                <status>0xBB</status>
+                <midino>0x5D</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[2].input</key>
-                <status>0xB1</status>
-                <midino>0x08</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpBeatBack.input</key>
+                <status>0xBB</status>
+                <midino>0x5E</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[2].input</key>
-                <status>0xB0</status>
-                <midino>0x09</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpFourBeatBack.input</key>
+                <status>0xBB</status>
+                <midino>0x5F</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[2].input</key>
-                <status>0xB0</status>
-                <midino>0x0A</midino>
+                <group>[Master]</group>
+                <key>MFS.global.rightSlip.input</key>
+                <status>0xBB</status>
+                <midino>0x60</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[3].input</key>
-                <status>0xB0</status>
-                <midino>0x0C</midino>
+                <group>[Master]</group>
+                <key>MFS.global.beatLoopRoll.input</key>
+                <status>0xBB</status>
+                <midino>0x61</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[3].input</key>
-                <status>0xB1</status>
-                <midino>0x0C</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpBeatForward.input</key>
+                <status>0xBB</status>
+                <midino>0x62</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[3].input</key>
-                <status>0xB0</status>
-                <midino>0x0D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[3].input</key>
-                <status>0xB0</status>
-                <midino>0x0E</midino>
+                <group>[Master]</group>
+                <key>MFS.global.jumpFourBeatForward.input</key>
+                <status>0xBB</status>
+                <midino>0x63</midino>
                 <options>
                     <script-binding/>
                 </options>
