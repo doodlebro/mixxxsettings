@@ -1,5 +1,5 @@
-//
-// TODO: Figure out best place and map
+// MIDI Fighter Spectra Controller
+// Routes through DoRe MIDI
 
 var MFS = {}
 
