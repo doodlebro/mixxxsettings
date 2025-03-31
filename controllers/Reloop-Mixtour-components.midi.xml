@@ -101,6 +101,15 @@
                 </options>
             </control>
             <control>
+                <group>[Skin]</group>
+                <key>show_stem_controls</key>
+                <status>0x94</status>
+                <midino>0x02</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>Mixtour.leftDeck.eqKnob[2].input</key>
                 <status>0xB0</status>
@@ -137,6 +146,15 @@
                 </options>
             </control>
             <control>
+                <group>[Skin]</group>
+                <key>show_stem_controls</key>
+                <status>0x94</status>
+                <midino>0x03</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>Mixtour.leftDeck.eqKnob[1].input</key>
                 <status>0xB0</status>
@@ -168,24 +186,6 @@
                 <key>Mixtour.rightDeck.filterFXKnob.input</key>
                 <status>0xB1</status>
                 <midino>0x04</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Mixtour.leftDeck.cButton.input</key>
-                <status>0x90</status>
-                <midino>0x05</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Mixtour.rightDeck.cButton.input</key>
-                <status>0x91</status>
-                <midino>0x05</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -454,6 +454,15 @@
                 </options>
             </control>
             <control>
+                <group>[LateNight]</group>
+                <key>show_mini_deck</key>
+                <status>0x91</status>
+                <midino>0x43</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>Mixtour.leftDeck.filterFXKnob.input</key>
                 <status>0xB0</status>
@@ -472,8 +481,8 @@
                 </options>
             </control>
             <control>
-                <group>[PreviewDeck1]</group>
-                <key>eject</key>
+                <group>[Skin]</group>
+                <key>show_waveforms</key>
                 <description>MIDI Learned from 2 messages.</description>
                 <status>0x90</status>
                 <midino>0x47</midino>
@@ -654,14 +663,6 @@
             </control>
         </controls>
         <outputs>
-            <output>
-                <group>[Auxiliary1]</group>
-                <key>pfl</key>
-                <status>0x91</status>
-                <midino>0x43</midino>
-                <on>0x01</on>
-                <minimum>0.01</minimum>
-            </output>
             <output>
                 <group>[Skin]</group>
                 <key>show_effectrack</key>

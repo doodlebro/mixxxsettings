@@ -20,7 +20,7 @@ Mixtour.init = function () {
     Mixtour.rightDeck = new Mixtour.Deck([2], 1);
     Mixtour.global = new Mixtour.Global();
 
-    // init fxSelect buttonms
+    // init fxSelect buttons
     midi.sendShortMsg(0x90, 0x01, 1)
     midi.sendShortMsg(0x91, 0x01, 1)
 };
@@ -64,20 +64,32 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
             this.input = components.SyncButton.prototype.input;
         }
     });
+
     this.loopButton = new components.Button({
         midi: [0x90 + midiChannel, 0x09],
-        type: 0,
         inKey: "beatloop_activate",
         outKey: "loop_enabled",
-        input: function(channel, control, value) {
-            if( value === 0x7F ) {
-                if (engine.getValue(this.group, "loop_enabled") === 1 && !Mixtour.shifted) {
-                    engine.setParameter(this.group, "reloop_toggle", 1)
-                    engine.setParameter(this.group, "reloop_toggle", 0)
-                } else {
-                    engine.setParameter(this.group, this.inKey, 1)
-                    engine.setParameter(this.group, this.inKey, 0)
+        input: function(channel, control, value, status, _group) {
+            if (this.isPress(channel, control, value, status)) {
+                this.isLongPressed = false;
+                this.longPressTimer = engine.beginTimer(this.longPressTimeout, () => {
+                    this.isLongPressed = true;
+                    this.longPressTimer = components.NO_TIMER;
+                    Mixtour.loopShifted[channel] = true
+                }, true);
+            } else {
+                if (this.isLongPressed) {
+                    Mixtour.loopShifted[channel] = false
                 }
+                else {
+                    this.inToggle()
+                    this.inToggle()
+                }
+                if (this.longPressTimer !== components.NO_TIMER) {
+                    engine.stopTimer(this.longPressTimer);
+                    this.longPressTimer = components.NO_TIMER;
+                }
+                this.isLongPressed = false;
             }
         },
         on: Mixtour.padColors.green,
@@ -235,15 +247,9 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
         midi: [0x90 + midiChannel, 0x04],
     });
 
-    // C button - we use this to edit loop position when held
+    // C button - unused
     this.cButton = new components.Button({
         midi: [0x90 + midiChannel, 0x05],
-        input: function(channel, control, value, status, _group) {
-            if (this.isPress(channel, control, value, status)) {
-                Mixtour.loopShifted[channel] = true;
-            }
-            else Mixtour.loopShifted[channel] = false;
-        }
     });
     
     this.reconnectComponents(function (c) {
@@ -470,7 +476,7 @@ Mixtour.Global = function() {
 
     // VU Meters
     // MST Shift - MST
-    this.vuMeterR = new components.Component({
+    this.vuMeterShiftR = new components.Component({
         midi: [0x91, 0x51],
         group: "[Main]",
         outKey: "vu_meter_right",
@@ -488,7 +494,7 @@ Mixtour.Global = function() {
         },
     })
 
-    this.vuMeterL = new components.Component({
+    this.vuMeterShiftL = new components.Component({
         midi: [0x90, 0x51],
         group: "[Main]",
         outKey: "vu_meter_left",
@@ -542,7 +548,7 @@ Mixtour.Global = function() {
         },
     })
     // PFL Shift - MST
-    this.vuMeterMSTR = new components.Component({
+    this.vuMeterShiftPFLR = new components.Component({
         midi: [0x91, 0x50],
         group: "[Main]",
         outKey: "vu_meter_right",
@@ -560,7 +566,7 @@ Mixtour.Global = function() {
         },
     })
 
-    this.vuMeterMSTL = new components.Component({
+    this.vuMeterShiftPFLL = new components.Component({
         midi: [0x90, 0x50],
         group: "[Main]",
         outKey: "vu_meter_left",
@@ -577,10 +583,10 @@ Mixtour.Global = function() {
             this.send(value);
         },
     })
-    this.vuMeterAuxR = new components.Component({
+    this.vuMeterPFLR = new components.Component({
         midi: [0x91, 0x11],
-        group: "[Auxiliary1]",
-        outKey: "vu_meter_right",
+        group: "[Channel2]",
+        outKey: "vu_meter",
         output: function(value, group) {
             // The red LEDs light up with MIDI values greater than 0x68.
             // The Red LEDs should only be illuminated if the track is clipping.
@@ -595,10 +601,10 @@ Mixtour.Global = function() {
         },
     })
 
-    this.vuMeterAuxL = new components.Component({
+    this.vuMeterPFLL = new components.Component({
         midi: [0x90, 0x11],
-        group: "[Auxiliary1]",
-        outKey: "vu_meter_left",
+        group: "[Channel1]",
+        outKey: "vu_meter",
         output: function(value, group) {
             // The red LEDs light up with MIDI values greater than 0x68.
             // The Red LEDs should only be illuminated if the track is clipping.
