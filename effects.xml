@@ -3,75 +3,26 @@
  <Rack>
   <Chains>
    <EffectChain>
-    <Name>Bitflanger</Name>
+    <Name>Smooth Glitch</Name>
     <MixMode>DRY/WET</MixMode>
     <SuperParameterValue>0.5</SuperParameterValue>
     <Effects>
      <Effect>
-      <MetaParameterValue>0.507937</MetaParameterValue>
-      <Id>org.mixxx.effects.moogladder4filter</Id>
+      <MetaParameterValue>0.520997</MetaParameterValue>
+      <Id>org.mixxx.effects.glitch</Id>
       <BackendType>Built-In</BackendType>
       <Parameters>
        <Parameter>
-        <Id>lpf</Id>
-        <Value>0.0457273</Value>
-        <LinkType>LINKED_LEFT</LinkType>
+        <Id>delay_time</Id>
+        <Value>0.0839895</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Id>resonance</Id>
-        <Value>2.35887</Value>
+        <Id>quantize</Id>
+        <Value>1</Value>
         <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-       <Parameter>
-        <Id>hpf</Id>
-        <Value>0.0003</Value>
-        <LinkType>LINKED_RIGHT</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-      </Parameters>
-     </Effect>
-     <Effect>
-      <MetaParameterValue>0.507937</MetaParameterValue>
-      <Id>org.mixxx.effects.phaser</Id>
-      <BackendType>Built-In</BackendType>
-      <Parameters>
-       <Parameter>
-        <Id>lfo_period</Id>
-        <Value>3.14286</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-       <Parameter>
-        <Id>feedback</Id>
-        <Value>0.301587</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-       <Parameter>
-        <Id>range</Id>
-        <Value>0.803968</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-       <Parameter>
-        <Id>stages</Id>
-        <Value>12</Value>
-        <LinkType>NONE</LinkType>
-        <LinkInversion>0</LinkInversion>
-        <Hidden>0</Hidden>
-       </Parameter>
-       <Parameter>
-        <Id>depth</Id>
-        <Value>0.753968</Value>
-        <LinkType>LINKED</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
@@ -82,52 +33,73 @@
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
+      </Parameters>
+     </Effect>
+     <Effect>
+      <MetaParameterValue>0.520997</MetaParameterValue>
+      <Id>org.mixxx.effects.moogladder4filter</Id>
+      <BackendType>Built-In</BackendType>
+      <Parameters>
        <Parameter>
-        <Id>stereo</Id>
-        <Value>0</Value>
+        <Id>lpf</Id>
+        <Value>0.5</Value>
+        <LinkType>LINKED_LEFT</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>resonance</Id>
+        <Value>2.39836</Value>
         <LinkType>NONE</LinkType>
+        <LinkInversion>0</LinkInversion>
+        <Hidden>0</Hidden>
+       </Parameter>
+       <Parameter>
+        <Id>hpf</Id>
+        <Value>0.00137693</Value>
+        <LinkType>LINKED_RIGHT</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
       </Parameters>
      </Effect>
      <Effect>
-      <MetaParameterValue>0.507937</MetaParameterValue>
-      <Id>org.mixxx.effects.flanger</Id>
+      <MetaParameterValue>0.520997</MetaParameterValue>
+      <Id>org.mixxx.effects.echo</Id>
       <BackendType>Built-In</BackendType>
       <Parameters>
        <Parameter>
-        <Id>speed</Id>
-        <Value>19.3095</Value>
+        <Id>delay_time</Id>
+        <Value>0.500851</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Id>width</Id>
-        <Value>0</Value>
+        <Id>feedback_amount</Id>
+        <Value>0.707946</Value>
         <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Id>manual</Id>
-        <Value>5.46053</Value>
-        <LinkType>NONE</LinkType>
+        <Id>pingpong_amount</Id>
+        <Value>0.381457</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Id>regen</Id>
-        <Value>0.265625</Value>
-        <LinkType>NONE</LinkType>
+        <Id>send_amount</Id>
+        <Value>0.0419948</Value>
+        <LinkType>LINKED_LEFT_RIGHT</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
        <Parameter>
-        <Id>mix</Id>
-        <Value>0.507937</Value>
-        <LinkType>LINKED</LinkType>
+        <Id>quantize</Id>
+        <Value>1</Value>
+        <LinkType>NONE</LinkType>
         <LinkInversion>0</LinkInversion>
         <Hidden>0</Hidden>
        </Parameter>
@@ -378,6 +350,7 @@
   <ChainPresetName>Echoverb HP</ChainPresetName>
   <ChainPresetName>Filter Echo</ChainPresetName>
   <ChainPresetName>Smooth Growl</ChainPresetName>
+  <ChainPresetName>Smooth Glitch</ChainPresetName>
   <ChainPresetName>Bitflanger</ChainPresetName>
   <ChainPresetName>Trechophaser</ChainPresetName>
  </ChainPresetList>
@@ -386,51 +359,40 @@
   <ChainPresetName>Echoverb HP</ChainPresetName>
   <ChainPresetName>Filter Echo</ChainPresetName>
   <ChainPresetName>Smooth Growl</ChainPresetName>
+  <ChainPresetName>Smooth Glitch</ChainPresetName>
   <ChainPresetName>Bitflanger</ChainPresetName>
   <ChainPresetName>Trechophaser</ChainPresetName>
-  <ChainPresetName>Autopan</ChainPresetName>
-  <ChainPresetName>Balance</ChainPresetName>
-  <ChainPresetName>Bitcrusher</ChainPresetName>
-  <ChainPresetName>Distortion</ChainPresetName>
-  <ChainPresetName>Echo</ChainPresetName>
-  <ChainPresetName>Filter</ChainPresetName>
-  <ChainPresetName>Flanger</ChainPresetName>
-  <ChainPresetName>Loudness</ChainPresetName>
   <ChainPresetName>Moog Filter</ChainPresetName>
-  <ChainPresetName>Phaser</ChainPresetName>
-  <ChainPresetName>Pitch Shift</ChainPresetName>
-  <ChainPresetName>Reverb</ChainPresetName>
-  <ChainPresetName>Tremolo</ChainPresetName>
  </QuickEffectPresetList>
  <EqualizerEffects>
   <Id group="[Channel2]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
+  <Id group="[Channel4]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
   <Id group="[Channel3]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
   <Id group="[Channel1]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
-  <Id group="[Channel4]">org.mixxx.effects.biquadfullkilleq Built-In</Id>
  </EqualizerEffects>
  <QuickEffectChains>
-  <ChainPresetName group="[Channel2]">Smooth Growl</ChainPresetName>
-  <ChainPresetName group="[Channel3]">Smooth Growl</ChainPresetName>
-  <ChainPresetName group="[Channel1]">Moog Filter</ChainPresetName>
-  <ChainPresetName group="[Channel4]">Smooth Growl</ChainPresetName>
+  <ChainPresetName group="[Channel2]">Moog Filter</ChainPresetName>
+  <ChainPresetName group="[Channel4]">Moog Filter</ChainPresetName>
+  <ChainPresetName group="[Channel3]">Moog Filter</ChainPresetName>
+  <ChainPresetName group="[Channel1]">Smooth Glitch</ChainPresetName>
  </QuickEffectChains>
  <QuickStemEffectPresetList>
-  <ChainPresetName group="[Channel1_Stem2]">Reverb</ChainPresetName>
-  <ChainPresetName group="[Channel3_Stem3]"></ChainPresetName>
-  <ChainPresetName group="[Channel2_Stem3]">Reverb</ChainPresetName>
-  <ChainPresetName group="[Channel3_Stem2]"></ChainPresetName>
-  <ChainPresetName group="[Channel2_Stem2]">Reverb</ChainPresetName>
-  <ChainPresetName group="[Channel4_Stem1]"></ChainPresetName>
-  <ChainPresetName group="[Channel1_Stem3]">Reverb</ChainPresetName>
-  <ChainPresetName group="[Channel4_Stem4]"></ChainPresetName>
-  <ChainPresetName group="[Channel1_Stem1]">Reverb</ChainPresetName>
-  <ChainPresetName group="[Channel1_Stem4]">Reverb</ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem3]"></ChainPresetName>
   <ChainPresetName group="[Channel4_Stem3]"></ChainPresetName>
-  <ChainPresetName group="[Channel2_Stem1]">Reverb</ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem3]"></ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem4]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem2]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem3]"></ChainPresetName>
+  <ChainPresetName group="[Channel1_Stem4]">Smooth Growl</ChainPresetName>
+  <ChainPresetName group="[Channel3_Stem2]"></ChainPresetName>
+  <ChainPresetName group="[Channel4_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem1]"></ChainPresetName>
+  <ChainPresetName group="[Channel2_Stem2]"></ChainPresetName>
   <ChainPresetName group="[Channel4_Stem2]"></ChainPresetName>
   <ChainPresetName group="[Channel3_Stem1]"></ChainPresetName>
-  <ChainPresetName group="[Channel3_Stem4]"></ChainPresetName>
-  <ChainPresetName group="[Channel2_Stem4]">Reverb</ChainPresetName>
  </QuickStemEffectPresetList>
  <VisibleEffects>
   <Effect>

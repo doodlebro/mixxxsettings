@@ -2,7 +2,7 @@
 <EffectChain>
  <Name>Smooth Growl</Name>
  <MixMode>DRY/WET</MixMode>
- <SuperParameterValue>0.5</SuperParameterValue>
+ <SuperParameterValue>0.520997</SuperParameterValue>
  <Effects>
   <Effect>
    <MetaParameterValue>0.377297</MetaParameterValue>
@@ -39,7 +39,7 @@
     </Parameter>
     <Parameter>
      <Id>resonance</Id>
-     <Value>2.20421</Value>
+     <Value>2.4036</Value>
      <LinkType>NONE</LinkType>
      <LinkInversion>0</LinkInversion>
      <Hidden>0</Hidden>
