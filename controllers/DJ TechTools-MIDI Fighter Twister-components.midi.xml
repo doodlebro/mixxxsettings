@@ -12,17 +12,18 @@
         </scriptfiles>
         <controls>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[1].input</key>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 214 messages.</description>
                 <status>0xB0</status>
                 <midino>0x00</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[1].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX1A.input</key>
                 <status>0xB1</status>
                 <midino>0x00</midino>
                 <options>
@@ -30,17 +31,18 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[1].input</key>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 253 messages.</description>
                 <status>0xB0</status>
                 <midino>0x01</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemButton[1].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX2A.input</key>
                 <status>0xB1</status>
                 <midino>0x01</midino>
                 <options>
@@ -48,26 +50,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[1].input</key>
-                <status>0xB0</status>
-                <midino>0x02</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxSelectKnob[1].input</key>
-                <status>0xB4</status>
-                <midino>0x02</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxKnob[1].input</key>
+                <group>[Main]</group>
+                <key>MFT.beatFXSelect.input</key>
                 <status>0xB0</status>
                 <midino>0x03</midino>
                 <options>
@@ -75,26 +59,28 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxSelectKnob[1].input</key>
-                <status>0xB4</status>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>button_parameter3</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0xB1</status>
                 <midino>0x03</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[2].input</key>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 163 messages.</description>
                 <status>0xB0</status>
                 <midino>0x04</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[2].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX1B.input</key>
                 <status>0xB1</status>
                 <midino>0x04</midino>
                 <options>
@@ -102,17 +88,18 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[2].input</key>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 135 messages.</description>
                 <status>0xB0</status>
                 <midino>0x05</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemButton[2].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX2B.input</key>
                 <status>0xB1</status>
                 <midino>0x05</midino>
                 <options>
@@ -120,26 +107,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[2].input</key>
-                <status>0xB0</status>
-                <midino>0x06</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxSelectKnob[2].input</key>
-                <status>0xB4</status>
-                <midino>0x06</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxKnob[2].input</key>
+                <group>[Main]</group>
+                <key>MFT.beatFXChannelSelect.input</key>
                 <status>0xB0</status>
                 <midino>0x07</midino>
                 <options>
@@ -147,26 +116,28 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxSelectKnob[2].input</key>
-                <status>0xB4</status>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>button_parameter2</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0xB1</status>
                 <midino>0x07</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[3].input</key>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 148 messages.</description>
                 <status>0xB0</status>
                 <midino>0x08</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[3].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX1C.input</key>
                 <status>0xB1</status>
                 <midino>0x08</midino>
                 <options>
@@ -184,28 +155,20 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[3].input</key>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>meta</key>
+                <description>MIDI Learned from 146 messages.</description>
                 <status>0xB0</status>
                 <midino>0x09</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemButton[3].input</key>
+                <group>[Main]</group>
+                <key>MFT.colorFX2C.input</key>
                 <status>0xB1</status>
                 <midino>0x09</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[3].input</key>
-                <status>0xB0</status>
-                <midino>0x0A</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -221,21 +184,13 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxSelectKnob[3].input</key>
-                <status>0xB4</status>
-                <midino>0x0A</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxKnob[3].input</key>
-                <status>0xB0</status>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>button_parameter1</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0xB1</status>
                 <midino>0x0B</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -249,48 +204,23 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxSelectKnob[3].input</key>
-                <status>0xB4</status>
-                <midino>0x0B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemKnob[4].input</key>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>mix</key>
+                <description>MIDI Learned from 142 messages.</description>
                 <status>0xB0</status>
                 <midino>0x0C</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.stemButton[4].input</key>
-                <status>0xB1</status>
-                <midino>0x0C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemKnob[4].input</key>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>mix</key>
+                <description>MIDI Learned from 144 messages.</description>
                 <status>0xB0</status>
                 <midino>0x0D</midino>
                 <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.stemButton[4].input</key>
-                <status>0xB1</status>
-                <midino>0x0D</midino>
-                <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -304,39 +234,43 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxKnob[4].input</key>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>super1</key>
+                <description>MIDI Learned from 142 messages.</description>
                 <status>0xB0</status>
                 <midino>0x0E</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>MFT.leftDeck.fxSelectKnob[4].input</key>
-                <status>0xB4</status>
-                <midino>0x0E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxKnob[4].input</key>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>mix</key>
+                <description>MIDI Learned from 269 messages.</description>
                 <status>0xB0</status>
                 <midino>0x0F</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>MFT.rightDeck.fxSelectKnob[4].input</key>
-                <status>0xB4</status>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 3 messages.</description>
+                <status>0xB1</status>
                 <midino>0x0F</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 1 messages.</description>
+                <status>0xB1</status>
+                <midino>0x0F</midino>
+                <options>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -600,7 +534,305 @@
                     <script-binding/>
                 </options>
             </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemKnob[1].input</key>
+                <status>0xB0</status>
+                <midino>0x30</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemButton[1].input</key>
+                <status>0xB1</status>
+                <midino>0x30</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemKnob[1].input</key>
+                <status>0xB0</status>
+                <midino>0x31</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemButton[1].input</key>
+                <status>0xB1</status>
+                <midino>0x31</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxKnob[1].input</key>
+                <status>0xB0</status>
+                <midino>0x32</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxSelectKnob[1].input</key>
+                <status>0xB4</status>
+                <midino>0x32</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxKnob[1].input</key>
+                <status>0xB0</status>
+                <midino>0x33</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxSelectKnob[1].input</key>
+                <status>0xB4</status>
+                <midino>0x33</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemKnob[2].input</key>
+                <status>0xB0</status>
+                <midino>0x34</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemButton[2].input</key>
+                <status>0xB1</status>
+                <midino>0x34</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemKnob[2].input</key>
+                <status>0xB0</status>
+                <midino>0x35</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemButton[2].input</key>
+                <status>0xB1</status>
+                <midino>0x35</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxKnob[2].input</key>
+                <status>0xB0</status>
+                <midino>0x36</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxSelectKnob[2].input</key>
+                <status>0xB4</status>
+                <midino>0x36</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxKnob[2].input</key>
+                <status>0xB0</status>
+                <midino>0x37</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxSelectKnob[2].input</key>
+                <status>0xB4</status>
+                <midino>0x37</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemKnob[3].input</key>
+                <status>0xB0</status>
+                <midino>0x38</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemButton[3].input</key>
+                <status>0xB1</status>
+                <midino>0x38</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemKnob[3].input</key>
+                <status>0xB0</status>
+                <midino>0x39</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemButton[3].input</key>
+                <status>0xB1</status>
+                <midino>0x39</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxKnob[3].input</key>
+                <status>0xB0</status>
+                <midino>0x3A</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxSelectKnob[3].input</key>
+                <status>0xB4</status>
+                <midino>0x3A</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxKnob[3].input</key>
+                <status>0xB0</status>
+                <midino>0x3B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxSelectKnob[3].input</key>
+                <status>0xB4</status>
+                <midino>0x3B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemKnob[4].input</key>
+                <status>0xB0</status>
+                <midino>0x3C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.stemButton[4].input</key>
+                <status>0xB1</status>
+                <midino>0x3C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemKnob[4].input</key>
+                <status>0xB0</status>
+                <midino>0x3D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.stemButton[4].input</key>
+                <status>0xB1</status>
+                <midino>0x3D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxKnob[4].input</key>
+                <status>0xB0</status>
+                <midino>0x3E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MFT.leftDeck.fxSelectKnob[4].input</key>
+                <status>0xB4</status>
+                <midino>0x3E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxKnob[4].input</key>
+                <status>0xB0</status>
+                <midino>0x3F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MFT.rightDeck.fxSelectKnob[4].input</key>
+                <status>0xB4</status>
+                <midino>0x3F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
         </controls>
-        <outputs/>
+        <outputs>
+            <output>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0xB1</status>
+                <midino>0x0F</midino>
+                <on>0x00</on>
+                <off>0x7F</off>
+                <maximum>0</maximum>
+            </output>
+        </outputs>
     </controller>
 </MixxxControllerPreset>
