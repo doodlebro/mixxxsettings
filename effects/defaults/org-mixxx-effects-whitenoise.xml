@@ -6,7 +6,7 @@
  <Parameters>
   <Parameter>
    <Id>dry_wet</Id>
-   <Value>1</Value>
+   <Value>0.240253</Value>
    <LinkType>LINKED</LinkType>
    <LinkInversion>0</LinkInversion>
    <Hidden>0</Hidden>

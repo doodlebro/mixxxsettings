@@ -7,14 +7,14 @@
   <Parameter>
    <Id>bit_depth</Id>
    <Value>16</Value>
-   <LinkType>LINKED</LinkType>
+   <LinkType>LINKED_RIGHT</LinkType>
    <LinkInversion>1</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>
   <Parameter>
    <Id>downsample</Id>
    <Value>1</Value>
-   <LinkType>LINKED</LinkType>
+   <LinkType>LINKED_LEFT_RIGHT</LinkType>
    <LinkInversion>1</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>

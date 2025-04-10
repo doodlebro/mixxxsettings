@@ -6,29 +6,29 @@
  <Parameters>
   <Parameter>
    <Id>decay</Id>
-   <Value>0.5</Value>
-   <LinkType>NONE</LinkType>
+   <Value>0</Value>
+   <LinkType>LINKED_LEFT_RIGHT</LinkType>
    <LinkInversion>0</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>
   <Parameter>
    <Id>bandwidth</Id>
-   <Value>1</Value>
-   <LinkType>NONE</LinkType>
+   <Value>0</Value>
+   <LinkType>LINKED_RIGHT</LinkType>
    <LinkInversion>0</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>
   <Parameter>
    <Id>damping</Id>
-   <Value>0</Value>
-   <LinkType>NONE</LinkType>
-   <LinkInversion>0</LinkInversion>
+   <Value>1</Value>
+   <LinkType>LINKED_RIGHT</LinkType>
+   <LinkInversion>1</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>
   <Parameter>
    <Id>send_amount</Id>
    <Value>0</Value>
-   <LinkType>LINKED</LinkType>
+   <LinkType>LINKED_LEFT_RIGHT</LinkType>
    <LinkInversion>0</LinkInversion>
    <Hidden>0</Hidden>
   </Parameter>

@@ -13,7 +13,7 @@
   </Parameter>
   <Parameter>
    <Id>resonance</Id>
-   <Value>1</Value>
+   <Value>2.70217</Value>
    <LinkType>NONE</LinkType>
    <LinkInversion>0</LinkInversion>
    <Hidden>0</Hidden>
