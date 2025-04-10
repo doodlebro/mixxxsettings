@@ -52,27 +52,9 @@ MFS.Global = function() {
         group: '[Channel1]',
         key: 'slip_enabled',
         input: function(channel, control, value, status, _group) {
-            if (this.isPress(channel, control, value, status)) {
-                MFS.selectedDeck = 0
-                MFS.armLEDS(MFS.selectedDeck);
-                this.inToggle();
-                this.isLongPressed = false;
-                this.longPressTimer = engine.beginTimer(this.longPressTimeout, () => {
-                    this.isLongPressed = true;
-                    this.longPressTimer = components.NO_TIMER;
-                }, true);
-            } else {
-                if (this.isLongPressed) {
-                    this.inToggle();
-                } else if (this.triggerOnRelease) {
-                    this.trigger();
-                }
-                if (this.longPressTimer !== components.NO_TIMER) {
-                    engine.stopTimer(this.longPressTimer);
-                    this.longPressTimer = components.NO_TIMER;
-                }
-                this.isLongPressed = false;
-            }
+            MFS.selectedDeck = 0
+            MFS.armLEDS(MFS.selectedDeck)
+            this.inSetValue(this.isPress(channel, control, value, status));
         }
 
     })
@@ -81,27 +63,9 @@ MFS.Global = function() {
         group: '[Channel2]',
         key: 'slip_enabled',
         input: function(channel, control, value, status, _group) {
-            if (this.isPress(channel, control, value, status)) {
-                MFS.selectedDeck = 1
-                MFS.armLEDS(MFS.selectedDeck);
-                this.inToggle();
-                this.isLongPressed = false;
-                this.longPressTimer = engine.beginTimer(this.longPressTimeout, () => {
-                    this.isLongPressed = true;
-                    this.longPressTimer = components.NO_TIMER;
-                }, true);
-            } else {
-                if (this.isLongPressed) {
-                    this.inToggle();
-                } else if (this.triggerOnRelease) {
-                    this.trigger();
-                }
-                if (this.longPressTimer !== components.NO_TIMER) {
-                    engine.stopTimer(this.longPressTimer);
-                    this.longPressTimer = components.NO_TIMER;
-                }
-                this.isLongPressed = false;
-            }
+            MFS.selectedDeck = 1
+            MFS.armLEDS(MFS.selectedDeck)
+            this.inSetValue(this.isPress(channel, control, value, status));
         }
     })
     this.loopHalve = new components.Button({
