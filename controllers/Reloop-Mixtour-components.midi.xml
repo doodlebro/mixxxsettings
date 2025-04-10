@@ -664,6 +664,20 @@
         </controls>
         <outputs>
             <output>
+                <group>[Channel1]</group>
+                <key>sync_leader</key>
+                <status>0x90</status>
+                <midino>0x0A</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>sync_leader</key>
+                <status>0x91</status>
+                <midino>0x0A</midino>
+                <minimum>0.01</minimum>
+            </output>
+            <output>
                 <group>[Skin]</group>
                 <key>show_effectrack</key>
                 <status>0x90</status>

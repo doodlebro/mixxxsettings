@@ -140,20 +140,27 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
         });
     }
 
-    this.filterFXKnob = new components.Pot({ // Activates FX when not centered
+    this.filterFXKnob = new components.Pot({ // Activates FX when not centered. TODO: Integrate dry/wet knob scaling
         midi: [0xB0 + midiChannel, 0x04],
         group: '[QuickEffectRack1_' + this.currentDeck + ']',
         input: function(channel, control, value) {
             engine.setParameter(this.group, "super1", value / 0x7F)
             if (value < 0x40) {
+                // mix parameter is scaled from 0x17 to 0x3F mapped from 1 to 0.5 respectively
+                //if (value >= 0x17) engine.setParameter(this.group, "enabled", 1 - Math.round(0x28))
                 engine.setParameter(this.group, "enabled", 1)
             }
 
             else if (value == 0x40) {
-                engine.setParameter(this.group, "enabled", 0) //might want to check if load is held here
+                // if load held - keep enabled
+
+                //else - disable on center
+                engine.setParameter(this.group, "mix", 1)
+                engine.setParameter(this.group, "enabled", 0) //TODO: check if load is held here
             }
 
             else if (value > 0x40) {
+                //if (value <= 0x69) engine.setParameter(this.group, "enabled", Math.round(value / 0x69))
                 engine.setParameter(this.group, "enabled", 1)
             }
         },
@@ -168,14 +175,20 @@ Mixtour.Deck = function (deckNumbers, midiChannel) {
             this.input = function(channel, control, value) {
                 engine.setParameter(this.group, "super1", value / 0x7F)
                 if (value < 0x40) {
+                    //if (value >= 0x17) engine.setParameter(this.group, "enabled", Math.round(value / 0x17))
                     engine.setParameter(this.group, "enabled", 1)
                 }
-    
+
                 else if (value == 0x40) {
-                    engine.setParameter(this.group, "enabled", 0) //might want to check if load is held here
+                    // if load held - keep enabled
+
+                    //else - disable on center
+                    engine.setParameter(this.group, "mix", 1)
+                    engine.setParameter(this.group, "enabled", 0) //TODO: check if load is held here
                 }
-    
+
                 else if (value > 0x40) {
+                    //if (value <= 0x69) engine.setParameter(this.group, "enabled", Math.round(value / 0x69))
                     engine.setParameter(this.group, "enabled", 1)
                 }
             }
